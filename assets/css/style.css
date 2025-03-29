@@ -220,6 +220,12 @@ article {
   --ionicon-stroke-width: 35px;
 }
 
+
+.icon-box img.icon{
+  width: 24px;
+  height: auto;
+}
+
 article {
   display: none;
 }
@@ -447,6 +453,7 @@ main {
   gap: 16px;
 }
 
+
 .contact-info {
   max-width: calc(100% - 46px);
   width: calc(100% - 46px);
@@ -480,6 +487,12 @@ main {
 .social-item .social-link {
   color: var(--white);
   font-size: 18px;
+}
+
+/* Add this new rule to target the image specifically */
+.social-item .social-link img {
+  width: 24px; /* Set your desired width */
+  height: auto; /* Keep aspect ratio */
 }
 
 
@@ -1157,6 +1170,14 @@ main {
 .project-item-icon-box ion-icon {
   --ionicon-stroke-width: 50px;
 }
+
+/* You can also adjust the size of the image directly */
+.project-item-icon-box img.icon {
+  width: 24px; /* Set explicit width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+
 
 .project-img img {
   width: 100%;
