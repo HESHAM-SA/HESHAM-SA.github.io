@@ -1172,7 +1172,7 @@ main {
 }
 
 /* You can also adjust the size of the image directly */
-.project-item-icon-box img.icon {
+.project-item-icon-box .eye {
   width: 24px; /* Set explicit width */
   height: auto; /* Maintain aspect ratio */
 }
