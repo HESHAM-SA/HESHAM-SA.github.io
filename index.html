@@ -22,23 +22,29 @@
   <header class="navbar" data-navbar>
     <a href="#home" class="nav-logo">H<span>.</span>Alsadan</a>
 
-    <nav class="nav-links" data-nav-menu>
+    <nav class="nav-links" id="nav-menu" data-nav-menu aria-label="Main navigation">
       <a href="#home" class="nav-link active" data-nav-link>Home</a>
       <a href="#about" class="nav-link" data-nav-link>About</a>
       <a href="#experience" class="nav-link" data-nav-link>Experience</a>
       <a href="#skills" class="nav-link" data-nav-link>Skills</a>
       <a href="#portfolio" class="nav-link" data-nav-link>Portfolio</a>
       <a href="#contact" class="nav-link" data-nav-link>Contact</a>
+      <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" download class="btn btn-sm nav-cv-btn nav-cv-mobile">
+        <i class="fa-solid fa-download"></i> Download CV
+      </a>
     </nav>
 
-    <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" download class="btn btn-sm nav-cv-btn">
-      <i class="fa-solid fa-download"></i> CV
-    </a>
-
-    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+    <div class="nav-actions">
+      <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" download class="btn btn-sm nav-cv-btn nav-cv-desktop">
+        <i class="fa-solid fa-download"></i> CV
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+        <i class="fa-solid fa-bars" data-nav-icon></i>
+      </button>
+    </div>
   </header>
+
+  <div class="nav-backdrop" data-nav-backdrop hidden></div>
 
   <main>
 
@@ -56,17 +62,21 @@
         <p class="hero-subtitle">Data Scientist <span class="accent">&amp;</span> AI Engineer</p>
 
         <p class="hero-text">
-          Computer Science teacher and AI practitioner with 1,000+ hours of intensive training
-          in Python, AI, data science, and full-stack web development — building end-to-end
+          Data Scientist, AI engineer, and Computer Science teacher in Riyadh — building
           machine learning and computer vision solutions.
         </p>
 
         <div class="hero-actions">
-          <a href="#portfolio" class="btn btn-primary">View My Work</a>
-          <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" download class="btn btn-outline">
-            <i class="fa-solid fa-download"></i> Download CV
-          </a>
+          <a href="#portfolio" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
         </div>
+
+        <nav class="hero-quick-nav" aria-label="Quick section links">
+          <a href="#about" class="quick-link"><i class="fa-solid fa-user"></i> About</a>
+          <a href="#experience" class="quick-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
+          <a href="#skills" class="quick-link"><i class="fa-solid fa-star"></i> Skills</a>
+          <a href="#portfolio" class="quick-link"><i class="fa-solid fa-folder-open"></i> Projects</a>
+        </nav>
 
         <ul class="hero-socials">
           <li>
@@ -98,6 +108,7 @@
       <div class="container">
         <p class="section-eyebrow reveal">Get to know me</p>
         <h2 class="section-title reveal">About Me</h2>
+        <p class="section-lead reveal">Who I am and what I focus on.</p>
 
         <div class="about-grid">
           <div class="about-text reveal">
@@ -153,6 +164,7 @@
       <div class="container">
         <p class="section-eyebrow reveal">My journey</p>
         <h2 class="section-title reveal">Experience</h2>
+        <p class="section-lead reveal">Training, teaching, and professional growth.</p>
 
         <ol class="timeline">
           <li class="timeline-item reveal">
@@ -281,6 +293,7 @@
       <div class="container">
         <p class="section-eyebrow reveal">What I work with</p>
         <h2 class="section-title reveal">Skills &amp; Certifications</h2>
+        <p class="section-lead reveal">Technologies, tools, and certified skills.</p>
 
         <div class="skills-grid">
           <div class="skill-card reveal">
@@ -348,8 +361,9 @@
       <div class="container">
         <p class="section-eyebrow reveal">Selected work</p>
         <h2 class="section-title reveal">Portfolio</h2>
+        <p class="section-lead reveal">Tap a category to filter projects.</p>
 
-        <ul class="filter-list reveal">
+        <ul class="filter-list reveal" aria-label="Project categories">
           <li><button class="filter-btn active" data-filter-btn="all">All</button></li>
           <li><button class="filter-btn" data-filter-btn="ai">AI</button></li>
           <li><button class="filter-btn" data-filter-btn="data-analytics">Data Analytics</button></li>
@@ -488,10 +502,7 @@
       <div class="container contact-container">
         <p class="section-eyebrow reveal">Get in touch</p>
         <h2 class="section-title reveal">Contact</h2>
-
-        <p class="contact-lead reveal">
-          Interested in working together or have a question? Feel free to reach out.
-        </p>
+        <p class="section-lead reveal">Reach out by email or phone.</p>
 
         <div class="contact-cards">
           <a href="mailto:HeshamAlsadan@gmail.com" class="contact-card reveal">
@@ -524,6 +535,30 @@
     </ul>
     <p>&copy; 2026 Hesham Alsadan. All rights reserved.</p>
   </footer>
+
+  <!-- Mobile bottom navigation -->
+  <nav class="bottom-nav" data-bottom-nav aria-label="Mobile section navigation">
+    <a href="#home" class="bottom-nav-link active" data-nav-link>
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="#about" class="bottom-nav-link" data-nav-link>
+      <i class="fa-solid fa-user"></i>
+      <span>About</span>
+    </a>
+    <a href="#portfolio" class="bottom-nav-link" data-nav-link>
+      <i class="fa-solid fa-folder-open"></i>
+      <span>Work</span>
+    </a>
+    <a href="#contact" class="bottom-nav-link" data-nav-link>
+      <i class="fa-solid fa-envelope"></i>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <button class="back-to-top" data-back-to-top aria-label="Back to top" hidden>
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
   <script src="./assets/js/script.js"></script>
 </body>
