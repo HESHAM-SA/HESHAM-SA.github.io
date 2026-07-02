@@ -3,617 +3,529 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hesham Alsadan</title>
+  <title>Hesham Alsadan — Data Scientist & AI</title>
+  <meta name="description" content="Portfolio of Hesham Alsadan — Data Scientist, AI Engineer and Computer Science Teacher based in Riyadh, KSA.">
 
-  <!--
-    - favicon
-  -->
   <link rel="shortcut icon" href="./assets/images/star-icon.png" type="image/x-icon">
-
-  <!--
-    - custom css link
-  -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!--
-    - google font link
-  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
-  <!--
-    - #MAIN
-  -->
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" data-navbar>
+    <a href="#home" class="nav-logo">H<span>.</span>Alsadan</a>
+
+    <nav class="nav-links" data-nav-menu>
+      <a href="#home" class="nav-link active" data-nav-link>Home</a>
+      <a href="#about" class="nav-link" data-nav-link>About</a>
+      <a href="#experience" class="nav-link" data-nav-link>Experience</a>
+      <a href="#skills" class="nav-link" data-nav-link>Skills</a>
+      <a href="#portfolio" class="nav-link" data-nav-link>Portfolio</a>
+      <a href="#contact" class="nav-link" data-nav-link>Contact</a>
+    </nav>
+
+    <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" download class="btn btn-sm nav-cv-btn">
+      <i class="fa-solid fa-download"></i> CV
+    </a>
+
+    <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
 
   <main>
 
-    <!--
-      - #SIDEBAR
-    -->
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+      <div class="hero-glow" aria-hidden="true"></div>
 
-    <aside class="sidebar" data-sidebar>
-
-      <div class="sidebar-info">
-
-        <figure class="avatar-box">
-          <img src="./assets/images/profile_picture.jpg" alt="Hesham Alsadan" width="80" style="border-radius: 20px;">
+      <div class="hero-content reveal">
+        <figure class="hero-avatar">
+          <img src="./assets/images/profile_picture.jpg" alt="Hesham Alsadan" width="160">
         </figure>
 
-        <div class="info-content">
-          <h1 class="name" title="Hesham Alsadan">Hesham Alsadan</h1>
+        <p class="hero-eyebrow">Hello, I'm</p>
+        <h1 class="hero-title">Hesham Alsadan</h1>
+        <p class="hero-subtitle">Data Scientist <span class="accent">&amp;</span> AI Engineer</p>
 
-          <p class="title">Data Scientist & AI</p>
+        <p class="hero-text">
+          Computer Science teacher and AI practitioner with 1,000+ hours of intensive training
+          in Python, AI, data science, and full-stack web development — building end-to-end
+          machine learning and computer vision solutions.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#portfolio" class="btn btn-primary">View My Work</a>
+          <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" download class="btn btn-outline">
+            <i class="fa-solid fa-download"></i> Download CV
+          </a>
         </div>
 
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show info</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
+        <ul class="hero-socials">
+          <li>
+            <a href="https://www.linkedin.com/in/hesham-alsadan/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/HESHAM-SA" target="_blank" rel="noopener" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.kaggle.com/heshamsadan" target="_blank" rel="noopener" aria-label="Kaggle">
+              <i class="fa-brands fa-kaggle"></i>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:HeshamAlsadan@gmail.com" aria-label="Email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </li>
+        </ul>
       </div>
+    </section>
 
-      <div class="sidebar-info_more">
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <p class="section-eyebrow reveal">Get to know me</p>
+        <h2 class="section-title reveal">About Me</h2>
 
-        <div class="separator"></div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>
+              Results-driven Data Scientist and Computer Science teacher with expertise in AI,
+              machine learning, and deep learning. Experienced in building end-to-end ML solutions
+              and computer vision applications.
+            </p>
+            <p>
+              I completed 4 in-person bootcamps and 3 programs — over 1,000 hours of training in
+              Python, AI, data science, and full-stack web development — with 100% attendance.
+              Currently teaching computer science fundamentals to 170 primary and intermediate
+              students at the Ministry of Education, while continuing my journey in advanced AI,
+              large language models (LLMs), and Generative AI.
+            </p>
 
-        <ul class="contacts-list">
+            <ul class="about-facts">
+              <li><i class="fa-solid fa-location-dot accent"></i> Riyadh, KSA</li>
+              <li><i class="fa-solid fa-phone accent"></i> 966-507-050-338</li>
+              <li><i class="fa-solid fa-envelope accent"></i> HeshamAlsadan@gmail.com</li>
+              <li><i class="fa-solid fa-language accent"></i> Arabic &amp; English</li>
+            </ul>
+          </div>
 
-          <li class="contact-item">
+          <ul class="service-list">
+            <li class="service-card reveal">
+              <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <h3>Data Science</h3>
+              <p>Advanced analytical techniques for extracting insights from data.</p>
+            </li>
+            <li class="service-card reveal">
+              <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+              <h3>Artificial Intelligence</h3>
+              <p>Development of intelligent systems, computer vision, and deep learning models.</p>
+            </li>
+            <li class="service-card reveal">
+              <div class="service-icon"><i class="fa-solid fa-chart-pie"></i></div>
+              <h3>Visualization</h3>
+              <p>Producing dashboards for data visualization and storytelling.</p>
+            </li>
+            <li class="service-card reveal">
+              <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+              <h3>Web Development</h3>
+              <p>Building full-stack web apps with Python and Django, focused on user experience.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-            <div class="icon-box">
-              <img src="./assets/images/mail (1).png" class="icon">
-            </div>
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="section section-alt" id="experience">
+      <div class="container">
+        <p class="section-eyebrow reveal">My journey</p>
+        <h2 class="section-title reveal">Experience</h2>
 
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:HeshamAlsadan@gmail.com" class="contact-link">HeshamAlsadan@gmail.com</a>
-            </div>
-
+        <ol class="timeline">
+          <li class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <span class="timeline-date">Jun 2026 - Present</span>
+            <h3 class="timeline-title">Tuwaiq Tasaru Bootcamp Trainee</h3>
+            <p class="timeline-org">Tuwaiq Academy</p>
+            <p class="timeline-text">
+              Currently enrolled in the Tuwaiq Tasaru bootcamp, advancing skills in technology
+              and innovation.
+            </p>
           </li>
 
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <img src="./assets/images/location.png" class="icon">
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>Riyadh, KSA</address>
-            </div>
-
+          <li class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <span class="timeline-date">May 10, 2026 - Jun 25, 2026</span>
+            <h3 class="timeline-title">Software Development using Python Bootcamp Trainee</h3>
+            <p class="timeline-org">SDA — Saudi Digital Academy</p>
+            <p class="timeline-text">
+              Completed a 7-week intensive journey in software development using Python, building
+              practical programming skills and real-world application experience.
+            </p>
           </li>
 
-          <li class="contact-item">
-            <div class="icon-box">
-              <img src="./assets/images/resume.png" class="icon">
-            </div>
-            <div class="contact-info">
-              <!-- <p class="contact-title">CV</p> -->
-              <a href="https://hesham-sa.github.io/assets/pdf/CV_Hesham_Alsadan.pdf"
-                target="_blank"
-                download class="contact-link">Download CV</a>
-            </div>
+          <li class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <span class="timeline-date">Feb 2026</span>
+            <h3 class="timeline-title">Advanced Artificial Intelligence</h3>
+            <p class="timeline-org">KAUST — King Abdullah University of Science and Technology</p>
+            <p class="timeline-text">
+              Completed advanced training in artificial intelligence, deepening expertise in modern
+              AI techniques, models, and applications.
+            </p>
           </li>
 
+          <li class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <span class="timeline-date">Aug 2025 - Present</span>
+            <h3 class="timeline-title">Computer Science Teacher</h3>
+            <p class="timeline-org">Ministry of Education</p>
+            <p class="timeline-text">
+              Teach primary and intermediate students (170 total) computer science fundamentals.
+            </p>
+          </li>
+
+          <li class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <span class="timeline-date">Jun 2025 - Aug 2025</span>
+            <h3 class="timeline-title">Web Development Bootcamp Trainee</h3>
+            <p class="timeline-org">Tuwaiq Academy</p>
+            <p class="timeline-text">
+              Completed 300 hours of intensive training in Python and full-stack web development,
+              with a focus on Django and modern web technologies.
+            </p>
+          </li>
+
+          <li class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <span class="timeline-date">Sep 2024 - Oct 2024</span>
+            <h3 class="timeline-title">AI Bootcamp Trainee</h3>
+            <p class="timeline-org">Tuwaiq Academy</p>
+            <p class="timeline-text">
+              Completed 200 hours of intensive training, gaining hands-on experience in AI, machine
+              learning, and deep learning.
+            </p>
+            <p class="timeline-capstone">
+              <strong>Capstone — AI Focus Analyzer for E-Learning:</strong> developed an AI platform
+              to analyze student focus during e-learning using facial recognition and quiz performance.
+              <em>Tools: MediaPipe, OpenAI GPT-3.5, Whisper, Streamlit.</em>
+            </p>
+          </li>
+
+          <li class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <span class="timeline-date">Mar 2024 - Jun 2024</span>
+            <h3 class="timeline-title">Data Science and AI T5 Bootcamp Trainee</h3>
+            <p class="timeline-org">SDAIA</p>
+            <p class="timeline-text">
+              Completed 360 hours of intensive training, covering SQL, Python, data analysis,
+              machine learning, deep learning (CNN, RNN), and MLOps.
+            </p>
+            <p class="timeline-capstone">
+              <strong>Capstone — Hadir, Management Attendance System:</strong> developed an automated
+              student attendance system using facial recognition that classifies student images and
+              records attendance as students enter the classroom.
+              <em>Tools: YOLO, Keras, Roboflow.</em>
+            </p>
+          </li>
+
+          <li class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <span class="timeline-date">Oct 2023 - Dec 2023</span>
+            <h3 class="timeline-title">Data Science and Machine Learning Bootcamp Trainee</h3>
+            <p class="timeline-org">Tuwaiq Academy</p>
+            <p class="timeline-text">
+              Completed 200 hours of intensive training, building 5 projects and 50 labs using Python,
+              SQL, Pandas, Tableau, and TensorFlow. Gained expertise in machine learning (SVM, Decision
+              Tree, Random Forest) and deep learning (CNNs).
+            </p>
+            <p class="timeline-capstone">
+              <strong>Capstone — Haraf, Your Farming Companion:</strong> built from scratch, this
+              CNN-based image classification project identifies date types, maturity, grades, and palm
+              tree diseases. <em>Tools: Python, TensorFlow, Plotly Dash.</em>
+            </p>
+          </li>
+        </ol>
+
+        <!-- Education -->
+        <h2 class="section-title section-title-secondary reveal">Education</h2>
+        <ol class="timeline">
+          <li class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <h3 class="timeline-title">Bachelor's Degree in Computer Science</h3>
+            <p class="timeline-org">King Saud University</p>
+            <p class="timeline-text">
+              Focused on core areas such as programming, algorithms, data structures, databases,
+              operating systems, and software development.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills">
+      <div class="container">
+        <p class="section-eyebrow reveal">What I work with</p>
+        <h2 class="section-title reveal">Skills &amp; Certifications</h2>
+
+        <div class="skills-grid">
+          <div class="skill-card reveal">
+            <h3><i class="fa-solid fa-code accent"></i> Programming Languages</h3>
+            <ul class="tag-list">
+              <li>Python</li>
+              <li>SQL</li>
+              <li>JavaScript</li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <h3><i class="fa-solid fa-network-wired accent"></i> ML / DL Frameworks</h3>
+            <ul class="tag-list">
+              <li>TensorFlow</li>
+              <li>Keras</li>
+              <li>Scikit-learn</li>
+              <li>MediaPipe</li>
+              <li>Django</li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <h3><i class="fa-solid fa-toolbox accent"></i> Tools &amp; Technologies</h3>
+            <ul class="tag-list">
+              <li>Streamlit</li>
+              <li>Roboflow</li>
+              <li>Kaggle</li>
+              <li>Cloud Computing</li>
+              <li>Power BI</li>
+            </ul>
+          </div>
+
+          <div class="skill-card reveal">
+            <h3><i class="fa-solid fa-lightbulb accent"></i> Core Competencies</h3>
+            <ul class="tag-list">
+              <li>Data Analysis</li>
+              <li>Deep Learning</li>
+              <li>Problem Solving</li>
+              <li>Teamwork</li>
+              <li>Leadership</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cert-row reveal">
+          <div class="cert-badge">
+            <i class="fa-solid fa-certificate"></i>
+            <span>Alibaba Cloud Computing Engineer</span>
+          </div>
+          <div class="cert-badge">
+            <i class="fa-solid fa-certificate"></i>
+            <span>IoT Certified</span>
+          </div>
+          <div class="cert-badge">
+            <i class="fa-solid fa-certificate"></i>
+            <span>Drones Certified</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PORTFOLIO ===== -->
+    <section class="section section-alt" id="portfolio">
+      <div class="container">
+        <p class="section-eyebrow reveal">Selected work</p>
+        <h2 class="section-title reveal">Portfolio</h2>
+
+        <ul class="filter-list reveal">
+          <li><button class="filter-btn active" data-filter-btn="all">All</button></li>
+          <li><button class="filter-btn" data-filter-btn="ai">AI</button></li>
+          <li><button class="filter-btn" data-filter-btn="data-analytics">Data Analytics</button></li>
+          <li><button class="filter-btn" data-filter-btn="apps">Apps</button></li>
         </ul>
 
-        <div class="separator"></div>
+        <ul class="project-grid">
 
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/hesham-alsadan/" class="social-link">
-              <img src="./assets/images/linkedin.svg">
+          <li class="project-card active reveal" data-filter-item data-category="ai">
+            <a href="https://github.com/HESHAM-SA/Capstone-Project-Majed-" target="_blank" rel="noopener"
+               aria-label="View Attendees Management System GitHub Repository">
+              <figure class="project-media">
+                <video autoplay loop muted playsinline preload="metadata"
+                       poster="my_projects/AI/AI_p2/attendees_poster.jpg"
+                       aria-label="AI-powered attendee management system">
+                  <source src="my_projects/AI/AI_p2/Attendees_management_system_Demo.webm" type="video/webm">
+                  <source src="my_projects/AI/AI_p2/Attendees_management_system_Demo.mp4" type="video/mp4">
+                </video>
+                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+              </figure>
+              <div class="project-info">
+                <span class="project-category">AI</span>
+                <h3 class="project-title">Attendees Management System</h3>
+              </div>
             </a>
           </li>
 
-          <li class="social-item">
-            <a href="https://www.kaggle.com/heshamsadan" class="social-link">
-              <img src="./assets/images/kaggle (3).svg">
+          <li class="project-card active reveal" data-filter-item data-category="ai">
+            <a href="https://github.com/HESHAM-SA/AI-Platform-for-Focus-Analysis-in-E-Learning" target="_blank" rel="noopener">
+              <figure class="project-media">
+                <video autoplay loop muted playsinline preload="metadata"
+                       poster="my_projects/AI/AI_p3/focus_analysis_poster.jpg"
+                       aria-label="Real-time attention tracking demo in virtual classroom">
+                  <source src="my_projects/AI/AI_p3/focus_analysis_demo.webm" type="video/webm">
+                  <source src="my_projects/AI/AI_p3/focus_analysis_demo.mp4" type="video/mp4">
+                </video>
+                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+              </figure>
+              <div class="project-info">
+                <span class="project-category">AI</span>
+                <h3 class="project-title">AI Platform for Focus Analysis in E-Learning</h3>
+              </div>
             </a>
           </li>
-          
 
-          <li class="social-item">
-            <a href="https://github.com/HESHAM-SA" class="social-link">
-              <img src="./assets/images/github (1).png">
+          <li class="project-card active reveal" data-filter-item data-category="ai">
+            <a href="https://HESHAM-SA.github.io/my_projects/AI/AI_p1/KharafDates.pdf" target="_blank" rel="noopener"
+               aria-label="View Kharaf Dates quality report (PDF)">
+              <figure class="project-media">
+                <img src="my_projects/AI/AI_p1/KharafDates.jpg" alt="Date quality analysis visualization" loading="lazy">
+                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+              </figure>
+              <div class="project-info">
+                <span class="project-category">AI</span>
+                <h3 class="project-title">Kharaf Dates</h3>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-card active reveal" data-filter-item data-category="data-analytics">
+            <a href="https://HESHAM-SA.github.io/my_projects/Data%20Analytics/p1/diabetes_1.pdf" target="_blank" rel="noopener"
+               aria-label="View diabetes analysis case study">
+              <figure class="project-media">
+                <img src="my_projects/Data Analytics/p1/diabetes.jpg" alt="Diabetes risk factor visualization" loading="lazy">
+                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+              </figure>
+              <div class="project-info">
+                <span class="project-category">Data Analytics</span>
+                <h3 class="project-title">Diabetes Analysis</h3>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-card active reveal" data-filter-item data-category="data-analytics">
+            <a href="https://hesham-sa.github.io/my_projects/Data%20Analytics/p2/Analysing%20food%20order%20online%20.pdf"
+               target="_blank" rel="noopener" aria-label="Comprehensive food order online analysis report">
+              <figure class="project-media">
+                <img src="my_projects/Data Analytics/p2/Analysing_food_order_online.jpg"
+                     alt="Detailed analysis of online food ordering trends" loading="lazy">
+                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+              </figure>
+              <div class="project-info">
+                <span class="project-category">Data Analytics</span>
+                <h3 class="project-title">Online Food Order Analysis</h3>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-card active reveal" data-filter-item data-category="data-analytics">
+            <a href="https://hesham-sa.github.io/my_projects/Data%20Analytics/p3/EDA%20for%206%2C500%20students%20of%20Tuwaiq%20Academy.pdf"
+               target="_blank" rel="noopener" aria-label="Comprehensive exploratory data analysis for Tuwaiq Academy students">
+              <figure class="project-media">
+                <img src="my_projects/Data Analytics/p3/EDA for 6,500 students of Tuwaiq Academy.jpg"
+                     alt="Exploratory Data Analysis of 6,500 Tuwaiq Academy students" loading="lazy">
+                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+              </figure>
+              <div class="project-info">
+                <span class="project-category">Data Analytics</span>
+                <h3 class="project-title">Tuwaiq Academy Student EDA</h3>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-card active reveal" data-filter-item data-category="data-analytics">
+            <a href="https://github.com/HESHAM-SA/PowerBI-Dashboard" target="_blank" rel="noopener">
+              <figure class="project-media">
+                <img src="my_projects/Data Analytics/project 04 power bi/dashboard.png" alt="Power BI dashboard" loading="lazy">
+                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+              </figure>
+              <div class="project-info">
+                <span class="project-category">Data Analytics</span>
+                <h3 class="project-title">Dashboard using Power BI</h3>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-card active reveal" data-filter-item data-category="apps">
+            <a href="https://github.com/HESHAM-SA/Bootcamp-Project-1-Python" target="_blank" rel="noopener">
+              <figure class="project-media">
+                <img src="my_projects/App/Guess.jpg" alt="Guess Number Game" loading="lazy">
+                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+              </figure>
+              <div class="project-info">
+                <span class="project-category">Apps</span>
+                <h3 class="project-title">Guess Number Game</h3>
+              </div>
             </a>
           </li>
 
         </ul>
-
       </div>
-
-    </aside>
-
-
-<!--
-      - #main-content
-    -->
-
-<div class="main-content">
-
-  <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-        <ul class="navbar-list">
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-page="about">About</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link data-page="resume">Resume</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link active" data-nav-link data-page="portfolio">Portfolio</button>
-          </li>
-        </ul>
-      </nav>
-
-
-
-  <!--
-        - #ABOUT
-      -->
-
-  <article class="about" data-page="about">
-
-    <header>
-      <h2 class="h2 article-title">About me</h2>
-    </header>
-
-    <section class="about-text">
-      <p>
-        Results-driven Data Scientist with expertise in AI, machine learning, and deep learning.  
-        Experienced in building end-to-end ML solutions and computer vision applications.  
-        Proficient in Python and deep learning frameworks, with a strong interest in learning and applying  
-        large language models (LLMs) and Generative AI to solve real-world challenges through innovative,  
-        data-driven approaches.
-      </p>
     </section>
 
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact">
+      <div class="container contact-container">
+        <p class="section-eyebrow reveal">Get in touch</p>
+        <h2 class="section-title reveal">Contact</h2>
 
-    <!--
-          - service
-        -->
+        <p class="contact-lead reveal">
+          Interested in working together or have a question? Feel free to reach out.
+        </p>
 
-    <section class="service">
-
-      <h3 class="h3 service-title">What i'm doing</h3>
-
-      <ul class="service-list">
-
-        <li class="service-item">
-
-          <div class="service-icon-box">
-            <img src="./assets/images/data_science_icon.svg" alt="Data Science icon" width="50" style="border-radius: 10px">
-
+        <div class="contact-cards">
+          <a href="mailto:HeshamAlsadan@gmail.com" class="contact-card reveal">
+            <i class="fa-solid fa-envelope"></i>
+            <span class="contact-label">Email</span>
+            <span class="contact-value">HeshamAlsadan@gmail.com</span>
+          </a>
+          <a href="tel:+966507050338" class="contact-card reveal">
+            <i class="fa-solid fa-phone"></i>
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">966-507-050-338</span>
+          </a>
+          <div class="contact-card reveal">
+            <i class="fa-solid fa-location-dot"></i>
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Riyadh, KSA</span>
           </div>
-
-          <div class="service-content-box">
-            <h4 class="h4 service-item-title">Data Science</h4>
-
-            <p class="service-item-text">
-              Advanced analytical techniques for extracting insights from data.
-            </p>
-          </div>
-
-        </li>
-
-        <li class="service-item">
-
-          <div class="service-icon-box">
-            <img src="./assets/images/gear_icon.svg" alt="Artificial Intelligence icon" width="50"
-              style="border-radius: 10px">
-          </div>
-
-          <div class="service-content-box">
-            <h4 class="h4 service-item-title">Artificial Intelligence</h4>
-
-            <p class="service-item-text">
-              Development of intelligent systems and algorithms.
-            </p>
-          </div>
-
-        </li>
-
-        <li class="service-item">
-          <div class="service-icon-box">
-            <img src="./assets/images/growth_icon.svg" alt="Viz icon" width="50" style="border-radius: 10px">
-          </div>
-
-          <div class="service-content-box">
-            <h4 class="h4 service-item-title">Visualization</h4>
-
-            <p class="service-item-text">
-              Producing dashboards for data visualization and storytelling.
-            </p>
-          </div>
-        </li>
-
-        <li class="service-item">
-
-          <div class="service-icon-box">
-            <img src="./assets/images/resume_icon.png" alt="Web development icon" width="50" style="border-radius: 10px">
-          </div>
-          
-          <div class="service-content-box">
-            <h4 class="h4 service-item-title">Web Development</h4>
-          
-            <p class="service-item-text">
-              Build full-stack web apps focused on user experience.
-            </p>
-          </div>
-          
-
-        </li>
-
-      </ul>
-
-    </section>
-
-
-  </article>
-
-
-  
-  <!--
-    - #RESUME
-  -->
-  <article class="resume" data-page="resume">
-    <header>
-      <h2 class="h2 article-title">Resume</h2>
-    </header>
-  
-    <!-- Experience Section -->
-    <section class="timeline">
-      <div class="title-wrapper">
-        <div class="icon-box">
-          <!-- <ion-icon name="book-outline"></ion-icon> -->
-           <img src="./assets/images/open-book.png" class="icon">
         </div>
-        <h3 class="h3">Experience</h3>
       </div>
-  
-      <ol class="timeline-list">
-        <li class="timeline-item">
-          <h4 class="h4 timeline-item-title">Web Development Bootcamp Trainee at Tuwaiq Academy</h4>
-          <span>Jun 2025 - Present</span>
-          <p class="timeline-text">
-            Completed 300 hours of intensive training at Tuwaiq Academy in full-stack web
-            development, with a focus on Django and modern web technologies.
-          </p>
-        </li>  
-
-        <li class="timeline-item">
-          <h4 class="h4 timeline-item-title">AI Bootcamp Trainee at Tuwaiq Academy</h4>
-          <span>Sep 2024 - Oct 2024</span>
-          <p class="timeline-text">
-            Completed 200 hours of intensive training at Tuwaiq Academy,
-            gaining hands-on experience in AI, machine learning, and deep learning.
-          </p>
-        </li>      
-        
-        <li class="timeline-item">
-          <h4 class="h4 timeline-item-title">Data Science and AI T5 Bootcamp Trainee at SDAIA</h4>
-          <span>Mar 2024 - Jun 2024</span>
-          <p class="timeline-text">
-            Completed 360 hours of intensive training, covering SQL, Python, data analysis,
-            machine learning, deep learning (CNN, RNN), and MLOps.
-          </p>
-        </li>
-  
-        <li class="timeline-item">
-          <h4 class="h4 timeline-item-title">Data Science and Machine Learning Bootcamp Trainee at Tuwaiq Academy</h4>
-          <span>Oct 2023 - Dec 2023</span>
-          <p class="timeline-text">
-            Completed 200 hours of intensive training, building 5 projects and 50 labs using Python, SQL, Pandas, Tableau, and TensorFlow.
-            Gained expertise in machine learning (SVM, Decision Tree, Random Forest) and deep learning (CNNs).
-          </p>
-        </li>
-  
-      </ol>
-    </section>
-  
-    <!-- Education Section -->
-    <section class="timeline">
-      <div class="title-wrapper">
-        <div class="icon-box">
-          <!-- <ion-icon name="book-outline"></ion-icon> -->
-          <img src="./assets/images/open-book.png" class="icon">
-        </div>
-        <h3 class="h3">Education</h3>
-      </div>
-  
-      <ol class="timeline-list">
-        <li class="timeline-item">
-          <h4 class="h4 timeline-item-title">Bachelor’s Degree in Computer Science, King Saud University</h4>
-          <!-- <span>Sep 2011 - Aug 2016</span> -->
-          <p class="timeline-text">
-            Focused on core areas such as programming, algorithms, data structures, 
-            databases, operating systems, and software development.
-          </p>
-        </li>
-      </ol>
-    </section>
-  </article>
-
-
-  <!--
-        - #PORTFOLIO
-      -->
-
-  <article class="portfolio active" data-page="portfolio">
-
-    <header>
-      <h2 class="h2 article-title">Portfolio</h2>
-    </header>
-
-    <section class="projects">
-
-      <ul class="filter-list">
-        
-        <li class="filter-item">
-          <button class="active" data-filter-btn="all">All</button>
-        </li>
-        
-        <li class="filter-item">
-          <button data-filter-btn="ai">AI</button>
-        </li>
-        
-        <li class="filter-item">
-          <button data-filter-btn="data-analytics">Data Analytics</button>
-        </li>
-        
-        <li class="filter-item">
-          <button data-filter-btn="apps">Apps</button>
-        </li>
-
-      </ul>
-      <div class="filter-select-box">
-        <button class="filter-select" data-select>
-          <div class="select-value" data-select-value>Select category</div>
-          <div class="select-icon">
-            <ion-icon name="chevron-down"></ion-icon>
-          </div>
-        </button>
-      
-        <ul class="select-list">
-          <li class="select-item">
-            <button data-select-item="all">All</button>
-          </li>
-          <li class="select-item">
-            <button data-select-item="ai">AI</button>
-          </li>
-          <li class="select-item">
-            <button data-select-item="data-analytics">Data Analytics</button>
-          </li>
-          <li class="select-item">
-            <button data-select-item="apps">Apps</button>
-          </li>
-        </ul>
-      </div>
-
-      <ul class="project-list">
-        
-        <li class="project-item active" data-filter-item data-category="ai">
-          <a href="https://github.com/HESHAM-SA/Capstone-Project-Majed-" 
-          rel="noopener" 
-          target="_blank"
-          aria-label="View Attendees Management System GitHub Repository">
-          <figure class="project-img">
-            <div class="project-item-icon-box">
-               <img src="./assets/images/eye_outline_v2.png" class="eye" alt="View project">
-            </div>
-            <video autoplay loop muted playsinline 
-            style="border-radius: 8px; object-fit: cover"
-            width="400" height="200"
-            preload="metadata"
-            poster="my_projects/AI/AI_p2/attendees-poster.jpg"
-            aria-label="AI-powered attendee management system">
-            <source src="my_projects/AI/AI_p2/Attendees_management_system_Demo.webm" type="video/webm">
-          </video>
-          
-        </figure>
-        <h3 class="project-title">Attendees Management System</h3>
-        <p class="project-category">AI</p>
-      </a>
-    </li>
-    
-    <li class="project-item active" data-filter-item data-category="ai">
-      <a href="https://github.com/HESHAM-SA/AI-Platform-for-Focus-Analysis-in-E-Learning"
-      target="_blank">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-               <img src="./assets/images/eye_outline_v2.png" class="eye" alt="View project">
-              </div>
-              <video autoplay loop muted playsinline 
-              style="border-radius: 8px; object-fit: cover"
-              width="400" height="200"
-              preload="metadata"
-              poster="my_projects/AI/AI_p3/focus-analysis-poster.jpg"
-              aria-label="Real-time attention tracking demo in virtual classroom">
-              <source src="my_projects/AI/AI_p3/focus_analysis_demo.webm" type="video/webm">
-              <source src="my_projects/AI/AI_p3/focus_analysis_demo.mp4" type="video/mp4">
-              <!-- Fallback text for unsupported browsers -->
-              Your browser does not support the video tag.
-            </video>
-            
-          </figure>
-          <h3 class="project-title">AI Platform for Focus Analysis in E-Learning</h3>
-          <p class="project-category">AI</p>
-        </a>
-      </li>
-
-      <li class="project-item active" data-filter-item data-category="ai">
-        <a href="https://HESHAM-SA.github.io/my_projects/AI/AI_p1/KharafDates.pdf" 
-            aria-label="View Kharaf Dates quality report (PDF)"
-            rel="noopener"
-            target="_blank">
-          <figure class="project-img">
-            <div class="project-item-icon-box">
-              <img src="./assets/images/eye_outline_v2.png" class="eye" alt="View project">
-            </div>
-            <img src="my_projects/AI/AI_p1/KharafDates.jpg" 
-                  alt="Date quality analysis visualization" 
-                  loading="lazy">
-          </figure>
-          <h3 class="project-title">Kharaf Dates</h3>
-          <p class="project-category">AI</p>
-        </a>
-      </li>
-
-                <!-- Data Analytics Project 1 -->
-        <li class="project-item active" data-filter-item data-category="data analytics">
-          <a href="https://HESHAM-SA.github.io/my_projects/Data%20Analytics/p1/diabetes_1.pdf"
-            aria-label="View diabetes analysis case study"
-            target="_blank"
-            rel="noopener">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-               <img src="./assets/images/eye_outline_v2.png" class="eye" alt="View project">
-              </div>
-              <img src="my_projects/Data Analytics/p1/diabetes.jpg" 
-                  alt="Diabetes risk factor visualization" 
-                  loading="lazy">
-            </figure>
-            <h3 class="project-title">Diabetes Analysis</h3>
-            <p class="project-category">Data Analytics</p>
-          </a>
-        </li>
-
-        <li class="project-item active" data-filter-item data-category="data-analytics">
-          <a href="https://hesham-sa.github.io/my_projects/Data%20Analytics/p2/Analysing%20food%20order%20online%20.pdf"
-            target="_blank"
-             rel="noopener"
-             aria-label="comprehensive food order online analysis report">
-        
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-               <img src="./assets/images/eye_outline_v2.png" class="eye" alt="View project">
-              </div>
-        
-              <img 
-                src="my_projects/Data Analytics/p2/Analysing_food_order_online.jpg"
-                alt="Detailed analysis of online food ordering trends" 
-                loading="lazy"
-                width="300"
-                height="200">
-            </figure>
-        
-            <h3 class="project-title">Online Food Order Analysis</h3>
-        
-            <p class="project-category">Data Analytics</p>
-        
-          </a>
-        </li>
-
-
-
-        <li class="project-item active" data-filter-item data-category="data-analytics">
-          <a href="https://hesham-sa.github.io/my_projects/Data%20Analytics/p3/EDA%20for%206%2C500%20students%20of%20Tuwaiq%20Academy.pdf"
-            target="_blank"
-            rel="noopener"
-            aria-label="comprehensive exploratory data analysis for Tuwaiq Academy students">
-
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-               <img src="./assets/images/eye_outline_v2.png" class="eye" alt="View project">
-              </div>
-
-              <img 
-                src="my_projects/Data Analytics/p3/EDA for 6,500 students of Tuwaiq Academy.jpg" 
-                alt="Exploratory Data Analysis of 6,500 Tuwaiq Academy students" 
-                loading="lazy"
-                width="300"
-                height="200">
-            </figure>
-
-            <h3 class="project-title">Tuwaiq Academy Student EDA</h3>
-
-            <p class="project-category">Data Analytics</p>
-
-          </a>
-        </li>
-
-        <li class="project-item  active" data-filter-item data-category="data-analytics">
-          <a href="https://github.com/HESHAM-SA/PowerBI-Dashboard"
-          target="_blank">
-
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-               <img src="./assets/images/eye_outline_v2.png" class="eye" alt="View project">
-              </div>
-
-              <img src="my_projects/Data Analytics/project 04 power bi/dashboard.png" alt="power bi" loading="lazy">
-            </figure>
-
-            <h3 class="project-title">Dashboard using Power BI</h3>
-
-            <p class="project-category">Data Analytics</p>
-
-          </a>
-        </li>
-
-
-
-        <li class="project-item  active" data-filter-item data-category="apps">
-          <a href="https://github.com/HESHAM-SA/Bootcamp-Project-1-Python"
-          target="_blank">
-
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-               <img src="./assets/images/eye_outline_v2.png" class="eye" alt="View project">
-              </div>
-
-              <img src="my_projects/App/Guess.jpg" alt="Guess Number Game" loading="lazy">
-            </figure>
-
-            <h3 class="project-title">Guess Number Game</h3>
-
-            <p class="project-category">Apps</p>
-
-          </a>
-        </li>
-
-      </ul>
-
     </section>
 
-  </article>
+  </main>
 
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <ul class="footer-socials">
+      <li><a href="https://www.linkedin.com/in/hesham-alsadan/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+      <li><a href="https://github.com/HESHAM-SA" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a></li>
+      <li><a href="https://www.kaggle.com/heshamsadan" target="_blank" rel="noopener" aria-label="Kaggle"><i class="fa-brands fa-kaggle"></i></a></li>
+    </ul>
+    <p>&copy; 2026 Hesham Alsadan. All rights reserved.</p>
+  </footer>
 
-
-
-</div>
-
-</main>
-
-
-<!--
-    - custom js link
-  -->
-<script src="./assets/js/script.js"></script>
-
-<!--
-    - ionicon link
-  -->
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+  <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
