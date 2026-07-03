@@ -52,6 +52,29 @@ body {
   overflow-x: hidden;
 }
 
+.container,
+.navbar,
+.nav-links,
+.nav-actions,
+.about-grid > *,
+.service-card,
+.skill-card,
+.cert-item,
+.project-card,
+.contact-card,
+.timeline-item {
+  min-width: 0;
+}
+
+.timeline-title,
+.timeline-text,
+.timeline-capstone,
+.cert-name,
+.project-title,
+.contact-value {
+  overflow-wrap: break-word;
+}
+
 body.menu-open {
   overflow: hidden;
 }
@@ -228,6 +251,8 @@ button {
 }
 
 .nav-toggle {
+  position: relative;
+  z-index: 102;
   display: none;
   width: 44px;
   height: 44px;
