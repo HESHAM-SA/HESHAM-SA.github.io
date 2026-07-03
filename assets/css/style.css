@@ -209,6 +209,24 @@ button {
   margin-top: 8px;
 }
 
+.lang-toggle {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.lang-toggle:hover {
+  color: var(--accent);
+  border-color: rgba(245, 197, 24, 0.45);
+  background: var(--accent-soft);
+}
+
 .nav-toggle {
   display: none;
   width: 44px;
@@ -1217,5 +1235,63 @@ button {
   .skill-card,
   .contact-card {
     padding: 22px 18px;
+  }
+}
+
+/* ===== RTL language support ===== */
+
+html[dir="rtl"] {
+  --font-display: Tahoma, Arial, sans-serif;
+  --font-body: Tahoma, Arial, sans-serif;
+}
+
+html[dir="rtl"] .timeline {
+  padding-left: 0;
+  padding-right: 34px;
+}
+
+html[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 7px;
+}
+
+html[dir="rtl"] .timeline-marker {
+  left: auto;
+  right: -34px;
+}
+
+html[dir="rtl"] .timeline-capstone {
+  border-left: 0;
+  border-right: 3px solid var(--accent);
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+html[dir="rtl"] .contact-card[href^="mailto"] .contact-value,
+html[dir="rtl"] .contact-card[href^="tel"] .contact-value {
+  direction: ltr;
+}
+
+@media (max-width: 1024px) {
+  html[dir="rtl"] .nav-links {
+    right: auto;
+    left: 0;
+    border-left: 0;
+    border-right: 1px solid var(--border);
+    transform: translateX(-100%);
+  }
+
+  html[dir="rtl"] .nav-links.open {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  html[dir="rtl"] .timeline {
+    padding-left: 0;
+    padding-right: 24px;
+  }
+
+  html[dir="rtl"] .timeline-marker {
+    right: -24px;
   }
 }
