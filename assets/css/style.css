@@ -184,6 +184,9 @@ button {
 }
 
 .nav-logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 20px;
@@ -244,7 +247,7 @@ button {
   grid-template-columns: 1fr 1fr;
   align-items: center;
   min-width: 104px;
-  min-height: 38px;
+  min-height: 44px;
   padding: 3px;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -278,7 +281,7 @@ button {
   z-index: 1;
   display: grid;
   place-items: center;
-  min-height: 32px;
+  min-height: 38px;
   padding-inline: 8px;
   line-height: 1;
   transition: color 0.2s ease;
@@ -416,6 +419,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  min-height: 44px;
   padding: 10px 16px;
   border-radius: 999px;
   border: 1px solid var(--border);
@@ -1083,8 +1087,8 @@ button {
 .footer-socials a {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid var(--border);
   color: var(--text-muted);
@@ -1337,6 +1341,33 @@ button {
   }
 }
 
+@media (max-width: 768px) and (max-height: 480px) and (orientation: landscape) {
+  .hero {
+    padding: 88px 20px 48px;
+  }
+
+  .hero-avatar img {
+    width: 96px;
+    height: 96px;
+  }
+
+  .hero-socials {
+    margin-top: 28px;
+  }
+
+  .bottom-nav {
+    display: none;
+  }
+
+  .footer {
+    padding-bottom: 40px;
+  }
+
+  .back-to-top {
+    bottom: 18px;
+  }
+}
+
 @media (max-width: 480px) {
   .container {
     padding-inline: 16px;
@@ -1368,6 +1399,64 @@ button {
   .skill-card,
   .contact-card {
     padding: 22px 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar {
+    gap: 8px;
+    padding-inline: 10px;
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .nav-logo {
+    font-size: 16px;
+  }
+
+  .lang-toggle {
+    min-width: 92px;
+    font-size: 11px;
+  }
+
+  .lang-option {
+    padding-inline: 6px;
+  }
+
+  .hero {
+    padding: 78px 16px 64px;
+  }
+
+  .hero-avatar img {
+    width: 84px;
+    height: 84px;
+  }
+
+  .hero-eyebrow {
+    margin-top: 14px;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+  }
+
+  .hero-title {
+    font-size: clamp(30px, 10vw, 36px);
+  }
+
+  .hero-subtitle {
+    margin-top: 8px;
+    font-size: 16px;
+  }
+
+  .hero-text {
+    margin-top: 12px;
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+
+  .hero-actions {
+    margin-top: 18px;
   }
 }
 
