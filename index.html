@@ -6,13 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hesham Alsadan — AI Engineer & Data Science</title>
   <meta name="description" content="Portfolio of Hesham Alsadan — AI Engineer and Data Scientist in Riyadh, looking for opportunities in EdTech. 1,500+ hours of training across KAUST, SDAIA, Tuwaiq, and SDA.">
+  <meta name="theme-color" content="#0b0e14">
+  <link rel="canonical" href="https://hesham-sa.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hesham-sa.github.io/">
+  <meta property="og:title" content="Hesham Alsadan — AI Engineer & Data Science">
+  <meta property="og:description" content="AI Engineer and Data Scientist in Riyadh building practical AI and data solutions.">
+  <meta property="og:image" content="https://hesham-sa.github.io/assets/images/profile_picture.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hesham Alsadan — AI Engineer & Data Science">
+  <meta name="twitter:description" content="AI Engineer and Data Scientist in Riyadh building practical AI and data solutions.">
+  <meta name="twitter:image" content="https://hesham-sa.github.io/assets/images/profile_picture.jpg">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Hesham Alsadan",
+      "url": "https://hesham-sa.github.io/",
+      "image": "https://hesham-sa.github.io/assets/images/profile_picture.jpg",
+      "jobTitle": "AI Engineer and Data Scientist",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Riyadh",
+        "addressCountry": "SA"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/hesham-alsadan/",
+        "https://github.com/HESHAM-SA",
+        "https://www.kaggle.com/heshamsadan"
+      ]
+    }
+  </script>
 
   <link rel="shortcut icon" href="./assets/images/star-icon.png" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -29,7 +60,7 @@
       <a href="#skills" class="nav-link" data-nav-link>Skills</a>
       <a href="#portfolio" class="nav-link" data-nav-link>Portfolio</a>
       <a href="#contact" class="nav-link" data-nav-link>Contact</a>
-      <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" download class="btn btn-sm nav-cv-btn nav-cv-mobile">
+      <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" rel="noopener" download class="btn btn-sm nav-cv-btn nav-cv-mobile">
         <i class="fa-solid fa-download"></i> Download CV
       </a>
     </nav>
@@ -39,7 +70,7 @@
         <span class="lang-option lang-option-en">EN</span>
         <span class="lang-option lang-option-ar">عربي</span>
       </button>
-      <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" download class="btn btn-sm nav-cv-btn nav-cv-desktop">
+      <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" rel="noopener" download class="btn btn-sm nav-cv-btn nav-cv-desktop">
         <i class="fa-solid fa-download"></i> CV
       </a>
       <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
@@ -58,7 +89,7 @@
 
       <div class="hero-content reveal">
         <figure class="hero-avatar">
-          <img src="./assets/images/profile_picture.jpg" alt="Hesham Alsadan" width="160">
+          <img src="./assets/images/profile_picture.jpg" alt="Hesham Alsadan" width="160" height="160" fetchpriority="high" decoding="async">
         </figure>
 
         <p class="hero-eyebrow">Hello, I'm</p>
@@ -375,45 +406,50 @@
 
         <ul class="project-grid">
 
-          <li class="project-card active reveal" data-filter-item data-category="ai">
+          <li class="project-card active reveal" data-filter-item data-category="ai" data-project="attendees">
             <a href="https://github.com/HESHAM-SA/Capstone-Project-Majed-" target="_blank" rel="noopener"
                aria-label="View Attendees Management System GitHub Repository">
               <figure class="project-media">
-                <video autoplay loop muted playsinline preload="metadata"
+                <video class="project-video" data-project-video loop muted playsinline preload="none"
                        poster="my_projects/AI/AI_p2/attendees_poster.jpg"
                        aria-label="AI-powered attendee management system">
-                  <source src="my_projects/AI/AI_p2/Attendees_management_system_Demo.webm" type="video/webm">
-                  <source src="my_projects/AI/AI_p2/Attendees_management_system_Demo.mp4" type="video/mp4">
+                  <source data-src="my_projects/AI/AI_p2/Attendees_management_system_Demo.webm" type="video/webm">
+                  <source data-src="my_projects/AI/AI_p2/Attendees_management_system_Demo.mp4" type="video/mp4">
                 </video>
                 <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">AI</span>
                 <h3 class="project-title">Attendees Management System</h3>
+                <p class="project-description">Automated classroom attendance with face recognition and AI-backed verification.</p>
+                <span class="project-link-label">View GitHub</span>
               </div>
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="ai">
-            <a href="https://github.com/HESHAM-SA/AI-Platform-for-Focus-Analysis-in-E-Learning" target="_blank" rel="noopener">
+          <li class="project-card active reveal" data-filter-item data-category="ai" data-project="focus">
+            <a href="https://github.com/HESHAM-SA/AI-Platform-for-Focus-Analysis-in-E-Learning" target="_blank" rel="noopener"
+               aria-label="View AI Platform for Focus Analysis GitHub Repository">
               <figure class="project-media">
-                <video autoplay loop muted playsinline preload="metadata"
+                <video class="project-video" data-project-video loop muted playsinline preload="none"
                        poster="my_projects/AI/AI_p3/focus_analysis_poster.jpg"
                        aria-label="Real-time attention tracking demo in virtual classroom">
-                  <source src="my_projects/AI/AI_p3/focus_analysis_demo.webm" type="video/webm">
-                  <source src="my_projects/AI/AI_p3/focus_analysis_demo.mp4" type="video/mp4">
+                  <source data-src="my_projects/AI/AI_p3/focus_analysis_demo.webm" type="video/webm">
+                  <source data-src="my_projects/AI/AI_p3/focus_analysis_demo.mp4" type="video/mp4">
                 </video>
                 <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">AI</span>
                 <h3 class="project-title">AI Platform for Focus Analysis in E-Learning</h3>
+                <p class="project-description">Tracks learner attention in e-learning sessions using face analysis and quiz performance.</p>
+                <span class="project-link-label">View GitHub</span>
               </div>
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="ai">
-            <a href="https://HESHAM-SA.github.io/my_projects/AI/AI_p1/KharafDates.pdf" target="_blank" rel="noopener"
+          <li class="project-card active reveal" data-filter-item data-category="ai" data-project="kharaf">
+            <a href="./my_projects/AI/AI_p1/KharafDates.pdf" target="_blank" rel="noopener"
                aria-label="View Kharaf Dates quality report (PDF)">
               <figure class="project-media">
                 <img src="my_projects/AI/AI_p1/KharafDates.jpg" alt="Date quality analysis visualization" loading="lazy">
@@ -422,12 +458,14 @@
               <div class="project-info">
                 <span class="project-category">AI</span>
                 <h3 class="project-title">Kharaf Dates</h3>
+                <p class="project-description">CNN-based date-quality classifier for type, maturity, grade, and palm disease signals.</p>
+                <span class="project-link-label">View report</span>
               </div>
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="data-analytics">
-            <a href="https://HESHAM-SA.github.io/my_projects/Data%20Analytics/p1/diabetes_1.pdf" target="_blank" rel="noopener"
+          <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="diabetes">
+            <a href="./my_projects/Data%20Analytics/p1/diabetes_1.pdf" target="_blank" rel="noopener"
                aria-label="View diabetes analysis case study">
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/p1/diabetes.jpg" alt="Diabetes risk factor visualization" loading="lazy">
@@ -436,12 +474,14 @@
               <div class="project-info">
                 <span class="project-category">Data Analytics</span>
                 <h3 class="project-title">Diabetes Analysis</h3>
+                <p class="project-description">Data analysis report exploring diabetes risk factors and health patterns.</p>
+                <span class="project-link-label">View report</span>
               </div>
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="data-analytics">
-            <a href="https://hesham-sa.github.io/my_projects/Data%20Analytics/p2/Analysing%20food%20order%20online%20.pdf"
+          <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="food">
+            <a href="./my_projects/Data%20Analytics/p2/Analysing%20food%20order%20online%20.pdf"
                target="_blank" rel="noopener" aria-label="Comprehensive food order online analysis report">
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/p2/Analysing_food_order_online.jpg"
@@ -451,12 +491,14 @@
               <div class="project-info">
                 <span class="project-category">Data Analytics</span>
                 <h3 class="project-title">Online Food Order Analysis</h3>
+                <p class="project-description">EDA report uncovering customer behavior and trends in online food orders.</p>
+                <span class="project-link-label">View report</span>
               </div>
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="data-analytics">
-            <a href="https://hesham-sa.github.io/my_projects/Data%20Analytics/p3/EDA%20for%206%2C500%20students%20of%20Tuwaiq%20Academy.pdf"
+          <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="tuwaiq">
+            <a href="./my_projects/Data%20Analytics/p3/EDA%20for%206%2C500%20students%20of%20Tuwaiq%20Academy.pdf"
                target="_blank" rel="noopener" aria-label="Comprehensive exploratory data analysis for Tuwaiq Academy students">
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/p3/EDA for 6,500 students of Tuwaiq Academy.jpg"
@@ -466,12 +508,15 @@
               <div class="project-info">
                 <span class="project-category">Data Analytics</span>
                 <h3 class="project-title">Tuwaiq Academy Student EDA</h3>
+                <p class="project-description">Exploratory analysis of 6,500 Tuwaiq Academy students and training patterns.</p>
+                <span class="project-link-label">View report</span>
               </div>
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="data-analytics">
-            <a href="https://github.com/HESHAM-SA/PowerBI-Dashboard" target="_blank" rel="noopener">
+          <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="powerbi">
+            <a href="https://github.com/HESHAM-SA/PowerBI-Dashboard" target="_blank" rel="noopener"
+               aria-label="View Power BI dashboard GitHub Repository">
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/project 04 power bi/dashboard.png" alt="Power BI dashboard" loading="lazy">
                 <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
@@ -479,12 +524,15 @@
               <div class="project-info">
                 <span class="project-category">Data Analytics</span>
                 <h3 class="project-title">Dashboard using Power BI</h3>
+                <p class="project-description">Interactive Power BI dashboard for cleaning, modeling, and visualizing business data.</p>
+                <span class="project-link-label">View GitHub</span>
               </div>
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="apps">
-            <a href="https://github.com/HESHAM-SA/Bootcamp-Project-1-Python" target="_blank" rel="noopener">
+          <li class="project-card active reveal" data-filter-item data-category="apps" data-project="guess">
+            <a href="https://github.com/HESHAM-SA/Bootcamp-Project-1-Python" target="_blank" rel="noopener"
+               aria-label="View Guess Number Game GitHub Repository">
               <figure class="project-media">
                 <img src="my_projects/App/Guess.jpg" alt="Guess Number Game" loading="lazy">
                 <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
@@ -492,6 +540,8 @@
               <div class="project-info">
                 <span class="project-category">Apps</span>
                 <h3 class="project-title">Guess Number Game</h3>
+                <p class="project-description">Simple Python number guessing game focused on control flow and user input.</p>
+                <span class="project-link-label">View GitHub</span>
               </div>
             </a>
           </li>

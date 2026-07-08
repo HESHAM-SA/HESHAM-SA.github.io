@@ -1,10 +1,24 @@
-# Data Science & AI Portfolio
+# Hesham Alsadan Portfolio
 
-Welcome to my Data Science and AI portfolio! Here you'll find projects showcasing:
+Static GitHub Pages portfolio for AI, data science, and web projects.
 
-- Machine Learning models and deep learning applications  
-- Data analysis and visualization projects  
-- Computer Vision solutions  
-- And more!  
+## Structure
 
-Big thanks to [Till Meineke](https://www.linkedin.com/in/tillmeineke/) for helping me build my portfolio!
+- `index.html` — page content and project cards
+- `assets/css/style.css` — layout, responsive styles, RTL support
+- `assets/js/script.js` — menu, language switch, filters, reveal effects, lazy videos
+- `assets/pdf/CV_Hesham_Alsadan.pdf` — downloadable CV
+- `my_projects/` — project images, videos, and reports
+
+## Edit projects
+
+Update each project card in `index.html`, then keep the English/Arabic text in `assets/js/script.js` in sync using the matching `data-project` key.
+
+## Local checks
+
+```bash
+node --check assets/js/script.js
+git diff --check
+```
+
+For GitHub Pages, push to `main`; the site deploys from this repository.

@@ -90,6 +90,12 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(245, 197, 24, 0.65);
+  outline-offset: 3px;
+}
+
 ul,
 ol {
   list-style: none;
@@ -810,6 +816,11 @@ button {
   animation: fadeInScale 0.4s ease both;
 }
 
+.project-card > a {
+  display: block;
+  height: 100%;
+}
+
 @keyframes fadeInScale {
   from {
     opacity: 0;
@@ -867,8 +878,13 @@ button {
   font-size: 18px;
 }
 
-.project-card:hover .project-overlay {
+.project-card:hover .project-overlay,
+.project-card a:focus-visible .project-overlay {
   opacity: 1;
+}
+
+.project-card a:focus-visible {
+  outline-offset: -3px;
 }
 
 .project-info {
@@ -889,6 +905,37 @@ button {
   font-weight: 700;
   margin-top: 6px;
   line-height: 1.4;
+}
+
+.project-description {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.project-link-label {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 14px;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.project-link-label::after {
+  content: "\f061";
+  margin-left: 8px;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 11px;
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover .project-link-label::after,
+.project-card a:focus-visible .project-link-label::after {
+  transform: translateX(3px);
 }
 
 /* ===== Contact ===== */
@@ -1069,6 +1116,17 @@ button {
     transform: none;
     transition: none;
   }
+
+  .project-card.active {
+    animation: none;
+  }
+
+  .project-media img,
+  .project-media video,
+  .project-link-label::after {
+    transition: none;
+  }
+
   html {
     scroll-behavior: auto;
   }
@@ -1344,6 +1402,17 @@ html[dir="rtl"] .timeline-capstone {
 html[dir="rtl"] .contact-card[href^="mailto"] .contact-value,
 html[dir="rtl"] .contact-card[href^="tel"] .contact-value {
   direction: ltr;
+}
+
+html[dir="rtl"] .project-link-label::after {
+  content: "\f060";
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+html[dir="rtl"] .project-card:hover .project-link-label::after,
+html[dir="rtl"] .project-card a:focus-visible .project-link-label::after {
+  transform: translateX(-3px);
 }
 
 @media (max-width: 1024px) {

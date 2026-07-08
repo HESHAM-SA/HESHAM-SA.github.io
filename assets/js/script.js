@@ -12,6 +12,7 @@ const backToTop = document.querySelector('[data-back-to-top]');
 const langToggle = document.querySelector('[data-lang-toggle]');
 const metaDescription = document.querySelector('meta[name="description"]');
 const sections = document.querySelectorAll('section[id]');
+const projectVideos = document.querySelectorAll('[data-project-video]');
 
 const translations = {
   en: {
@@ -111,14 +112,30 @@ const translations = {
       '[data-category="ai"] .project-category': 'AI',
       '[data-category="data-analytics"] .project-category': 'Data Analytics',
       '[data-category="apps"] .project-category': 'Apps',
-      'a[href*="Capstone-Project-Majed-"] .project-title': 'Attendees Management System',
-      'a[href*="AI-Platform-for-Focus-Analysis"] .project-title': 'AI Platform for Focus Analysis in E-Learning',
-      'a[href*="KharafDates.pdf"] .project-title': 'Kharaf Dates',
-      'a[href*="diabetes_1.pdf"] .project-title': 'Diabetes Analysis',
-      'a[href*="Analysing%20food%20order"] .project-title': 'Online Food Order Analysis',
-      'a[href*="EDA%20for%206%2C500"] .project-title': 'Tuwaiq Academy Student EDA',
-      'a[href*="PowerBI-Dashboard"] .project-title': 'Dashboard using Power BI',
-      'a[href*="Bootcamp-Project-1-Python"] .project-title': 'Guess Number Game',
+      '[data-project="attendees"] .project-title': 'Attendees Management System',
+      '[data-project="attendees"] .project-description': 'Automated classroom attendance with face recognition and AI-backed verification.',
+      '[data-project="attendees"] .project-link-label': 'View GitHub',
+      '[data-project="focus"] .project-title': 'AI Platform for Focus Analysis in E-Learning',
+      '[data-project="focus"] .project-description': 'Tracks learner attention in e-learning sessions using face analysis and quiz performance.',
+      '[data-project="focus"] .project-link-label': 'View GitHub',
+      '[data-project="kharaf"] .project-title': 'Kharaf Dates',
+      '[data-project="kharaf"] .project-description': 'CNN-based date-quality classifier for type, maturity, grade, and palm disease signals.',
+      '[data-project="kharaf"] .project-link-label': 'View report',
+      '[data-project="diabetes"] .project-title': 'Diabetes Analysis',
+      '[data-project="diabetes"] .project-description': 'Data analysis report exploring diabetes risk factors and health patterns.',
+      '[data-project="diabetes"] .project-link-label': 'View report',
+      '[data-project="food"] .project-title': 'Online Food Order Analysis',
+      '[data-project="food"] .project-description': 'EDA report uncovering customer behavior and trends in online food orders.',
+      '[data-project="food"] .project-link-label': 'View report',
+      '[data-project="tuwaiq"] .project-title': 'Tuwaiq Academy Student EDA',
+      '[data-project="tuwaiq"] .project-description': 'Exploratory analysis of 6,500 Tuwaiq Academy students and training patterns.',
+      '[data-project="tuwaiq"] .project-link-label': 'View report',
+      '[data-project="powerbi"] .project-title': 'Dashboard using Power BI',
+      '[data-project="powerbi"] .project-description': 'Interactive Power BI dashboard for cleaning, modeling, and visualizing business data.',
+      '[data-project="powerbi"] .project-link-label': 'View GitHub',
+      '[data-project="guess"] .project-title': 'Guess Number Game',
+      '[data-project="guess"] .project-description': 'Simple Python number guessing game focused on control flow and user input.',
+      '[data-project="guess"] .project-link-label': 'View GitHub',
       '#contact .section-eyebrow': 'Get in touch',
       '#contact .section-title': 'Contact',
       '#contact .section-lead': 'Reach out by email or phone.',
@@ -158,11 +175,14 @@ const translations = {
       '.filter-list': { 'aria-label': 'Project categories' },
       '[data-bottom-nav]': { 'aria-label': 'Mobile section navigation' },
       '.hero-avatar img': { alt: 'Hesham Alsadan' },
-      'a[href*="Capstone-Project-Majed-"]': { 'aria-label': 'View Attendees Management System GitHub Repository' },
-      'a[href*="KharafDates.pdf"]': { 'aria-label': 'View Kharaf Dates quality report (PDF)' },
-      'a[href*="diabetes_1.pdf"]': { 'aria-label': 'View diabetes analysis case study' },
-      'a[href*="Analysing%20food%20order"]': { 'aria-label': 'Comprehensive food order online analysis report' },
-      'a[href*="EDA%20for%206%2C500"]': { 'aria-label': 'Comprehensive exploratory data analysis for Tuwaiq Academy students' },
+      '[data-project="attendees"] > a': { 'aria-label': 'View Attendees Management System GitHub Repository' },
+      '[data-project="focus"] > a': { 'aria-label': 'View AI Platform for Focus Analysis GitHub Repository' },
+      '[data-project="kharaf"] > a': { 'aria-label': 'View Kharaf Dates quality report (PDF)' },
+      '[data-project="diabetes"] > a': { 'aria-label': 'View diabetes analysis case study' },
+      '[data-project="food"] > a': { 'aria-label': 'Comprehensive food order online analysis report' },
+      '[data-project="tuwaiq"] > a': { 'aria-label': 'Comprehensive exploratory data analysis for Tuwaiq Academy students' },
+      '[data-project="powerbi"] > a': { 'aria-label': 'View Power BI dashboard GitHub Repository' },
+      '[data-project="guess"] > a': { 'aria-label': 'View Guess Number Game GitHub Repository' },
       'video[poster$="attendees_poster.jpg"]': { 'aria-label': 'AI-powered attendee management system' },
       'video[poster$="focus_analysis_poster.jpg"]': { 'aria-label': 'Real-time attention tracking demo in virtual classroom' },
       'img[src$="KharafDates.jpg"]': { alt: 'Date quality analysis visualization' },
@@ -271,14 +291,30 @@ const translations = {
       '[data-category="ai"] .project-category': 'ذكاء اصطناعي',
       '[data-category="data-analytics"] .project-category': 'تحليل بيانات',
       '[data-category="apps"] .project-category': 'تطبيقات',
-      'a[href*="Capstone-Project-Majed-"] .project-title': 'نظام إدارة الحضور',
-      'a[href*="AI-Platform-for-Focus-Analysis"] .project-title': 'منصة تحليل تركيز الطلاب في التعليم الإلكتروني',
-      'a[href*="KharafDates.pdf"] .project-title': 'خراف للتمور',
-      'a[href*="diabetes_1.pdf"] .project-title': 'تحليل مرض السكري',
-      'a[href*="Analysing%20food%20order"] .project-title': 'تحليل طلبات الطعام أونلاين',
-      'a[href*="EDA%20for%206%2C500"] .project-title': 'تحليل بيانات طلاب أكاديمية طويق',
-      'a[href*="PowerBI-Dashboard"] .project-title': 'لوحة معلومات Power BI',
-      'a[href*="Bootcamp-Project-1-Python"] .project-title': 'لعبة تخمين الرقم',
+      '[data-project="attendees"] .project-title': 'نظام إدارة الحضور',
+      '[data-project="attendees"] .project-description': 'نظام حضور تلقائي يستخدم التعرف على الوجوه لتسجيل الطلاب عند دخول الصف.',
+      '[data-project="attendees"] .project-link-label': 'عرض GitHub',
+      '[data-project="focus"] .project-title': 'منصة تحليل تركيز الطلاب في التعليم الإلكتروني',
+      '[data-project="focus"] .project-description': 'يتابع انتباه المتعلمين في التعليم الإلكتروني باستخدام تحليل الوجه ونتائج الاختبارات.',
+      '[data-project="focus"] .project-link-label': 'عرض GitHub',
+      '[data-project="kharaf"] .project-title': 'خراف للتمور',
+      '[data-project="kharaf"] .project-description': 'مصنف جودة تمور بالـ CNN يحدد النوع والنضج والجودة ومؤشرات أمراض النخيل.',
+      '[data-project="kharaf"] .project-link-label': 'عرض التقرير',
+      '[data-project="diabetes"] .project-title': 'تحليل مرض السكري',
+      '[data-project="diabetes"] .project-description': 'تقرير تحليل بيانات يستكشف عوامل خطر السكري والأنماط الصحية.',
+      '[data-project="diabetes"] .project-link-label': 'عرض التقرير',
+      '[data-project="food"] .project-title': 'تحليل طلبات الطعام أونلاين',
+      '[data-project="food"] .project-description': 'تحليل استكشافي يكشف سلوك العملاء واتجاهات طلبات الطعام أونلاين.',
+      '[data-project="food"] .project-link-label': 'عرض التقرير',
+      '[data-project="tuwaiq"] .project-title': 'تحليل بيانات طلاب أكاديمية طويق',
+      '[data-project="tuwaiq"] .project-description': 'تحليل استكشافي لـ 6,500 طالب من أكاديمية طويق وأنماط التدريب.',
+      '[data-project="tuwaiq"] .project-link-label': 'عرض التقرير',
+      '[data-project="powerbi"] .project-title': 'لوحة معلومات Power BI',
+      '[data-project="powerbi"] .project-description': 'لوحة Power BI تفاعلية لتنظيف البيانات ونمذجتها وعرضها بصرياً.',
+      '[data-project="powerbi"] .project-link-label': 'عرض GitHub',
+      '[data-project="guess"] .project-title': 'لعبة تخمين الرقم',
+      '[data-project="guess"] .project-description': 'لعبة Python بسيطة لتخمين الرقم تركز على التحكم بالتدفق وإدخال المستخدم.',
+      '[data-project="guess"] .project-link-label': 'عرض GitHub',
       '#contact .section-eyebrow': 'تواصل معي',
       '#contact .section-title': 'تواصل معي',
       '#contact .section-lead': 'راسلني على الإيميل أو الجوال.',
@@ -318,11 +354,14 @@ const translations = {
       '.filter-list': { 'aria-label': 'أنواع المشاريع' },
       '[data-bottom-nav]': { 'aria-label': 'قائمة التنقل' },
       '.hero-avatar img': { alt: 'هشام السعدان' },
-      'a[href*="Capstone-Project-Majed-"]': { 'aria-label': 'عرض مشروع نظام إدارة الحضور على GitHub' },
-      'a[href*="KharafDates.pdf"]': { 'aria-label': 'عرض تقرير خراف للتمور (PDF)' },
-      'a[href*="diabetes_1.pdf"]': { 'aria-label': 'عرض تحليل مرض السكري' },
-      'a[href*="Analysing%20food%20order"]': { 'aria-label': 'عرض تحليل طلبات الطعام أونلاين' },
-      'a[href*="EDA%20for%206%2C500"]': { 'aria-label': 'عرض تحليل بيانات طلاب أكاديمية طويق' },
+      '[data-project="attendees"] > a': { 'aria-label': 'عرض مشروع نظام إدارة الحضور على GitHub' },
+      '[data-project="focus"] > a': { 'aria-label': 'عرض مشروع منصة تحليل التركيز على GitHub' },
+      '[data-project="kharaf"] > a': { 'aria-label': 'عرض تقرير خراف للتمور (PDF)' },
+      '[data-project="diabetes"] > a': { 'aria-label': 'عرض تحليل مرض السكري' },
+      '[data-project="food"] > a': { 'aria-label': 'عرض تحليل طلبات الطعام أونلاين' },
+      '[data-project="tuwaiq"] > a': { 'aria-label': 'عرض تحليل بيانات طلاب أكاديمية طويق' },
+      '[data-project="powerbi"] > a': { 'aria-label': 'عرض مشروع لوحة Power BI على GitHub' },
+      '[data-project="guess"] > a': { 'aria-label': 'عرض مشروع لعبة تخمين الرقم على GitHub' },
       'video[poster$="attendees_poster.jpg"]': { 'aria-label': 'عرض نظام إدارة الحضور بالذكاء الاصطناعي' },
       'video[poster$="focus_analysis_poster.jpg"]': { 'aria-label': 'عرض تتبع انتباه الطلاب في الفصل الافتراضي' },
       'img[src$="KharafDates.jpg"]': { alt: 'تحليل جودة التمور' },
@@ -373,13 +412,13 @@ const setLanguage = (lang) => {
     langToggle.setAttribute('aria-checked', String(currentLang === 'ar'));
   }
 
-  if (navToggle) {
+  if (navToggle && navMenu) {
     navToggle.setAttribute('aria-label', t(navMenu.classList.contains('open') ? 'menuClose' : 'menuOpen'));
   }
-
 };
 
 const setMenuOpen = (open) => {
+  if (!navMenu || !navBackdrop || !navToggle || !navIcon) return;
   navMenu.classList.toggle('open', open);
   navBackdrop.hidden = !open;
   navToggle.setAttribute('aria-expanded', String(open));
@@ -392,15 +431,17 @@ setLanguage('en');
 
 /* ===== Navbar: scrolled state ===== */
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 10);
+  if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 10);
   if (backToTop) backToTop.hidden = window.scrollY < 500;
 }, { passive: true });
 
-navToggle.addEventListener('click', () => {
-  setMenuOpen(!navMenu.classList.contains('open'));
-});
+if (navToggle && navMenu) {
+  navToggle.addEventListener('click', () => {
+    setMenuOpen(!navMenu.classList.contains('open'));
+  });
+}
 
-navBackdrop.addEventListener('click', () => setMenuOpen(false));
+if (navBackdrop) navBackdrop.addEventListener('click', () => setMenuOpen(false));
 
 if (langToggle) {
   langToggle.addEventListener('click', () => {
@@ -438,13 +479,15 @@ const setActiveNav = (id) => {
   });
 };
 
-const sectionObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) setActiveNav(entry.target.id);
-  });
-}, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+if ('IntersectionObserver' in window) {
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActiveNav(entry.target.id);
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
 
-sections.forEach(section => sectionObserver.observe(section));
+  sections.forEach(section => sectionObserver.observe(section));
+}
 
 /* ===== Portfolio filtering ===== */
 const filterButtons = document.querySelectorAll('[data-filter-btn]');
@@ -465,15 +508,54 @@ filterButtons.forEach(btn => {
   });
 });
 
+/* ===== Lazy project videos ===== */
+const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const loadVideo = (video) => {
+  const sources = video.querySelectorAll('source[data-src]');
+  if (!sources.length) return;
+  sources.forEach(source => {
+    source.src = source.dataset.src;
+    source.removeAttribute('data-src');
+  });
+  video.load();
+};
+
+const playVideo = (video) => {
+  loadVideo(video);
+  const play = video.play();
+  if (play) play.catch(() => {});
+};
+
+if (projectVideos.length && !prefersReducedMotion) {
+  if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) playVideo(video);
+        else video.pause();
+      });
+    }, { rootMargin: '200px 0px' });
+
+    projectVideos.forEach(video => videoObserver.observe(video));
+  } else {
+    projectVideos.forEach(playVideo);
+  }
+}
+
 /* ===== Scroll reveal ===== */
 const revealElements = document.querySelectorAll('.reveal');
 
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('visible');
-    revealObserver.unobserve(entry.target);
-  });
-}, { threshold: 0.08 });
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.08 });
 
-revealElements.forEach(el => revealObserver.observe(el));
+  revealElements.forEach(el => revealObserver.observe(el));
+} else {
+  revealElements.forEach(el => el.classList.add('visible'));
+}
