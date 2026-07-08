@@ -233,21 +233,64 @@ button {
 }
 
 .lang-toggle {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-width: 104px;
   min-height: 38px;
-  padding: 0 14px;
+  padding: 3px;
   border: 1px solid var(--border);
   border-radius: 999px;
   color: var(--text-muted);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 13px;
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  font-size: 12px;
+  direction: ltr;
+  overflow: hidden;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.lang-toggle::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc((100% - 6px) / 2);
+  border-radius: 999px;
+  background: var(--gradient-accent);
+  transition: transform 0.2s ease;
+}
+
+.lang-toggle[data-lang="ar"]::before {
+  transform: translateX(100%);
+}
+
+.lang-option {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  min-height: 32px;
+  padding-inline: 8px;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.lang-toggle[data-lang="en"] .lang-option-en,
+.lang-toggle[data-lang="ar"] .lang-option-ar {
+  color: #141003;
 }
 
 .lang-toggle:hover {
-  color: var(--accent);
   border-color: rgba(245, 197, 24, 0.45);
   background: var(--accent-soft);
+}
+
+.lang-toggle:focus-visible {
+  outline: 2px solid rgba(245, 197, 24, 0.65);
+  outline-offset: 2px;
 }
 
 .nav-toggle {

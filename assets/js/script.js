@@ -13,13 +13,10 @@ const langToggle = document.querySelector('[data-lang-toggle]');
 const metaDescription = document.querySelector('meta[name="description"]');
 const sections = document.querySelectorAll('section[id]');
 
-const LANG_KEY = 'portfolio-language';
-
 const translations = {
   en: {
     title: 'Hesham Alsadan — AI Engineer & Data Science',
     description: 'Portfolio of Hesham Alsadan — AI Engineer and Data Scientist in Riyadh, looking for opportunities in EdTech. 1,500+ hours of training across KAUST, SDAIA, Tuwaiq, and SDA.',
-    langButton: 'العربية',
     langButtonAria: 'Switch to Arabic',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
@@ -180,7 +177,6 @@ const translations = {
   ar: {
     title: 'هشام السعدان — مهندس ذكاء اصطناعي وعلوم بيانات',
     description: 'معرض أعمال هشام السعدان — مهندس ذكاء اصطناعي وعالم بيانات في الرياض، أبحث عن فرص في EdTech. أكثر من 1,500 ساعة تدريب مع كاوست وسدايا وطويق وSDA.',
-    langButton: 'English',
     langButtonAria: 'التبديل إلى الإنجليزية',
     menuOpen: 'فتح القائمة',
     menuClose: 'إغلاق القائمة',
@@ -344,22 +340,6 @@ let currentLang = 'en';
 
 const t = (key) => translations[currentLang][key] || translations.en[key] || '';
 
-const getSavedLanguage = () => {
-  try {
-    return localStorage.getItem(LANG_KEY) === 'ar' ? 'ar' : 'en';
-  } catch {
-    return 'en';
-  }
-};
-
-const saveLanguage = (lang) => {
-  try {
-    localStorage.setItem(LANG_KEY, lang);
-  } catch {
-    // Ignore blocked storage; the switch still works for this page load.
-  }
-};
-
 const setLanguage = (lang) => {
   currentLang = lang === 'ar' ? 'ar' : 'en';
   const dict = translations[currentLang];
@@ -388,15 +368,15 @@ const setLanguage = (lang) => {
   });
 
   if (langToggle) {
-    langToggle.textContent = dict.langButton;
+    langToggle.dataset.lang = currentLang;
     langToggle.setAttribute('aria-label', dict.langButtonAria);
+    langToggle.setAttribute('aria-checked', String(currentLang === 'ar'));
   }
 
   if (navToggle) {
     navToggle.setAttribute('aria-label', t(navMenu.classList.contains('open') ? 'menuClose' : 'menuOpen'));
   }
 
-  saveLanguage(currentLang);
 };
 
 const setMenuOpen = (open) => {
@@ -408,7 +388,7 @@ const setMenuOpen = (open) => {
   document.body.classList.toggle('menu-open', open);
 };
 
-setLanguage(getSavedLanguage());
+setLanguage('en');
 
 /* ===== Navbar: scrolled state ===== */
 window.addEventListener('scroll', () => {
