@@ -45,6 +45,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <noscript>
+    <style>
+      .reveal { opacity: 1; transform: none; }
+      .project-card { display: block; }
+    </style>
+  </noscript>
 </head>
 
 <body>
@@ -68,12 +74,12 @@
     <div class="nav-actions">
       <button class="lang-toggle" data-lang-toggle data-lang="en" type="button" role="switch" aria-label="Switch to Arabic" aria-checked="false">
         <span class="lang-option lang-option-en">EN</span>
-        <span class="lang-option lang-option-ar">عربي</span>
+        <span class="lang-option lang-option-ar" lang="ar">عربي</span>
       </button>
       <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" rel="noopener" download class="btn btn-sm nav-cv-btn nav-cv-desktop">
         <i class="fa-solid fa-download"></i> CV
       </a>
-      <button class="nav-toggle" data-nav-toggle aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+      <button class="nav-toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
         <i class="fa-solid fa-bars" data-nav-icon></i>
       </button>
     </div>
@@ -159,8 +165,8 @@
 
             <ul class="about-facts">
               <li><i class="fa-solid fa-location-dot accent"></i> Riyadh, KSA</li>
-              <li><i class="fa-solid fa-phone accent"></i> 966-507-050-338</li>
-              <li><i class="fa-solid fa-envelope accent"></i> HeshamAlsadan@gmail.com</li>
+              <li><i class="fa-solid fa-phone accent"></i> <span dir="ltr">966-507-050-338</span></li>
+              <li><i class="fa-solid fa-envelope accent"></i> <span dir="ltr">HeshamAlsadan@gmail.com</span></li>
               <li><i class="fa-solid fa-language accent"></i> Arabic &amp; English</li>
             </ul>
           </div>
@@ -199,20 +205,26 @@
         <p class="section-lead reveal">Training and professional growth.</p>
 
         <ol class="timeline">
-          <li class="timeline-item reveal">
+          <li class="timeline-item reveal" data-exp="gpu">
             <div class="timeline-marker"></div>
-            <span class="timeline-date">Jun 2026 - Present</span>
+            <span class="timeline-date">Jun 2026 - Aug 2026</span>
             <h3 class="timeline-title">Tasar'u — GPU Engineering Bootcamp | تسارُع</h3>
             <p class="timeline-org">Tuwaiq Academy</p>
             <p class="timeline-text">
-              Over 8 intensive hands-on weeks, participants go deep into the full AI-infrastructure stack:
-              LLMs and Transformers, agentic AI, GPU and datacenter architecture, CUDA, high-performance
-              PyTorch, multi-GPU and multi-node distributed training, fine-tuning, evaluation, and
-              production inference at scale.
+              Completed 9 intensive hands-on weeks across the full AI-infrastructure stack: LLMs and
+              Transformers, agentic AI, GPU and datacenter architecture, CUDA, high-performance PyTorch,
+              multi-GPU and multi-node distributed training, fine-tuning, evaluation, and production
+              inference at scale. Graduated with a professional NVIDIA certification in AI Infrastructure.
+            </p>
+            <p class="timeline-capstone">
+              <strong>Research Paper — Recovering Accuracy After Low-Bit Quantization:</strong> studied
+              and extended prior work on model compression, then presented a paper on improving the
+              accuracy of AI models quantized from FP16 down to NVFP4.
+              <em>Tools: PyTorch, CUDA, NVIDIA TensorRT Model Optimizer.</em>
             </p>
           </li>
 
-          <li class="timeline-item reveal">
+          <li class="timeline-item reveal" data-exp="sda-python">
             <div class="timeline-marker"></div>
             <span class="timeline-date">May 10, 2026 - Jun 25, 2026</span>
             <h3 class="timeline-title">Software Development using Python Bootcamp Trainee</h3>
@@ -224,7 +236,7 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal">
+          <li class="timeline-item reveal" data-exp="kaust-ai">
             <div class="timeline-marker"></div>
             <span class="timeline-date">Jan - Feb 2026</span>
             <h3 class="timeline-title">Advanced Artificial Intelligence</h3>
@@ -235,7 +247,7 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal">
+          <li class="timeline-item reveal" data-exp="web-dev">
             <div class="timeline-marker"></div>
             <span class="timeline-date">Jun 2025 - Aug 2025</span>
             <h3 class="timeline-title">Web Development Bootcamp Trainee</h3>
@@ -246,7 +258,7 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal">
+          <li class="timeline-item reveal" data-exp="ai-bootcamp">
             <div class="timeline-marker"></div>
             <span class="timeline-date">Sep 2024 - Oct 2024</span>
             <h3 class="timeline-title">AI Bootcamp Trainee</h3>
@@ -262,7 +274,7 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal">
+          <li class="timeline-item reveal" data-exp="t5">
             <div class="timeline-marker"></div>
             <span class="timeline-date">Mar 2024 - Jun 2024</span>
             <h3 class="timeline-title">Data Science and AI T5 Bootcamp Trainee</h3>
@@ -279,7 +291,7 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal">
+          <li class="timeline-item reveal" data-exp="ds-ml">
             <div class="timeline-marker"></div>
             <span class="timeline-date">Oct 2023 - Dec 2023</span>
             <h3 class="timeline-title">Data Science and Machine Learning Bootcamp Trainee</h3>
@@ -366,23 +378,27 @@
 
         <h3 class="cert-heading reveal">Certifications</h3>
         <ul class="cert-grid reveal">
-          <li class="cert-item">
+          <li class="cert-item" data-cert="nvidia-ai-infra">
+            <span class="cert-name">AI Infrastructure</span>
+            <span class="cert-meta">NVIDIA · Aug 2026</span>
+          </li>
+          <li class="cert-item" data-cert="nvidia-transformers">
             <span class="cert-name">Transformer-Based AI Applications</span>
             <span class="cert-meta">NVIDIA · Jan 2026</span>
           </li>
-          <li class="cert-item">
+          <li class="cert-item" data-cert="drones">
             <span class="cert-name">Drone Building &amp; Calibration</span>
             <span class="cert-meta">SAFCSP · May 2025</span>
           </li>
-          <li class="cert-item">
+          <li class="cert-item" data-cert="iot">
             <span class="cert-name">IoT Certificate</span>
             <span class="cert-meta">Tuwaiq Academy · May 2025</span>
           </li>
-          <li class="cert-item">
+          <li class="cert-item" data-cert="cloud">
             <span class="cert-name">Cloud Computing Engineer</span>
             <span class="cert-meta">Tuwaiq Academy · Mar 2025</span>
           </li>
-          <li class="cert-item">
+          <li class="cert-item" data-cert="llm-apps">
             <span class="cert-name">LLM Application Development</span>
             <span class="cert-meta">King Salman Global Complex for Arabic Language · Dec 2023</span>
           </li>
@@ -398,10 +414,10 @@
         <p class="section-lead reveal">Tap a category to filter projects.</p>
 
         <ul class="filter-list reveal" aria-label="Project categories">
-          <li><button class="filter-btn active" data-filter-btn="all">All</button></li>
-          <li><button class="filter-btn" data-filter-btn="ai">AI</button></li>
-          <li><button class="filter-btn" data-filter-btn="data-analytics">Data Analytics</button></li>
-          <li><button class="filter-btn" data-filter-btn="apps">Apps</button></li>
+          <li><button class="filter-btn active" type="button" data-filter-btn="all" aria-pressed="true">All</button></li>
+          <li><button class="filter-btn" type="button" data-filter-btn="ai" aria-pressed="false">AI</button></li>
+          <li><button class="filter-btn" type="button" data-filter-btn="data-analytics" aria-pressed="false">Data Analytics</button></li>
+          <li><button class="filter-btn" type="button" data-filter-btn="apps" aria-pressed="false">Apps</button></li>
         </ul>
 
         <ul class="project-grid">
@@ -609,7 +625,7 @@
     </a>
   </nav>
 
-  <button class="back-to-top" data-back-to-top aria-label="Back to top" hidden>
+  <button class="back-to-top" data-back-to-top type="button" aria-label="Back to top" hidden>
     <i class="fa-solid fa-arrow-up"></i>
   </button>
 

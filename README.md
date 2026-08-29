@@ -10,9 +10,15 @@ Static GitHub Pages portfolio for AI, data science, and web projects.
 - `assets/pdf/CV_Hesham_Alsadan.pdf` — downloadable CV
 - `my_projects/` — project images, videos, and reports
 
-## Edit projects
+## Edit content
 
-Update each project card in `index.html`, then keep the English/Arabic text in `assets/js/script.js` in sync using the matching `data-project` key.
+`assets/js/script.js` rewrites the page text on load, so every visible string lives in two places: the markup in `index.html` and the `translations` object in the script. Update both, or the script will overwrite the markup.
+
+Repeated blocks are keyed by a `data-` attribute so items can be added or reordered without shifting the other translations:
+
+- project cards — `data-project`
+- experience entries — `data-exp`
+- certifications — `data-cert`
 
 ## Local checks
 

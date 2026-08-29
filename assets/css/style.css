@@ -1149,16 +1149,13 @@ button {
 }
 
 @media (max-width: 1024px) {
-  .nav-links {
-    display: none;
-  }
-
   .nav-toggle {
     display: grid;
     place-items: center;
   }
 
   .nav-links {
+    display: none;
     position: fixed;
     top: 0;
     right: 0;
