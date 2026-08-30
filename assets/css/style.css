@@ -766,6 +766,10 @@ button {
   margin-block: 10px 4px;
   padding-block: 64px;
   overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
   mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
 }
@@ -807,6 +811,27 @@ html[dir="rtl"] .cert-stream.is-ready .cert-track {
   animation-play-state: paused;
 }
 
+/* While the visitor is pushing the rail around, cards shouldn't pop under the
+   cursor as they slide past — the gesture wins over the hover state. */
+.cert-stream.is-dragging {
+  cursor: grabbing;
+}
+
+.cert-stream.is-dragging .cert-card:hover,
+.cert-stream.is-dragging .cert-card:focus-visible {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--border);
+}
+
+.cert-stream.is-dragging .cert-open {
+  opacity: 0;
+}
+
+.cert-stream img {
+  -webkit-user-drag: none;
+}
+
 @keyframes cert-flow-ltr {
   from { transform: translate3d(-50%, 0, 0); }
   to   { transform: translate3d(0, 0, 0); }
@@ -822,6 +847,8 @@ html[dir="rtl"] .cert-stream.is-ready .cert-track {
   overflow-x: auto;
   scrollbar-width: none;
   padding-inline: 24px;
+  cursor: auto;
+  touch-action: auto;
 }
 
 .cert-stream:not(.is-ready)::-webkit-scrollbar {
@@ -829,6 +856,7 @@ html[dir="rtl"] .cert-stream.is-ready .cert-track {
 }
 
 .cert-card {
+  cursor: inherit;
   position: relative;
   flex: none;
   display: flex;
@@ -1362,6 +1390,8 @@ html[dir="rtl"] .cert-logo {
     scrollbar-width: none;
     padding-block: 8px;
     padding-inline: 24px;
+    cursor: auto;
+    touch-action: auto;
   }
 
   .cert-stream::-webkit-scrollbar {

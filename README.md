@@ -30,6 +30,16 @@ The certifications rail is one `.cert-set` in the markup; the script clones it s
 duration is derived from the measured set width so the speed stays constant at any
 viewport. Hovering or focusing a card pauses the rail and scales that card up.
 
+The rail can also be dragged by hand. A CSS animation outranks an inline
+transform, so a drag switches the animation off, moves the track directly, and
+switches it back on with a negative `animation-delay` that resumes from wherever
+the visitor left it — the same trick the language switch uses. Positions wrap
+into one set width, which is what keeps dragging endless in both directions.
+Pointer capture is deferred until the gesture passes a 6px threshold, because a
+captured pointer retargets the click away from the card and would stop a plain
+click opening the PDF. Under `prefers-reduced-motion` the rail is a plain scroll
+container instead and the custom drag stays out of the way.
+
 To add a certificate: drop the PDF in `assets/certificates/`, render a preview with
 
 ```bash

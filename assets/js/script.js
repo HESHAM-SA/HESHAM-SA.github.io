@@ -96,7 +96,7 @@ const translations = {
       '#skills .skill-card:nth-child(4) .tag-list li:nth-child(4)': 'Teamwork',
       '#skills .skill-card:nth-child(4) .tag-list li:nth-child(5)': 'Leadership',
       '#skills .cert-heading': 'Certifications',
-      '#skills .cert-lead': 'A live stream of everything I\'ve earned. Hover a certificate to pause the stream and enlarge it — click to open the original.',
+      '#skills .cert-lead': 'A live stream of everything I\'ve earned. Drag it left or right to browse at your own pace, hover a certificate to enlarge it, or click to open the original.',
       '#skills .cert-issuers-label': 'Issued by',
       '[data-cert="nvidia-ai-infra"] .cert-name': 'NVIDIA Certified Associate — AI Infrastructure & Operations',
       '[data-cert="nvidia-ai-infra"] .cert-meta': 'NVIDIA · Aug 2026',
@@ -300,7 +300,7 @@ const translations = {
       '#skills .skill-card:nth-child(4) .tag-list li:nth-child(4)': 'العمل الجماعي',
       '#skills .skill-card:nth-child(4) .tag-list li:nth-child(5)': 'القيادة',
       '#skills .cert-heading': 'الشهادات',
-      '#skills .cert-lead': 'شريط متحرك يعرض كل الشهادات اللي حصلت عليها. مرّر المؤشر على أي شهادة عشان يتوقف الشريط وتكبر الشهادة — واضغط عليها لفتح الأصل.',
+      '#skills .cert-lead': 'شريط متحرك يعرض كل الشهادات اللي حصلت عليها. اسحبه يمين أو يسار للتصفح براحتك، ومرّر المؤشر على أي شهادة عشان تكبر، واضغط عليها لفتح الأصل.',
       '#skills .cert-issuers-label': 'الجهات المانحة',
       '[data-cert="nvidia-ai-infra"] .cert-name': 'شهادة NVIDIA المعتمدة — البنية التحتية للذكاء الاصطناعي وتشغيلها',
       '[data-cert="nvidia-ai-infra"] .cert-meta': 'NVIDIA · أغسطس 2026',
@@ -648,6 +648,106 @@ if (certStream && certTrack && certSet) {
   certStream.addEventListener('focusout', (event) => {
     if (!inCertCard(event.relatedTarget)) setCertPaused(false);
   });
+
+
+  /* ===== Drag the rail ===== */
+  // Under reduced motion the rail is a plain scroll container, so the browser
+  // already gives the visitor manual control and a custom drag would fight it.
+  const certStillMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // A running CSS animation outranks an inline transform, so hand-driving the rail
+  // means switching the animation off and back on around the gesture.
+  const CERT_DRAG_SLOP = 6;      // px of travel before this counts as a drag, not a click
+  const CERT_GLIDE_DECAY = 0.94; // per frame, how quickly a flick runs out
+  const CERT_GLIDE_STOP = 0.4;   // px per frame, below which the flick has settled
+
+  let certDrag = null;
+  let certDragDistance = 0;
+  let certGlideFrame = 0;
+
+  // The rail is two identical sets wide, so any position is equivalent to one
+  // inside a single set — which is what keeps dragging endless in both directions.
+  const wrapCertX = (x) => {
+    const width = certSet.scrollWidth;
+    return width ? (((x % width) + width) % width) - width : x;
+  };
+
+  const readCertX = () => {
+    const transform = getComputedStyle(certTrack).transform;
+    return transform === 'none' ? 0 : new DOMMatrix(transform).m41;
+  };
+
+  const holdCertRail = () => {
+    cancelAnimationFrame(certGlideFrame);
+    certTrack.style.animation = 'none';
+    certStream.classList.add('is-dragging');
+  };
+
+  const releaseCertRail = (x) => {
+    const width = certSet.scrollWidth;
+    certStream.classList.remove('is-dragging');
+    certTrack.style.transform = '';
+    certTrack.style.animation = '';
+    if (width) applyCertRailOffset((((x % width) + width) % width) / width);
+  };
+
+  const glideCertRail = (x, velocity) => {
+    let position = x;
+    let speed = velocity;
+    const step = () => {
+      speed *= CERT_GLIDE_DECAY;
+      position = wrapCertX(position + speed);
+      certTrack.style.transform = `translate3d(${position}px, 0, 0)`;
+      if (Math.abs(speed) > CERT_GLIDE_STOP) certGlideFrame = requestAnimationFrame(step);
+      else releaseCertRail(position);
+    };
+    certGlideFrame = requestAnimationFrame(step);
+  };
+
+  certStream.addEventListener('pointerdown', (event) => {
+    if (certStillMotion || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    holdCertRail();
+    certDragDistance = 0;
+    certDrag = { id: event.pointerId, from: event.clientX, last: event.clientX, x: wrapCertX(readCertX()), velocity: 0 };
+    certTrack.style.transform = `translate3d(${certDrag.x}px, 0, 0)`;
+  });
+
+  certStream.addEventListener('pointermove', (event) => {
+    if (!certDrag || event.pointerId !== certDrag.id) return;
+    const step = event.clientX - certDrag.last;
+    certDrag.last = event.clientX;
+    certDrag.velocity = certDrag.velocity * 0.7 + step * 0.3;
+    certDragDistance = Math.max(certDragDistance, Math.abs(event.clientX - certDrag.from));
+    certTrack.style.transform = `translate3d(${wrapCertX(certDrag.x + (event.clientX - certDrag.from))}px, 0, 0)`;
+
+    // Capture only once this is unmistakably a drag: a captured pointer retargets
+    // the click to the rail, which would stop a plain click opening the card.
+    if (certDragDistance > CERT_DRAG_SLOP && !certStream.hasPointerCapture(event.pointerId)) {
+      certStream.setPointerCapture(event.pointerId);
+    }
+  });
+
+  const endCertDrag = (event) => {
+    if (!certDrag || event.pointerId !== certDrag.id) return;
+    const { velocity } = certDrag;
+    const x = wrapCertX(readCertX());
+    certDrag = null;
+    if (certDragDistance > CERT_DRAG_SLOP && Math.abs(velocity) > CERT_GLIDE_STOP * 3) glideCertRail(x, velocity);
+    else releaseCertRail(x);
+  };
+
+  certStream.addEventListener('pointerup', endCertDrag);
+  certStream.addEventListener('pointercancel', endCertDrag);
+
+  // A drag that ends on a card must not also open that card's PDF.
+  certStream.addEventListener('click', (event) => {
+    if (certDragDistance > CERT_DRAG_SLOP) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }, true);
+
+  certStream.addEventListener('dragstart', (event) => event.preventDefault());
 
   // No reason to animate a rail nobody can see.
   if ('IntersectionObserver' in window) {
