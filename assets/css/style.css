@@ -59,7 +59,7 @@ body {
 .about-grid > *,
 .service-card,
 .skill-card,
-.cert-item,
+.cert-card,
 .project-card,
 .contact-card,
 .timeline-item {
@@ -730,28 +730,157 @@ button {
   border-color: var(--accent);
 }
 
+.edu-logo {
+  width: auto;
+  height: 44px;
+  margin-bottom: 14px;
+  opacity: 0.92;
+}
+
+/* ===== Certifications stream ===== */
+
 .cert-heading {
   font-family: var(--font-display);
   font-size: 18px;
   font-weight: 700;
-  margin: 40px 0 16px;
+  margin: 40px 0 6px;
   color: var(--text);
 }
 
-.cert-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 12px;
+.cert-lead {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 64ch;
 }
 
-.cert-item {
+/* Full-bleed rail: escapes the container so cards can stream edge to edge. */
+.cert-stream {
+  --cert-card-w: 300px;
+  --cert-gap: 20px;
+  --cert-pop: 1.32;
+  --cert-duration: 80s;
+
+  position: relative;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  margin-block: 10px 4px;
+  padding-block: 64px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+
+/* Track layout stays LTR in both languages; only the travel direction flips. */
+.cert-track,
+.cert-set {
+  direction: ltr;
+}
+
+.cert-track {
+  display: flex;
+  width: max-content;
+}
+
+.cert-set {
+  display: flex;
+  flex: none;
+}
+
+.cert-stream.is-ready .cert-track {
+  animation: cert-flow-rtl var(--cert-duration) linear infinite;
+}
+
+/* English reads left to right, so the stream travels that way — and vice versa. */
+html[dir="ltr"] .cert-stream.is-ready .cert-track {
+  animation-name: cert-flow-ltr;
+}
+
+html[dir="rtl"] .cert-stream.is-ready .cert-track {
+  animation-name: cert-flow-rtl;
+}
+
+.cert-stream.is-paused .cert-track,
+.cert-stream.is-offscreen .cert-track {
+  animation-play-state: paused;
+}
+
+@keyframes cert-flow-ltr {
+  from { transform: translate3d(-50%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes cert-flow-rtl {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Without JS the rail never animates, so let it scroll by hand instead. */
+.cert-stream:not(.is-ready) {
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-inline: 24px;
+}
+
+.cert-stream:not(.is-ready)::-webkit-scrollbar {
+  display: none;
+}
+
+.cert-card {
+  position: relative;
+  flex: none;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 16px 18px;
+  width: var(--cert-card-w);
+  margin-inline-end: var(--cert-gap);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transform-origin: center center;
+  transition: transform 0.45s cubic-bezier(0.2, 0.75, 0.25, 1),
+              box-shadow 0.45s ease,
+              border-color 0.3s ease;
+}
+
+html[dir="rtl"] .cert-card {
+  direction: rtl;
+}
+
+.cert-shot {
+  display: block;
+  aspect-ratio: 3 / 2;
+  background: #fff;
+  overflow: hidden;
+}
+
+.cert-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cert-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  padding: 14px 16px 16px;
+}
+
+.cert-logo {
+  align-self: flex-start;
+  width: 120px;
+  height: 28px;
+  object-fit: contain;
+  object-position: left center;
+  filter: brightness(0) invert(1);
+  opacity: 0.72;
+  margin-bottom: 3px;
+  transition: opacity 0.3s ease;
+}
+
+html[dir="rtl"] .cert-logo {
+  object-position: right center;
 }
 
 .cert-name {
@@ -763,8 +892,96 @@ button {
 }
 
 .cert-meta {
-  font-size: 13px;
+  font-size: 12.5px;
+  line-height: 1.5;
   color: var(--text-muted);
+}
+
+.cert-open {
+  position: absolute;
+  top: 12px;
+  inset-inline-end: 12px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(11, 14, 20, 0.72);
+  color: var(--accent);
+  font-size: 11px;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hovering a certificate lifts it out of the stream for a closer read. */
+.cert-card:focus-visible {
+  transform: scale(var(--cert-pop));
+  z-index: 3;
+  border-color: rgba(245, 197, 24, 0.55);
+  box-shadow: 0 30px 70px -26px rgba(0, 0, 0, 0.9);
+}
+
+.cert-card:focus-visible .cert-open {
+  opacity: 1;
+  transform: none;
+}
+
+@media (any-hover: hover) {
+  .cert-card:hover {
+    transform: scale(var(--cert-pop));
+    z-index: 3;
+    border-color: rgba(245, 197, 24, 0.55);
+    box-shadow: 0 30px 70px -26px rgba(0, 0, 0, 0.9);
+  }
+
+  .cert-card:hover .cert-logo {
+    opacity: 0.9;
+  }
+
+  .cert-card:hover .cert-open {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===== Issuer logos ===== */
+
+.cert-issuers-label {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 4px 0 18px;
+}
+
+.cert-issuers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  align-items: center;
+  gap: 22px 14px;
+}
+
+.cert-issuers li {
+  display: flex;
+  justify-content: center;
+}
+
+.cert-issuers img {
+  width: 100%;
+  max-width: 130px;
+  height: 44px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cert-issuers li:hover img {
+  opacity: 0.95;
+  transform: translateY(-2px);
 }
 
 /* ===== Portfolio ===== */
@@ -1131,6 +1348,36 @@ button {
     transition: none;
   }
 
+  .cert-stream.is-ready .cert-track,
+  html[dir="ltr"] .cert-stream.is-ready .cert-track,
+  html[dir="rtl"] .cert-stream.is-ready .cert-track {
+    animation: none;
+  }
+
+  .cert-stream {
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-block: 8px;
+    padding-inline: 24px;
+  }
+
+  .cert-stream::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cert-stream .cert-set[aria-hidden="true"] {
+    display: none;
+  }
+
+  .cert-card {
+    transition: none;
+  }
+
+  .cert-card:hover,
+  .cert-card:focus-visible {
+    transform: none;
+  }
+
   html {
     scroll-behavior: auto;
   }
@@ -1283,8 +1530,19 @@ button {
     font-size: 13.5px;
   }
 
-  .cert-grid {
-    grid-template-columns: 1fr;
+  .cert-stream {
+    --cert-card-w: 236px;
+    --cert-gap: 14px;
+    --cert-pop: 1.16;
+    padding-block: 34px;
+  }
+
+  .cert-issuers {
+    gap: 18px 12px;
+  }
+
+  .cert-issuers img {
+    height: 38px;
   }
 
   .filter-list {
@@ -1368,6 +1626,13 @@ button {
 @media (max-width: 480px) {
   .container {
     padding-inline: 16px;
+  }
+
+  .cert-stream {
+    --cert-card-w: 204px;
+    --cert-gap: 12px;
+    --cert-pop: 1.1;
+    padding-block: 26px;
   }
 
   .navbar {

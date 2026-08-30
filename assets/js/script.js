@@ -13,12 +13,16 @@ const langToggle = document.querySelector('[data-lang-toggle]');
 const metaDescription = document.querySelector('meta[name="description"]');
 const sections = document.querySelectorAll('section[id]');
 const projectVideos = document.querySelectorAll('[data-project-video]');
+const certStream = document.querySelector('[data-cert-stream]');
+const certTrack = certStream && certStream.querySelector('[data-cert-track]');
+const certSet = certStream && certStream.querySelector('[data-cert-set]');
 
 const translations = {
   en: {
     title: 'Hesham Alsadan — AI Engineer & Data Science',
     description: 'Portfolio of Hesham Alsadan — AI Engineer and Data Scientist in Riyadh, looking for opportunities in EdTech. 1,500+ hours of training across KAUST, SDAIA, Tuwaiq, and SDA.',
     langButtonAria: 'Switch to Arabic',
+    certOpenLabel: 'Open certificate',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
     text: {
@@ -92,18 +96,32 @@ const translations = {
       '#skills .skill-card:nth-child(4) .tag-list li:nth-child(4)': 'Teamwork',
       '#skills .skill-card:nth-child(4) .tag-list li:nth-child(5)': 'Leadership',
       '#skills .cert-heading': 'Certifications',
-      '[data-cert="nvidia-ai-infra"] .cert-name': 'AI Infrastructure',
+      '#skills .cert-lead': 'A live stream of everything I\'ve earned. Hover a certificate to pause the stream and enlarge it — click to open the original.',
+      '#skills .cert-issuers-label': 'Issued by',
+      '[data-cert="nvidia-ai-infra"] .cert-name': 'NVIDIA Certified Associate — AI Infrastructure & Operations',
       '[data-cert="nvidia-ai-infra"] .cert-meta': 'NVIDIA · Aug 2026',
-      '[data-cert="nvidia-transformers"] .cert-name': 'Transformer-Based AI Applications',
-      '[data-cert="nvidia-transformers"] .cert-meta': 'NVIDIA · Jan 2026',
+      '[data-cert="sda-python"] .cert-name': 'Software Development using Python Bootcamp',
+      '[data-cert="sda-python"] .cert-meta': 'Saudi Digital Academy · 300 hrs · Jun 2026',
+      '[data-cert="nvidia-transformers"] .cert-name': 'Building Transformer-Based NLP Applications',
+      '[data-cert="nvidia-transformers"] .cert-meta': 'NVIDIA · Mar 2026',
+      '[data-cert="kaust-ai"] .cert-name': 'Advanced Artificial Intelligence — Computer Vision',
+      '[data-cert="kaust-ai"] .cert-meta': 'KAUST Academy · 40 hrs · Feb 2026',
+      '[data-cert="web-bootcamp"] .cert-name': 'Web Development using Python Bootcamp',
+      '[data-cert="web-bootcamp"] .cert-meta': 'Tuwaiq Academy · 300 hrs · Sep 2025',
       '[data-cert="drones"] .cert-name': 'Drone Building & Calibration',
-      '[data-cert="drones"] .cert-meta': 'SAFCSP · May 2025',
-      '[data-cert="iot"] .cert-name': 'IoT Certificate',
-      '[data-cert="iot"] .cert-meta': 'Tuwaiq Academy · May 2025',
-      '[data-cert="cloud"] .cert-name': 'Cloud Computing Engineer',
+      '[data-cert="drones"] .cert-meta': 'SAFCSP · 20 hrs · May 2025',
+      '[data-cert="iot"] .cert-name': 'IoT Fundamentals',
+      '[data-cert="iot"] .cert-meta': 'Tuwaiq Academy · 25 hrs · May 2025',
+      '[data-cert="cloud"] .cert-name': 'Alibaba Cloud — Cloud Computing Engineer',
       '[data-cert="cloud"] .cert-meta': 'Tuwaiq Academy · Mar 2025',
+      '[data-cert="ai-bootcamp"] .cert-name': 'Building & Developing AI Models Bootcamp',
+      '[data-cert="ai-bootcamp"] .cert-meta': 'Tuwaiq Academy · 200 hrs · Oct 2024',
+      '[data-cert="t5"] .cert-name': 'T5 Data Science & AI Bootcamp',
+      '[data-cert="t5"] .cert-meta': 'SDAIA Academy · 360 hrs · Jun 2024',
+      '[data-cert="ds-bootcamp"] .cert-name': 'Data Science Bootcamp',
+      '[data-cert="ds-bootcamp"] .cert-meta': 'Tuwaiq Academy · 200 hrs · Dec 2023',
       '[data-cert="llm-apps"] .cert-name': 'LLM Application Development',
-      '[data-cert="llm-apps"] .cert-meta': 'King Salman Global Complex for Arabic Language · Dec 2023',
+      '[data-cert="llm-apps"] .cert-meta': 'King Salman Global Academy · 16 hrs · Dec 2023',
       '#portfolio .section-eyebrow': 'Selected work',
       '#portfolio .section-title': 'Portfolio',
       '#portfolio .section-lead': 'Tap a category to filter projects.',
@@ -135,6 +153,9 @@ const translations = {
       '[data-project="powerbi"] .project-title': 'Dashboard using Power BI',
       '[data-project="powerbi"] .project-description': 'Interactive Power BI dashboard for cleaning, modeling, and visualizing business data.',
       '[data-project="powerbi"] .project-link-label': 'View GitHub',
+      '[data-project="portfolio-builder"] .project-title': 'Portfolio Builder',
+      '[data-project="portfolio-builder"] .project-description': 'Django app that turns a name and a few career events into a shareable timeline portfolio, with no signup.',
+      '[data-project="portfolio-builder"] .project-link-label': 'View GitHub',
       '[data-project="guess"] .project-title': 'Guess Number Game',
       '[data-project="guess"] .project-description': 'Simple Python number guessing game focused on control flow and user input.',
       '[data-project="guess"] .project-link-label': 'View GitHub',
@@ -176,6 +197,8 @@ const translations = {
       '[data-nav-menu]': { 'aria-label': 'Main navigation' },
       '.hero-quick-nav': { 'aria-label': 'Quick section links' },
       '.filter-list': { 'aria-label': 'Project categories' },
+      '[data-cert-stream]': { 'aria-label': 'Certificates' },
+      '.edu-logo': { alt: 'King Saud University' },
       '[data-bottom-nav]': { 'aria-label': 'Mobile section navigation' },
       '.hero-avatar img': { alt: 'Hesham Alsadan' },
       '[data-project="attendees"] > a': { 'aria-label': 'View Attendees Management System GitHub Repository' },
@@ -185,9 +208,11 @@ const translations = {
       '[data-project="food"] > a': { 'aria-label': 'Comprehensive food order online analysis report' },
       '[data-project="tuwaiq"] > a': { 'aria-label': 'Comprehensive exploratory data analysis for Tuwaiq Academy students' },
       '[data-project="powerbi"] > a': { 'aria-label': 'View Power BI dashboard GitHub Repository' },
+      '[data-project="portfolio-builder"] > a': { 'aria-label': 'View Portfolio Builder GitHub Repository' },
       '[data-project="guess"] > a': { 'aria-label': 'View Guess Number Game GitHub Repository' },
       'video[poster$="attendees_poster.jpg"]': { 'aria-label': 'AI-powered attendee management system' },
       'video[poster$="focus_analysis_poster.jpg"]': { 'aria-label': 'Real-time attention tracking demo in virtual classroom' },
+      'video[poster$="portfolio_builder_poster.jpg"]': { 'aria-label': 'No-signup portfolio builder demo' },
       'img[src$="KharafDates.jpg"]': { alt: 'Date quality analysis visualization' },
       'img[src$="diabetes.jpg"]': { alt: 'Diabetes risk factor visualization' },
       'img[src$="Analysing_food_order_online.jpg"]': { alt: 'Detailed analysis of online food ordering trends' },
@@ -201,6 +226,7 @@ const translations = {
     title: 'هشام السعدان — مهندس ذكاء اصطناعي وعلوم بيانات',
     description: 'معرض أعمال هشام السعدان — مهندس ذكاء اصطناعي وعالم بيانات في الرياض، أبحث عن فرص في EdTech. أكثر من 1,500 ساعة تدريب مع كاوست وسدايا وطويق وSDA.',
     langButtonAria: 'التبديل إلى الإنجليزية',
+    certOpenLabel: 'فتح الشهادة',
     menuOpen: 'فتح القائمة',
     menuClose: 'إغلاق القائمة',
     text: {
@@ -274,18 +300,32 @@ const translations = {
       '#skills .skill-card:nth-child(4) .tag-list li:nth-child(4)': 'العمل الجماعي',
       '#skills .skill-card:nth-child(4) .tag-list li:nth-child(5)': 'القيادة',
       '#skills .cert-heading': 'الشهادات',
-      '[data-cert="nvidia-ai-infra"] .cert-name': 'البنية التحتية للذكاء الاصطناعي',
+      '#skills .cert-lead': 'شريط متحرك يعرض كل الشهادات اللي حصلت عليها. مرّر المؤشر على أي شهادة عشان يتوقف الشريط وتكبر الشهادة — واضغط عليها لفتح الأصل.',
+      '#skills .cert-issuers-label': 'الجهات المانحة',
+      '[data-cert="nvidia-ai-infra"] .cert-name': 'شهادة NVIDIA المعتمدة — البنية التحتية للذكاء الاصطناعي وتشغيلها',
       '[data-cert="nvidia-ai-infra"] .cert-meta': 'NVIDIA · أغسطس 2026',
-      '[data-cert="nvidia-transformers"] .cert-name': 'تطبيقات الذكاء الاصطناعي بالمحولات',
-      '[data-cert="nvidia-transformers"] .cert-meta': 'NVIDIA · يناير 2026',
+      '[data-cert="sda-python"] .cert-name': 'معسكر تطوير البرمجيات باستخدام بايثون',
+      '[data-cert="sda-python"] .cert-meta': 'الأكاديمية السعودية الرقمية · 300 ساعة · يونيو 2026',
+      '[data-cert="nvidia-transformers"] .cert-name': 'بناء تطبيقات معالجة اللغة الطبيعية بالمحوّلات',
+      '[data-cert="nvidia-transformers"] .cert-meta': 'NVIDIA · مارس 2026',
+      '[data-cert="kaust-ai"] .cert-name': 'الذكاء الاصطناعي المتقدم — الرؤية الحاسوبية',
+      '[data-cert="kaust-ai"] .cert-meta': 'أكاديمية كاوست · 40 ساعة · فبراير 2026',
+      '[data-cert="web-bootcamp"] .cert-name': 'معسكر تطوير الويب باستخدام بايثون',
+      '[data-cert="web-bootcamp"] .cert-meta': 'أكاديمية طويق · 300 ساعة · سبتمبر 2025',
       '[data-cert="drones"] .cert-name': 'بناء ومعايرة الدرونز',
-      '[data-cert="drones"] .cert-meta': 'SAFCSP · مايو 2025',
-      '[data-cert="iot"] .cert-name': 'شهادة إنترنت الأشياء',
-      '[data-cert="iot"] .cert-meta': 'أكاديمية طويق · مايو 2025',
-      '[data-cert="cloud"] .cert-name': 'مهندس حوسبة سحابية',
+      '[data-cert="drones"] .cert-meta': 'الاتحاد السعودي للأمن السيبراني والبرمجة · 20 ساعة · مايو 2025',
+      '[data-cert="iot"] .cert-name': 'أساسيات إنترنت الأشياء',
+      '[data-cert="iot"] .cert-meta': 'أكاديمية طويق · 25 ساعة · مايو 2025',
+      '[data-cert="cloud"] .cert-name': 'علي بابا كلاود — مهندس الحوسبة السحابية',
       '[data-cert="cloud"] .cert-meta': 'أكاديمية طويق · مارس 2025',
+      '[data-cert="ai-bootcamp"] .cert-name': 'معسكر بناء وتطوير نماذج الذكاء الاصطناعي',
+      '[data-cert="ai-bootcamp"] .cert-meta': 'أكاديمية طويق · 200 ساعة · أكتوبر 2024',
+      '[data-cert="t5"] .cert-name': 'معسكر T5 لعلوم البيانات والذكاء الاصطناعي',
+      '[data-cert="t5"] .cert-meta': 'أكاديمية سدايا · 360 ساعة · يونيو 2024',
+      '[data-cert="ds-bootcamp"] .cert-name': 'معسكر علم البيانات',
+      '[data-cert="ds-bootcamp"] .cert-meta': 'أكاديمية طويق · 200 ساعة · ديسمبر 2023',
       '[data-cert="llm-apps"] .cert-name': 'تطوير تطبيقات النماذج اللغوية الكبيرة',
-      '[data-cert="llm-apps"] .cert-meta': 'مجمع الملك سلمان العالمي للغة العربية · ديسمبر 2023',
+      '[data-cert="llm-apps"] .cert-meta': 'مجمع الملك سلمان العالمي · 16 ساعة · ديسمبر 2023',
       '#portfolio .section-eyebrow': 'مشاريع مختارة',
       '#portfolio .section-title': 'مشاريعي',
       '#portfolio .section-lead': 'اختر نوع المشروع للتصفية.',
@@ -317,6 +357,9 @@ const translations = {
       '[data-project="powerbi"] .project-title': 'لوحة معلومات Power BI',
       '[data-project="powerbi"] .project-description': 'لوحة Power BI تفاعلية لتنظيف البيانات ونمذجتها وعرضها بصرياً.',
       '[data-project="powerbi"] .project-link-label': 'عرض GitHub',
+      '[data-project="portfolio-builder"] .project-title': 'منشئ الملف الشخصي',
+      '[data-project="portfolio-builder"] .project-description': 'تطبيق Django يحوّل الاسم وبعض المحطات المهنية إلى ملف شخصي زمني قابل للمشاركة بدون تسجيل.',
+      '[data-project="portfolio-builder"] .project-link-label': 'عرض GitHub',
       '[data-project="guess"] .project-title': 'لعبة تخمين الرقم',
       '[data-project="guess"] .project-description': 'لعبة Python بسيطة لتخمين الرقم تركز على التحكم بالتدفق وإدخال المستخدم.',
       '[data-project="guess"] .project-link-label': 'عرض GitHub',
@@ -358,6 +401,8 @@ const translations = {
       '[data-nav-menu]': { 'aria-label': 'القائمة الرئيسية' },
       '.hero-quick-nav': { 'aria-label': 'روابط سريعة' },
       '.filter-list': { 'aria-label': 'أنواع المشاريع' },
+      '[data-cert-stream]': { 'aria-label': 'الشهادات' },
+      '.edu-logo': { alt: 'جامعة الملك سعود' },
       '[data-bottom-nav]': { 'aria-label': 'قائمة التنقل' },
       '.hero-avatar img': { alt: 'هشام السعدان' },
       '[data-project="attendees"] > a': { 'aria-label': 'عرض مشروع نظام إدارة الحضور على GitHub' },
@@ -367,9 +412,11 @@ const translations = {
       '[data-project="food"] > a': { 'aria-label': 'عرض تحليل طلبات الطعام أونلاين' },
       '[data-project="tuwaiq"] > a': { 'aria-label': 'عرض تحليل بيانات طلاب أكاديمية طويق' },
       '[data-project="powerbi"] > a': { 'aria-label': 'عرض مشروع لوحة Power BI على GitHub' },
+      '[data-project="portfolio-builder"] > a': { 'aria-label': 'عرض مشروع منشئ الملف الشخصي على GitHub' },
       '[data-project="guess"] > a': { 'aria-label': 'عرض مشروع لعبة تخمين الرقم على GitHub' },
       'video[poster$="attendees_poster.jpg"]': { 'aria-label': 'عرض نظام إدارة الحضور بالذكاء الاصطناعي' },
       'video[poster$="focus_analysis_poster.jpg"]': { 'aria-label': 'عرض تتبع انتباه الطلاب في الفصل الافتراضي' },
+      'video[poster$="portfolio_builder_poster.jpg"]': { 'aria-label': 'عرض منشئ الملف الشخصي بدون تسجيل' },
       'img[src$="KharafDates.jpg"]': { alt: 'تحليل جودة التمور' },
       'img[src$="diabetes.jpg"]': { alt: 'تحليل عوامل خطر السكري' },
       'img[src$="Analysing_food_order_online.jpg"]': { alt: 'تحليل اتجاهات طلب الطعام أونلاين' },
@@ -388,6 +435,7 @@ const t = (key) => translations[currentLang][key] || translations.en[key] || '';
 const setLanguage = (lang) => {
   currentLang = lang === 'ar' ? 'ar' : 'en';
   const dict = translations[currentLang];
+  const railOffset = readCertRailOffset();
 
   document.documentElement.lang = currentLang;
   document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
@@ -412,6 +460,11 @@ const setLanguage = (lang) => {
     });
   });
 
+  document.querySelectorAll('.cert-card[href]').forEach(card => {
+    const name = card.querySelector('.cert-name');
+    if (name) card.setAttribute('aria-label', `${dict.certOpenLabel}: ${name.textContent}`);
+  });
+
   if (langToggle) {
     langToggle.dataset.lang = currentLang;
     langToggle.setAttribute('aria-label', dict.langButtonAria);
@@ -421,7 +474,29 @@ const setLanguage = (lang) => {
   if (navToggle && navMenu) {
     navToggle.setAttribute('aria-label', t(navMenu.classList.contains('open') ? 'menuClose' : 'menuOpen'));
   }
+
+  applyCertRailOffset(railOffset);
 };
+
+/* Flipping the language swaps the rail's keyframes, which restarts the animation.
+   Carrying the loop offset across as a negative delay keeps the cards where they were. */
+function readCertRailOffset() {
+  if (!certTrack || !certSet) return null;
+  const setWidth = certSet.scrollWidth;
+  const transform = getComputedStyle(certTrack).transform;
+  if (!setWidth || transform === 'none') return null;
+  const x = new DOMMatrix(transform).m41;
+  return (((x % setWidth) + setWidth) % setWidth) / setWidth;
+}
+
+function applyCertRailOffset(offset) {
+  if (offset === null || !certTrack) return;
+  const duration = parseFloat(getComputedStyle(certTrack).animationDuration);
+  if (!duration) return;
+  // The two keyframes run opposite ways, so one offset sits at mirrored points in time.
+  const progress = document.documentElement.dir === 'rtl' ? 1 - offset : offset;
+  certTrack.style.animationDelay = `${-progress * duration}s`;
+}
 
 const setMenuOpen = (open) => {
   if (!navMenu || !navBackdrop || !navToggle || !navIcon) return;
@@ -526,6 +601,63 @@ filterButtons.forEach(btn => {
     filterProjects((btn.dataset.filterBtn || 'all').toLowerCase());
   });
 });
+
+/* ===== Certificate stream ===== */
+if (certStream && certTrack && certSet) {
+  const CERT_SPEED = 55; // px per second, so the rail reads the same at any width
+
+  // A second copy of the set makes the -50% loop seamless.
+  const certClone = certSet.cloneNode(true);
+  certClone.removeAttribute('data-cert-set');
+  certClone.setAttribute('aria-hidden', 'true');
+  certClone.querySelectorAll('a').forEach(link => link.setAttribute('tabindex', '-1'));
+  certTrack.appendChild(certClone);
+
+  const syncCertDuration = () => {
+    const width = certSet.scrollWidth;
+    if (width > 0) certStream.style.setProperty('--cert-duration', `${(width / CERT_SPEED).toFixed(1)}s`);
+  };
+
+  syncCertDuration();
+  certStream.classList.add('is-ready');
+
+  if ('ResizeObserver' in window) {
+    let certResizeFrame = 0;
+    new ResizeObserver(() => {
+      cancelAnimationFrame(certResizeFrame);
+      certResizeFrame = requestAnimationFrame(syncCertDuration);
+    }).observe(certSet);
+  } else {
+    window.addEventListener('resize', syncCertDuration);
+  }
+
+  // Hovering or focusing a certificate holds the stream still while it pops open.
+  const inCertCard = (node) => !!(node && node.nodeType === 1 && node.closest('.cert-card'));
+  const setCertPaused = (paused) => certStream.classList.toggle('is-paused', paused);
+
+  certStream.addEventListener('pointerover', (event) => {
+    if (event.pointerType !== 'touch' && inCertCard(event.target)) setCertPaused(true);
+  });
+
+  certStream.addEventListener('pointerout', (event) => {
+    if (event.pointerType !== 'touch' && !inCertCard(event.relatedTarget)) setCertPaused(false);
+  });
+
+  certStream.addEventListener('pointerleave', () => setCertPaused(false));
+  certStream.addEventListener('focusin', (event) => setCertPaused(inCertCard(event.target)));
+  certStream.addEventListener('focusout', (event) => {
+    if (!inCertCard(event.relatedTarget)) setCertPaused(false);
+  });
+
+  // No reason to animate a rail nobody can see.
+  if ('IntersectionObserver' in window) {
+    const certVisibility = new IntersectionObserver(entries => {
+      entries.forEach(entry => certStream.classList.toggle('is-offscreen', !entry.isIntersecting));
+    }, { rootMargin: '200px 0px' });
+
+    certVisibility.observe(certStream);
+  }
+}
 
 /* ===== Lazy project videos ===== */
 const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

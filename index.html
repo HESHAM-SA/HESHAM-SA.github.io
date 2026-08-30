@@ -312,8 +312,10 @@
         <!-- Education -->
         <h2 class="section-title section-title-secondary reveal">Education</h2>
         <ol class="timeline">
-          <li class="timeline-item reveal">
+          <li class="timeline-item reveal" data-edu="ksu">
             <div class="timeline-marker"></div>
+            <img class="edu-logo" src="./assets/logos/king-saud-university.svg" alt="King Saud University"
+                 width="180" height="69" loading="lazy" decoding="async">
             <h3 class="timeline-title">Bachelor's Degree in Computer Science</h3>
             <p class="timeline-org">King Saud University</p>
             <p class="timeline-text">
@@ -377,31 +379,192 @@
         </div>
 
         <h3 class="cert-heading reveal">Certifications</h3>
-        <ul class="cert-grid reveal">
-          <li class="cert-item" data-cert="nvidia-ai-infra">
-            <span class="cert-name">AI Infrastructure</span>
-            <span class="cert-meta">NVIDIA · Aug 2026</span>
-          </li>
-          <li class="cert-item" data-cert="nvidia-transformers">
-            <span class="cert-name">Transformer-Based AI Applications</span>
-            <span class="cert-meta">NVIDIA · Jan 2026</span>
-          </li>
-          <li class="cert-item" data-cert="drones">
-            <span class="cert-name">Drone Building &amp; Calibration</span>
-            <span class="cert-meta">SAFCSP · May 2025</span>
-          </li>
-          <li class="cert-item" data-cert="iot">
-            <span class="cert-name">IoT Certificate</span>
-            <span class="cert-meta">Tuwaiq Academy · May 2025</span>
-          </li>
-          <li class="cert-item" data-cert="cloud">
-            <span class="cert-name">Cloud Computing Engineer</span>
-            <span class="cert-meta">Tuwaiq Academy · Mar 2025</span>
-          </li>
-          <li class="cert-item" data-cert="llm-apps">
-            <span class="cert-name">LLM Application Development</span>
-            <span class="cert-meta">King Salman Global Complex for Arabic Language · Dec 2023</span>
-          </li>
+        <p class="cert-lead reveal">A live stream of everything I've earned. Hover a certificate to pause the stream and enlarge it — click to open the original.</p>
+
+        <div class="cert-stream reveal" data-cert-stream role="region" aria-label="Certificates">
+          <div class="cert-track" data-cert-track>
+            <div class="cert-set" data-cert-set>
+              <a class="cert-card" data-cert="nvidia-ai-infra" href="./assets/certificates/nvidia-certified-associate-ai-infrastructure-operations-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: NVIDIA Certified Associate — AI Infrastructure & Operations">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/nvidia-certified-associate-ai-infrastructure-operations-2026.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/nvidia-certified-associate-ai-infrastructure-operations-2026.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/nvidia.svg" alt="NVIDIA" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">NVIDIA Certified Associate — AI Infrastructure &amp; Operations</span>
+                  <span class="cert-meta">NVIDIA · Aug 2026</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+              <a class="cert-card" data-cert="sda-python" href="./assets/certificates/sda-python-software-development-bootcamp-300h-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Software Development using Python Bootcamp">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/sda-python-software-development-bootcamp-300h-2026.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/sda-python-software-development-bootcamp-300h-2026.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/mcit.svg" alt="Ministry of Communications and Information Technology" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">Software Development using Python Bootcamp</span>
+                  <span class="cert-meta">Saudi Digital Academy · 300 hrs · Jun 2026</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+              <a class="cert-card" data-cert="nvidia-transformers" href="./assets/certificates/nvidia-transformer-based-nlp-applications-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Building Transformer-Based NLP Applications">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/nvidia-transformer-based-nlp-applications-2026.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/nvidia-transformer-based-nlp-applications-2026.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/nvidia.svg" alt="NVIDIA" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">Building Transformer-Based NLP Applications</span>
+                  <span class="cert-meta">NVIDIA · Mar 2026</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+              <a class="cert-card" data-cert="kaust-ai" href="./assets/certificates/kaust-advanced-artificial-intelligence-40h-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Advanced Artificial Intelligence — Computer Vision">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/kaust-advanced-artificial-intelligence-40h-2026.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/kaust-advanced-artificial-intelligence-40h-2026.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/kaust.svg" alt="KAUST" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">Advanced Artificial Intelligence — Computer Vision</span>
+                  <span class="cert-meta">KAUST Academy · 40 hrs · Feb 2026</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+              <a class="cert-card" data-cert="web-bootcamp" href="./assets/certificates/tuwaiq-web-development-python-bootcamp-300h-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Web Development using Python Bootcamp">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/tuwaiq-web-development-python-bootcamp-300h-2025.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/tuwaiq-web-development-python-bootcamp-300h-2025.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">Web Development using Python Bootcamp</span>
+                  <span class="cert-meta">Tuwaiq Academy · 300 hrs · Sep 2025</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+              <a class="cert-card" data-cert="drones" href="./assets/certificates/safcsp-drone-building-calibration-20h-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Drone Building & Calibration">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/safcsp-drone-building-calibration-20h-2025.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/safcsp-drone-building-calibration-20h-2025.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/safcsp.svg" alt="Saudi Federation for Cybersecurity, Programming and Drones" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">Drone Building &amp; Calibration</span>
+                  <span class="cert-meta">SAFCSP · 20 hrs · May 2025</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+              <a class="cert-card" data-cert="iot" href="./assets/certificates/tuwaiq-iot-fundamentals-25h-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: IoT Fundamentals">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/tuwaiq-iot-fundamentals-25h-2025.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/tuwaiq-iot-fundamentals-25h-2025.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">IoT Fundamentals</span>
+                  <span class="cert-meta">Tuwaiq Academy · 25 hrs · May 2025</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+              <a class="cert-card" data-cert="cloud" href="./assets/certificates/tuwaiq-alibaba-cloud-computing-engineer-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Alibaba Cloud — Cloud Computing Engineer">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/tuwaiq-alibaba-cloud-computing-engineer-2025.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/tuwaiq-alibaba-cloud-computing-engineer-2025.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">Alibaba Cloud — Cloud Computing Engineer</span>
+                  <span class="cert-meta">Tuwaiq Academy · Mar 2025</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+              <a class="cert-card" data-cert="ai-bootcamp" href="./assets/certificates/tuwaiq-ai-models-bootcamp-200h-2024.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Building & Developing AI Models Bootcamp">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/tuwaiq-ai-models-bootcamp-200h-2024.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/tuwaiq-ai-models-bootcamp-200h-2024.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">Building &amp; Developing AI Models Bootcamp</span>
+                  <span class="cert-meta">Tuwaiq Academy · 200 hrs · Oct 2024</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+              <a class="cert-card" data-cert="t5" href="./assets/certificates/sdaia-t5-data-science-ai-bootcamp-360h-2024.pdf" target="_blank" rel="noopener" aria-label="Open certificate: T5 Data Science & AI Bootcamp">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/sdaia-t5-data-science-ai-bootcamp-360h-2024.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/sdaia-t5-data-science-ai-bootcamp-360h-2024.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/sdaia.png" alt="SDAIA" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">T5 Data Science &amp; AI Bootcamp</span>
+                  <span class="cert-meta">SDAIA Academy · 360 hrs · Jun 2024</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+              <a class="cert-card" data-cert="ds-bootcamp" href="./assets/certificates/tuwaiq-data-science-bootcamp-200h-2023.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Data Science Bootcamp">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/tuwaiq-data-science-bootcamp-200h-2023.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/tuwaiq-data-science-bootcamp-200h-2023.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">Data Science Bootcamp</span>
+                  <span class="cert-meta">Tuwaiq Academy · 200 hrs · Dec 2023</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+              <a class="cert-card" data-cert="llm-apps" href="./assets/certificates/ksaa-llm-application-development-16h-2023.pdf" target="_blank" rel="noopener" aria-label="Open certificate: LLM Application Development">
+                <span class="cert-shot">
+                  <picture>
+                    <source srcset="./assets/certificates/thumbs/ksaa-llm-application-development-16h-2023.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/ksaa-llm-application-development-16h-2023.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                  </picture>
+                </span>
+                <span class="cert-info">
+                  <img class="cert-logo" src="./assets/logos/ksaa.svg" alt="King Salman Global Academy for Arabic Language" width="120" height="28" loading="lazy" decoding="async">
+                  <span class="cert-name">LLM Application Development</span>
+                  <span class="cert-meta">King Salman Global Academy · 16 hrs · Dec 2023</span>
+                </span>
+                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <p class="cert-issuers-label reveal">Issued by</p>
+        <ul class="cert-issuers reveal">
+          <li><img width="130" height="44" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" loading="lazy" decoding="async"></li>
+          <li><img width="130" height="44" src="./assets/logos/sdaia.png" alt="SDAIA — Saudi Data and AI Authority" loading="lazy" decoding="async"></li>
+          <li><img width="130" height="44" src="./assets/logos/kaust.svg" alt="KAUST — King Abdullah University of Science and Technology" loading="lazy" decoding="async"></li>
+          <li><img width="130" height="44" src="./assets/logos/nvidia.svg" alt="NVIDIA" loading="lazy" decoding="async"></li>
+          <li><img width="130" height="44" src="./assets/logos/mcit.svg" alt="Ministry of Communications and Information Technology" loading="lazy" decoding="async"></li>
+          <li><img width="130" height="44" src="./assets/logos/safcsp.svg" alt="Saudi Federation for Cybersecurity, Programming and Drones" loading="lazy" decoding="async"></li>
+          <li><img width="130" height="44" src="./assets/logos/ksaa.svg" alt="King Salman Global Academy for Arabic Language" loading="lazy" decoding="async"></li>
         </ul>
       </div>
     </section>
@@ -541,6 +704,27 @@
                 <span class="project-category">Data Analytics</span>
                 <h3 class="project-title">Dashboard using Power BI</h3>
                 <p class="project-description">Interactive Power BI dashboard for cleaning, modeling, and visualizing business data.</p>
+                <span class="project-link-label">View GitHub</span>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-card active reveal" data-filter-item data-category="apps" data-project="portfolio-builder">
+            <a href="https://github.com/HESHAM-SA/PortfolioBuilder" target="_blank" rel="noopener"
+               aria-label="View Portfolio Builder GitHub Repository">
+              <figure class="project-media">
+                <video class="project-video" data-project-video loop muted playsinline preload="none"
+                       poster="my_projects/App/App_p2/portfolio_builder_poster.jpg"
+                       aria-label="No-signup portfolio builder demo">
+                  <source data-src="my_projects/App/App_p2/portfolio_builder_demo.webm" type="video/webm">
+                  <source data-src="my_projects/App/App_p2/portfolio_builder_demo.mp4" type="video/mp4">
+                </video>
+                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+              </figure>
+              <div class="project-info">
+                <span class="project-category">Apps</span>
+                <h3 class="project-title">Portfolio Builder</h3>
+                <p class="project-description">Django app that turns a name and a few career events into a shareable timeline portfolio, with no signup.</p>
                 <span class="project-link-label">View GitHub</span>
               </div>
             </a>
