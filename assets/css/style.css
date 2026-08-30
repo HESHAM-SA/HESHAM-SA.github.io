@@ -770,7 +770,10 @@ button {
   mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
 }
 
-/* Track layout stays LTR in both languages; only the travel direction flips. */
+/* Track layout stays LTR in both languages; only the travel direction flips.
+   The rail itself must be LTR too: under dir="rtl" a max-content block is placed
+   from the right edge, which parks the whole track off-screen mid-loop. */
+.cert-stream,
 .cert-track,
 .cert-set {
   direction: ltr;
