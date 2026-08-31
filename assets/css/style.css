@@ -730,7 +730,8 @@ button {
   border-color: var(--accent);
 }
 
-.edu-logo {
+.timeline-logo {
+  display: block;
   width: auto;
   height: 44px;
   margin-bottom: 14px;
