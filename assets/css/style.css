@@ -738,6 +738,11 @@ button {
   opacity: 0.92;
 }
 
+/* Square emblems read smaller than wordmarks at the same height. */
+[data-exp="cs-instructor"] .timeline-logo {
+  height: 60px;
+}
+
 /* ===== Certifications stream ===== */
 
 .cert-heading {
