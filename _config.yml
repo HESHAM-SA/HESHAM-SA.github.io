@@ -1,0 +1,7 @@
+# GitHub Pages build settings. Design notes and tooling files stay in the
+# repo but are not published to the site.
+exclude:
+  - README.md
+  - PRODUCT.md
+  - DESIGN.md
+  - .impeccable
