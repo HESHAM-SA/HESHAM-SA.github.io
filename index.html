@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hesham Alsadan — AI Engineer & Data Science</title>
   <meta name="description" content="Portfolio of Hesham Alsadan — AI Engineer and Data Scientist in Riyadh, looking for opportunities in EdTech. 1,500+ hours of training across KAUST, SDAIA, Tuwaiq, and SDA.">
-  <meta name="theme-color" content="#0b0e14">
+  <meta name="theme-color" content="#f3eee4">
+  <script>
+    // Resolve the explicit preference before the stylesheet paints. Light is the default.
+    (() => {
+      let theme = 'light';
+      try {
+        const saved = localStorage.getItem('portfolio-theme');
+        if (saved === 'light' || saved === 'dark') theme = saved;
+      } catch (_) { /* Storage can be unavailable in private or embedded contexts. */ }
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+      document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#15130f' : '#f3eee4';
+    })();
+  </script>
   <link rel="canonical" href="https://hesham-sa.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hesham-sa.github.io/">
@@ -43,7 +56,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Reem+Kufi:wght@500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <noscript>
     <style>
@@ -72,6 +85,10 @@
     </nav>
 
     <div class="nav-actions">
+      <button class="theme-toggle" data-theme-toggle type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13.1A8.5 8.5 0 0 1 10.9 3.5 8.5 8.5 0 1 0 20.5 13.1Z"/></svg>
+        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+      </button>
       <button class="lang-toggle" data-lang-toggle data-lang="en" type="button" role="switch" aria-label="Switch to Arabic" aria-checked="false">
         <span class="lang-option lang-option-en">EN</span>
         <span class="lang-option lang-option-ar" lang="ar">عربي</span>
@@ -91,56 +108,69 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero" id="home">
-      <div class="hero-glow" aria-hidden="true"></div>
-
       <div class="hero-content reveal">
-        <figure class="hero-avatar">
-          <img src="./assets/images/profile_picture.jpg" alt="Hesham Alsadan" width="160" height="160" fetchpriority="high" decoding="async">
-        </figure>
+        <div class="hero-copy">
+          <p class="hero-eyebrow">Hello, I'm</p>
+          <h1 class="hero-title">Hesham Alsadan</h1>
+          <p class="hero-subtitle">AI Engineer <span class="accent">|</span> Data Science</p>
 
-        <p class="hero-eyebrow">Hello, I'm</p>
-        <h1 class="hero-title">Hesham Alsadan</h1>
-        <p class="hero-subtitle">AI Engineer <span class="accent">|</span> Data Science</p>
+          <p class="hero-text">
+            AI Engineer and Data Scientist based in Riyadh, building practical AI and data solutions —
+            looking for opportunities in EdTech.
+          </p>
 
-        <p class="hero-text">
-          AI Engineer and Data Scientist based in Riyadh, building practical AI and data solutions —
-          looking for opportunities in EdTech.
-        </p>
+          <div class="hero-actions">
+            <a href="#portfolio" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+          </div>
 
-        <div class="hero-actions">
-          <a href="#portfolio" class="btn btn-primary">View Projects</a>
-          <a href="#contact" class="btn btn-outline">Contact Me</a>
+          <nav class="hero-quick-nav" aria-label="Quick section links">
+            <a href="#about" class="quick-link"><i class="fa-solid fa-user"></i> About</a>
+            <a href="#experience" class="quick-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
+            <a href="#skills" class="quick-link"><i class="fa-solid fa-star"></i> Skills</a>
+            <a href="#portfolio" class="quick-link"><i class="fa-solid fa-folder-open"></i> Projects</a>
+          </nav>
+
+          <ul class="hero-socials">
+            <li>
+              <a href="https://www.linkedin.com/in/hesham-alsadan/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/HESHAM-SA" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.kaggle.com/heshamsadan" target="_blank" rel="noopener" aria-label="Kaggle">
+                <i class="fa-brands fa-kaggle"></i>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:HeshamAlsadan@gmail.com" aria-label="Email">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+            </li>
+          </ul>
         </div>
 
-        <nav class="hero-quick-nav" aria-label="Quick section links">
-          <a href="#about" class="quick-link"><i class="fa-solid fa-user"></i> About</a>
-          <a href="#experience" class="quick-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
-          <a href="#skills" class="quick-link"><i class="fa-solid fa-star"></i> Skills</a>
-          <a href="#portfolio" class="quick-link"><i class="fa-solid fa-folder-open"></i> Projects</a>
-        </nav>
-
-        <ul class="hero-socials">
-          <li>
-            <a href="https://www.linkedin.com/in/hesham-alsadan/" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/HESHAM-SA" target="_blank" rel="noopener" aria-label="GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.kaggle.com/heshamsadan" target="_blank" rel="noopener" aria-label="Kaggle">
-              <i class="fa-brands fa-kaggle"></i>
-            </a>
-          </li>
-          <li>
-            <a href="mailto:HeshamAlsadan@gmail.com" aria-label="Email">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
-          </li>
-        </ul>
+        <aside class="hero-focus" aria-label="My focus">
+          <div class="hero-focus-top">
+            <figure class="hero-avatar">
+              <img src="./assets/images/profile_picture.jpg" alt="Hesham Alsadan" width="160" height="160" fetchpriority="high" decoding="async">
+            </figure>
+            <span class="hero-location">Based in Riyadh, KSA</span>
+          </div>
+          <p class="focus-eyebrow">Ideas into impact</p>
+          <h2 class="focus-title">Intelligent systems.<br>Practical possibilities.</h2>
+          <ul class="focus-list">
+            <li><span class="focus-label">Artificial intelligence</span></li>
+            <li><span class="focus-label">Data &amp; insights</span></li>
+            <li><span class="focus-label">Learning &amp; EdTech</span></li>
+          </ul>
+          <div class="hero-proof"><strong dir="ltr">1,500<span>+</span></strong><span class="hero-proof-label">hours of hands-on<br>technical training</span></div>
+        </aside>
       </div>
     </section>
 
@@ -173,22 +203,18 @@
 
           <ul class="service-list">
             <li class="service-card reveal">
-              <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
               <h3>Data Science</h3>
               <p>Advanced analytical techniques for extracting insights from data.</p>
             </li>
             <li class="service-card reveal">
-              <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
               <h3>Artificial Intelligence</h3>
               <p>Development of intelligent systems, computer vision, and deep learning models.</p>
             </li>
             <li class="service-card reveal">
-              <div class="service-icon"><i class="fa-solid fa-chart-pie"></i></div>
               <h3>Visualization</h3>
               <p>Producing dashboards for data visualization and storytelling.</p>
             </li>
             <li class="service-card reveal">
-              <div class="service-icon"><i class="fa-solid fa-code"></i></div>
               <h3>Web Development</h3>
               <p>Building full-stack web apps with Python and Django, focused on user experience.</p>
             </li>
@@ -424,7 +450,6 @@
                   <span class="cert-name">NVIDIA Certified Associate — AI Infrastructure &amp; Operations</span>
                   <span class="cert-meta">NVIDIA · Aug 2026</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
               <a class="cert-card" data-cert="sda-python" href="./assets/certificates/sda-python-software-development-bootcamp-300h-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Software Development using Python Bootcamp">
                 <span class="cert-shot">
@@ -438,7 +463,6 @@
                   <span class="cert-name">Software Development using Python Bootcamp</span>
                   <span class="cert-meta">Saudi Digital Academy · 300 hrs · Jun 2026</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
               <a class="cert-card" data-cert="nvidia-transformers" href="./assets/certificates/nvidia-transformer-based-nlp-applications-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Building Transformer-Based NLP Applications">
                 <span class="cert-shot">
@@ -452,21 +476,19 @@
                   <span class="cert-name">Building Transformer-Based NLP Applications</span>
                   <span class="cert-meta">NVIDIA · Mar 2026</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
-              <a class="cert-card" data-cert="kaust-ai" href="./assets/certificates/kaust-advanced-artificial-intelligence-40h-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Advanced Artificial Intelligence — Computer Vision">
+              <a class="cert-card" data-cert="kaust-ai" href="./assets/certificates/kaust-advanced-artificial-intelligence-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Advanced Artificial Intelligence — Computer Vision">
                 <span class="cert-shot">
                   <picture>
-                    <source srcset="./assets/certificates/thumbs/kaust-advanced-artificial-intelligence-40h-2026.webp" type="image/webp">
-                    <img src="./assets/certificates/thumbs/kaust-advanced-artificial-intelligence-40h-2026.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+                    <source srcset="./assets/certificates/thumbs/kaust-advanced-artificial-intelligence-2026.webp" type="image/webp">
+                    <img src="./assets/certificates/thumbs/kaust-advanced-artificial-intelligence-2026.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
                   </picture>
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/kaust.svg" alt="KAUST" width="120" height="28" loading="lazy" decoding="async">
                   <span class="cert-name">Advanced Artificial Intelligence — Computer Vision</span>
-                  <span class="cert-meta">KAUST Academy · 80+ hrs · Feb 2026</span>
+                  <span class="cert-meta">KAUST Academy · 80 hrs · Feb 2026</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
               <a class="cert-card" data-cert="web-bootcamp" href="./assets/certificates/tuwaiq-web-development-python-bootcamp-300h-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Web Development using Python Bootcamp">
                 <span class="cert-shot">
@@ -480,7 +502,6 @@
                   <span class="cert-name">Web Development using Python Bootcamp</span>
                   <span class="cert-meta">Tuwaiq Academy · 300 hrs · Sep 2025</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
               <a class="cert-card" data-cert="drones" href="./assets/certificates/safcsp-drone-building-calibration-20h-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Drone Building & Calibration">
                 <span class="cert-shot">
@@ -494,7 +515,6 @@
                   <span class="cert-name">Drone Building &amp; Calibration</span>
                   <span class="cert-meta">SAFCSP · 20 hrs · May 2025</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
               <a class="cert-card" data-cert="iot" href="./assets/certificates/tuwaiq-iot-fundamentals-25h-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: IoT Fundamentals">
                 <span class="cert-shot">
@@ -508,7 +528,6 @@
                   <span class="cert-name">IoT Fundamentals</span>
                   <span class="cert-meta">Tuwaiq Academy · 25 hrs · May 2025</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
               <a class="cert-card" data-cert="cloud" href="./assets/certificates/tuwaiq-alibaba-cloud-computing-engineer-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Cloud Computing Engineer">
                 <span class="cert-shot">
@@ -522,7 +541,6 @@
                   <span class="cert-name">Cloud Computing Engineer</span>
                   <span class="cert-meta">Alibaba Cloud · Mar 2025</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
               <a class="cert-card" data-cert="ai-bootcamp" href="./assets/certificates/tuwaiq-ai-models-bootcamp-200h-2024.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Building & Developing AI Models Bootcamp">
                 <span class="cert-shot">
@@ -536,7 +554,6 @@
                   <span class="cert-name">Building &amp; Developing AI Models Bootcamp</span>
                   <span class="cert-meta">Tuwaiq Academy · 200 hrs · Oct 2024</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
               <a class="cert-card" data-cert="t5" href="./assets/certificates/sdaia-t5-data-science-ai-bootcamp-360h-2024.pdf" target="_blank" rel="noopener" aria-label="Open certificate: T5 Data Science & AI Bootcamp">
                 <span class="cert-shot">
@@ -550,7 +567,6 @@
                   <span class="cert-name">T5 Data Science &amp; AI Bootcamp</span>
                   <span class="cert-meta">SDAIA Academy · 360 hrs · Jun 2024</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
               <a class="cert-card" data-cert="ds-bootcamp" href="./assets/certificates/tuwaiq-data-science-bootcamp-200h-2023.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Data Science Bootcamp">
                 <span class="cert-shot">
@@ -564,7 +580,6 @@
                   <span class="cert-name">Data Science Bootcamp</span>
                   <span class="cert-meta">Tuwaiq Academy · 200 hrs · Dec 2023</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
               <a class="cert-card" data-cert="llm-apps" href="./assets/certificates/ksaa-llm-application-development-16h-2023.pdf" target="_blank" rel="noopener" aria-label="Open certificate: LLM Application Development">
                 <span class="cert-shot">
@@ -578,7 +593,6 @@
                   <span class="cert-name">LLM Application Development</span>
                   <span class="cert-meta">King Salman Global Academy · 16 hrs · Dec 2023</span>
                 </span>
-                <span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
               </a>
             </div>
           </div>
@@ -624,7 +638,6 @@
                   <source data-src="my_projects/AI/AI_p2/Attendees_management_system_Demo.webm" type="video/webm">
                   <source data-src="my_projects/AI/AI_p2/Attendees_management_system_Demo.mp4" type="video/mp4">
                 </video>
-                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">AI</span>
@@ -645,7 +658,6 @@
                   <source data-src="my_projects/AI/AI_p3/focus_analysis_demo.webm" type="video/webm">
                   <source data-src="my_projects/AI/AI_p3/focus_analysis_demo.mp4" type="video/mp4">
                 </video>
-                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">AI</span>
@@ -661,7 +673,6 @@
                aria-label="View Kharaf Dates quality report (PDF)">
               <figure class="project-media">
                 <img src="my_projects/AI/AI_p1/KharafDates.jpg" alt="Date quality analysis visualization" loading="lazy">
-                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">AI</span>
@@ -677,7 +688,6 @@
                aria-label="View diabetes analysis case study">
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/p1/diabetes.jpg" alt="Diabetes risk factor visualization" loading="lazy">
-                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">Data Analytics</span>
@@ -694,7 +704,6 @@
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/p2/Analysing_food_order_online.jpg"
                      alt="Detailed analysis of online food ordering trends" loading="lazy">
-                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">Data Analytics</span>
@@ -711,7 +720,6 @@
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/p3/EDA for 6,500 students of Tuwaiq Academy.jpg"
                      alt="Exploratory Data Analysis of 6,500 Tuwaiq Academy students" loading="lazy">
-                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">Data Analytics</span>
@@ -727,7 +735,6 @@
                aria-label="View Power BI dashboard GitHub Repository">
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/project 04 power bi/dashboard.png" alt="Power BI dashboard" loading="lazy">
-                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">Data Analytics</span>
@@ -748,7 +755,6 @@
                   <source data-src="my_projects/App/App_p3/halaorder_demo.webm" type="video/webm">
                   <source data-src="my_projects/App/App_p3/halaorder_demo.mp4" type="video/mp4">
                 </video>
-                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">Apps</span>
@@ -769,7 +775,6 @@
                   <source data-src="my_projects/App/App_p2/portfolio_builder_demo.webm" type="video/webm">
                   <source data-src="my_projects/App/App_p2/portfolio_builder_demo.mp4" type="video/mp4">
                 </video>
-                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">Apps</span>
@@ -785,7 +790,6 @@
                aria-label="View Guess Number Game GitHub Repository">
               <figure class="project-media">
                 <img src="my_projects/App/Guess.jpg" alt="Guess Number Game" loading="lazy">
-                <div class="project-overlay"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
               </figure>
               <div class="project-info">
                 <span class="project-category">Apps</span>
@@ -804,24 +808,37 @@
     <section class="section" id="contact">
       <div class="container contact-container">
         <p class="section-eyebrow reveal">Get in touch</p>
-        <h2 class="section-title reveal">Contact</h2>
-        <p class="section-lead reveal">Reach out by email or phone.</p>
+        <h2 class="section-title reveal">Let’s build useful AI together</h2>
+        <p class="section-lead reveal">Get in touch about AI, data science, or EdTech opportunities.</p>
 
-        <div class="contact-cards">
-          <a href="mailto:HeshamAlsadan@gmail.com" class="contact-card reveal">
+        <div class="contact-panel reveal">
+          <a href="mailto:HeshamAlsadan@gmail.com" class="btn btn-primary contact-primary">
             <i class="fa-solid fa-envelope"></i>
-            <span class="contact-label">Email</span>
-            <span class="contact-value">HeshamAlsadan@gmail.com</span>
+            <span>Email me</span>
           </a>
-          <a href="tel:+966507050338" class="contact-card reveal">
-            <i class="fa-solid fa-phone"></i>
-            <span class="contact-label">Phone</span>
-            <span class="contact-value">966-507-050-338</span>
-          </a>
-          <div class="contact-card reveal">
-            <i class="fa-solid fa-location-dot"></i>
-            <span class="contact-label">Location</span>
-            <span class="contact-value">Riyadh, KSA</span>
+          <div class="contact-actions">
+            <a href="https://www.linkedin.com/in/hesham-alsadan/" target="_blank" rel="noopener" class="btn btn-outline contact-secondary">
+              <i class="fa-brands fa-linkedin-in"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" rel="noopener" download class="btn btn-outline contact-secondary">
+              <i class="fa-solid fa-download"></i>
+              <span>Download CV</span>
+            </a>
+          </div>
+          <div class="contact-details">
+            <a href="mailto:HeshamAlsadan@gmail.com" class="contact-detail contact-email">
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <span dir="ltr">HeshamAlsadan@gmail.com</span>
+            </a>
+            <a href="tel:+966507050338" class="contact-detail">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              <span dir="ltr">966-507-050-338</span>
+            </a>
+            <div class="contact-detail">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <span class="contact-location">Riyadh, KSA</span>
+            </div>
           </div>
         </div>
       </div>
@@ -851,7 +868,7 @@
     </a>
     <a href="#portfolio" class="bottom-nav-link" data-nav-link>
       <i class="fa-solid fa-folder-open"></i>
-      <span>Work</span>
+      <span>Projects</span>
     </a>
     <a href="#contact" class="bottom-nav-link" data-nav-link>
       <i class="fa-solid fa-envelope"></i>

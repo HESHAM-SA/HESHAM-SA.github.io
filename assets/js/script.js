@@ -10,12 +10,24 @@ const navLinks = document.querySelectorAll('[data-nav-link]');
 const bottomNavLinks = document.querySelectorAll('[data-bottom-nav] [data-nav-link]');
 const backToTop = document.querySelector('[data-back-to-top]');
 const langToggle = document.querySelector('[data-lang-toggle]');
+const themeToggle = document.querySelector('[data-theme-toggle]');
 const metaDescription = document.querySelector('meta[name="description"]');
 const sections = document.querySelectorAll('section[id]');
 const projectVideos = document.querySelectorAll('[data-project-video]');
 const certStream = document.querySelector('[data-cert-stream]');
 const certTrack = certStream && certStream.querySelector('[data-cert-track]');
 const certSet = certStream && certStream.querySelector('[data-cert-set]');
+const menuMedia = window.matchMedia('(max-width: 1024px)');
+const menuBackground = [
+  document.querySelector('main'),
+  document.querySelector('footer'),
+  document.querySelector('[data-bottom-nav]'),
+  backToTop,
+  navbar && navbar.querySelector('.nav-logo'),
+  langToggle,
+  themeToggle,
+  navbar && navbar.querySelector('.nav-cv-desktop')
+].filter(Boolean);
 
 const translations = {
   en: {
@@ -25,6 +37,8 @@ const translations = {
     certOpenLabel: 'Open certificate',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
+    themeDark: 'Switch to dark mode',
+    themeLight: 'Switch to light mode',
     text: {
       '.nav-links .nav-link[href="#home"]': 'Home',
       '.nav-links .nav-link[href="#about"]': 'About',
@@ -33,6 +47,13 @@ const translations = {
       '.nav-links .nav-link[href="#portfolio"]': 'Portfolio',
       '.nav-links .nav-link[href="#contact"]': 'Contact',
       '.hero-eyebrow': "Hello, I'm",
+      '.hero-location': 'Based in Riyadh, KSA',
+      '.focus-eyebrow': 'Ideas into impact',
+      '.focus-title': 'Intelligent systems. Practical possibilities.',
+      '.focus-list li:nth-child(1) .focus-label': 'Artificial intelligence',
+      '.focus-list li:nth-child(2) .focus-label': 'Data & insights',
+      '.focus-list li:nth-child(3) .focus-label': 'Learning & EdTech',
+      '.hero-proof-label': 'hours of hands-on technical training',
       '.hero-title': 'Hesham Alsadan',
       '.hero-text': 'AI Engineer and Data Scientist based in Riyadh, building practical AI and data solutions — looking for opportunities in EdTech.',
       '.hero-actions .btn-primary': 'View Projects',
@@ -109,7 +130,7 @@ const translations = {
       '[data-cert="nvidia-transformers"] .cert-name': 'Building Transformer-Based NLP Applications',
       '[data-cert="nvidia-transformers"] .cert-meta': 'NVIDIA · Mar 2026',
       '[data-cert="kaust-ai"] .cert-name': 'Advanced Artificial Intelligence — Computer Vision',
-      '[data-cert="kaust-ai"] .cert-meta': 'KAUST Academy · 80+ hrs · Feb 2026',
+      '[data-cert="kaust-ai"] .cert-meta': 'KAUST Academy · 80 hrs · Feb 2026',
       '[data-cert="web-bootcamp"] .cert-name': 'Web Development using Python Bootcamp',
       '[data-cert="web-bootcamp"] .cert-meta': 'Tuwaiq Academy · 300 hrs · Sep 2025',
       '[data-cert="drones"] .cert-name': 'Drone Building & Calibration',
@@ -167,16 +188,16 @@ const translations = {
       '[data-project="guess"] .project-description': 'Simple Python number guessing game focused on control flow and user input.',
       '[data-project="guess"] .project-link-label': 'View GitHub',
       '#contact .section-eyebrow': 'Get in touch',
-      '#contact .section-title': 'Contact',
-      '#contact .section-lead': 'Reach out by email or phone.',
-      '#contact .contact-card:nth-child(1) .contact-label': 'Email',
-      '#contact .contact-card:nth-child(2) .contact-label': 'Phone',
-      '#contact .contact-card:nth-child(3) .contact-label': 'Location',
-      '#contact .contact-card:nth-child(3) .contact-value': 'Riyadh, KSA',
+      '#contact .section-title': 'Let’s build useful AI together',
+      '#contact .section-lead': 'Get in touch about AI, data science, or EdTech opportunities.',
+      '#contact .contact-primary span': 'Email me',
+      '#contact .contact-actions a:first-child span': 'LinkedIn',
+      '#contact .contact-actions a:last-child span': 'Download CV',
+      '#contact .contact-location': 'Riyadh, KSA',
       '.footer p': '© 2026 Hesham Alsadan. All rights reserved.',
       '.bottom-nav-link[href="#home"] span': 'Home',
       '.bottom-nav-link[href="#about"] span': 'About',
-      '.bottom-nav-link[href="#portfolio"] span': 'Work',
+      '.bottom-nav-link[href="#portfolio"] span': 'Projects',
       '.bottom-nav-link[href="#contact"] span': 'Contact'
     },
     html: {
@@ -203,6 +224,7 @@ const translations = {
     attrs: {
       '[data-nav-menu]': { 'aria-label': 'Main navigation' },
       '.hero-quick-nav': { 'aria-label': 'Quick section links' },
+      '.hero-focus': { 'aria-label': 'My focus' },
       '.filter-list': { 'aria-label': 'Project categories' },
       '[data-cert-stream]': { 'aria-label': 'Certificates' },
       '[data-edu="ksu"] .timeline-logo': { alt: 'King Saud University' },
@@ -241,75 +263,84 @@ const translations = {
   },
   ar: {
     title: 'هشام السعدان — مهندس ذكاء اصطناعي وعلوم بيانات',
-    description: 'معرض أعمال هشام السعدان — مهندس ذكاء اصطناعي وعالم بيانات في الرياض، أبحث عن فرص في EdTech. أكثر من 1,500 ساعة تدريب مع كاوست وسدايا وطويق وSDA.',
-    langButtonAria: 'التبديل إلى الإنجليزية',
-    certOpenLabel: 'فتح الشهادة',
-    menuOpen: 'فتح القائمة',
-    menuClose: 'إغلاق القائمة',
+    description: 'معرض أعمال هشام السعدان — مهندس ذكاء اصطناعي وعالم بيانات في الرياض، أدوّر على فرص في EdTech. أكثر من 1,500 ساعة تدريب مع كاوست وسدايا وطويق وSDA.',
+    langButtonAria: 'حوّل للإنجليزية',
+    certOpenLabel: 'افتح الشهادة',
+    menuOpen: 'افتح القائمة',
+    menuClose: 'اقفل القائمة',
+    themeDark: 'حوّل للوضع الداكن',
+    themeLight: 'حوّل للوضع الفاتح',
     text: {
+      '.hero-location': 'مقرّي الرياض، السعودية',
+      '.focus-eyebrow': 'من الفكرة للأثر',
+      '.focus-title': 'أنظمة ذكية. إمكانات عملية.',
+      '.focus-list li:nth-child(1) .focus-label': 'الذكاء الاصطناعي',
+      '.focus-list li:nth-child(2) .focus-label': 'البيانات والرؤى',
+      '.focus-list li:nth-child(3) .focus-label': 'التعلّم وتقنيات التعليم',
+      '.hero-proof-label': 'ساعة تدريب تقني عملي',
       '.nav-links .nav-link[href="#home"]': 'الرئيسية',
       '.nav-links .nav-link[href="#about"]': 'عني',
       '.nav-links .nav-link[href="#experience"]': 'خبراتي',
       '.nav-links .nav-link[href="#skills"]': 'مهاراتي',
       '.nav-links .nav-link[href="#portfolio"]': 'مشاريعي',
       '.nav-links .nav-link[href="#contact"]': 'تواصل معي',
-      '.hero-eyebrow': 'مرحباً، أنا',
+      '.hero-eyebrow': 'هلا، أنا',
       '.hero-title': 'هشام السعدان',
-      '.hero-text': 'مهندس ذكاء اصطناعي وعالم بيانات في الرياض، أبني حلول ذكاء اصطناعي وتحليل بيانات عملية — أبحث عن فرص في EdTech.',
+      '.hero-text': 'مهندس ذكاء اصطناعي وعالم بيانات في الرياض، أبني حلول عملية في الذكاء الاصطناعي وتحليل البيانات — أدوّر على فرص في EdTech.',
       '.hero-actions .btn-primary': 'شوف مشاريعي',
       '.hero-actions .btn-outline': 'تواصل معي',
       '#about .section-eyebrow': 'تعرّف عليّ',
       '#about .section-title': 'من أنا',
-      '#about .section-lead': 'نبذة عني، مجالات اهتمامي، ونوع المشاريع اللي أبحث عنها.',
-      '.about-text p:nth-of-type(1)': 'أنا مهندس ذكاء اصطناعي وعالم بيانات، أركّز على بناء أنظمة ذكية وحلول مبنية على البيانات — وأبحث عن العمل في EdTech.',
-      '.about-text p:nth-of-type(2)': 'شاركت في 6 معسكرات و5 برامج مع كاوست وسدايا وأكاديمية طويق وSDA — أكثر من 1,500 ساعة تدريب في Python والذكاء الاصطناعي وعلوم البيانات وتطوير الويب وإنترنت الأشياء والحوسبة السحابية والبنية التحتية لـ GPU.',
+      '#about .section-lead': 'نبذة عني، مجالات اهتمامي، ونوع الشغل اللي أدوّر عليه.',
+      '.about-text p:nth-of-type(1)': 'أنا مهندس ذكاء اصطناعي وعالم بيانات، أركّز على بناء أنظمة ذكية وحلول مبنية على البيانات — وأدوّر على العمل في EdTech.',
+      '.about-text p:nth-of-type(2)': 'خلّصت 6 معسكرات و5 برامج مع كاوست وسدايا وأكاديمية طويق وSDA — أكثر من 1,500 ساعة تدريب في Python والذكاء الاصطناعي وعلوم البيانات والتطوير المتكامل وإنترنت الأشياء والحوسبة السحابية والبنية التحتية لـ GPU.',
       '.service-card:nth-child(1) h3': 'علوم البيانات',
-      '.service-card:nth-child(1) p': 'أحلل البيانات وأستخرج منها رؤى تساعد في اتخاذ القرار.',
+      '.service-card:nth-child(1) p': 'أستخدم تقنيات تحليلية متقدمة عشان أستخرج رؤى من البيانات.',
       '.service-card:nth-child(2) h3': 'الذكاء الاصطناعي',
-      '.service-card:nth-child(2) p': 'أبني أنظمة ذكية ونماذج رؤية حاسوبية وتعلم عميق.',
+      '.service-card:nth-child(2) p': 'أبني أنظمة ذكية ونماذج رؤية حاسوبية وتعلّم عميق.',
       '.service-card:nth-child(3) h3': 'عرض البيانات',
-      '.service-card:nth-child(3) p': 'أصمم لوحات معلومات تخلي البيانات أسهل للفهم والمتابعة.',
+      '.service-card:nth-child(3) p': 'أصمم لوحات معلومات تخلي فهم البيانات ومتابعتها أسهل.',
       '.service-card:nth-child(4) h3': 'تطوير الويب',
-      '.service-card:nth-child(4) p': 'أطوّر تطبيقات ويب بـ Python وDjango مع تركيز على تجربة المستخدم.',
+      '.service-card:nth-child(4) p': 'أطوّر تطبيقات ويب متكاملة بـ Python وDjango مع تركيز على تجربة المستخدم.',
       '#experience > .container > h2.section-title:first-of-type': 'خبراتي',
       '#experience > .container > .section-eyebrow': 'مسيرتي',
       '#experience > .container > .section-lead': 'تدريب ونمو مهني.',
       '[data-exp="cs-instructor"] .timeline-date': 'أغسطس 2025 - حتى الآن',
       '[data-exp="cs-instructor"] .timeline-title': 'معلم علوم حاسب',
       '[data-exp="cs-instructor"] .timeline-org': 'وزارة التعليم',
-      '[data-exp="cs-instructor"] .timeline-text': 'أدرّس أكثر من 170 طالباً في المرحلتين الابتدائية والمتوسطة بأسلوب عملي قائم على التطبيق، مدعوماً بمنصات تعليمية بنيتها بالذكاء الاصطناعي تحوّل مفاهيم الحاسب الأساسية إلى مشاريع تفاعلية وعملية.',
+      '[data-exp="cs-instructor"] .timeline-text': 'أدرّس أكثر من 170 طالبًا في المرحلتين الابتدائية والمتوسطة بأسلوب عملي نتعلّم فيه بالممارسة، ومدعوم بمنصات تعليمية ذكية بنيتها بنفسي تحوّل مفاهيم الحاسب الأساسية لمشاريع تفاعلية وعملية.',
       '[data-exp="gpu"] .timeline-date': 'يونيو 2026 - أغسطس 2026',
       '[data-exp="gpu"] .timeline-title': "تسارُع — معسكر هندسة GPU",
       '[data-exp="gpu"] .timeline-org': 'أكاديمية طويق',
-      '[data-exp="gpu"] .timeline-text': '9 أسابيع مكثفة في البنية التحتية للذكاء الاصطناعي: نماذج LLM والمحولات، الذكاء الاصطناعي الوكيلي، بنية GPU ومراكز البيانات، CUDA، PyTorch عالي الأداء، التدريب الموزع على عدة معالجات وعدة أجهزة، الضبط الدقيق، والتقييم والتشغيل الإنتاجي. وتُوّجت بشهادة احترافية معتمدة من NVIDIA في البنية التحتية للذكاء الاصطناعي.',
+      '[data-exp="gpu"] .timeline-text': 'خلّصت 9 أسابيع مكثفة عملية في كامل البنية التحتية للذكاء الاصطناعي: نماذج LLM والمحولات، الذكاء الاصطناعي الوكيلي، بنية GPU ومراكز البيانات، CUDA، PyTorch عالي الأداء، التدريب الموزع على عدة معالجات وعدة أجهزة، الضبط الدقيق، والتقييم والاستدلال الإنتاجي على نطاق واسع. وتخرّجت بشهادة احترافية من NVIDIA في البنية التحتية للذكاء الاصطناعي.',
       '[data-exp="sda-python"] .timeline-date': '10 مايو 2026 - 25 يونيو 2026',
       '[data-exp="sda-python"] .timeline-title': 'معسكر تطوير البرمجيات بـ Python',
       '[data-exp="sda-python"] .timeline-org': 'الأكاديمية السعودية الرقمية — SDA',
-      '[data-exp="sda-python"] .timeline-text': '7 أسابيع في تطوير البرمجيات بـ Python وFastAPI وReact وPostgreSQL، مع مشاريع عملية حقيقية.',
+      '[data-exp="sda-python"] .timeline-text': 'خلّصت 7 أسابيع مكثفة في تطوير البرمجيات بـ Python وFastAPI وReact وPostgreSQL، وبنيت مهارات برمجية عملية وخبرة تطبيقية حقيقية.',
       '[data-exp="kaust-ai"] .timeline-date': 'يناير - فبراير 2026',
       '[data-exp="kaust-ai"] .timeline-title': 'الذكاء الاصطناعي المتقدم',
       '[data-exp="kaust-ai"] .timeline-org': 'كاوست — جامعة الملك عبدالله للعلوم والتقنية',
-      '[data-exp="kaust-ai"] .timeline-text': '80 ساعة تدريب متقدم في الذكاء الاصطناعي، طوّرت فيها فهمي للتقنيات والنماذج الحديثة.',
+      '[data-exp="kaust-ai"] .timeline-text': 'خلّصت 80 ساعة تدريب متقدم في الذكاء الاصطناعي، وعمّقت فهمي للتقنيات والنماذج الحديثة وتطبيقاتها.',
       '[data-exp="web-dev"] .timeline-date': 'يونيو 2025 - أغسطس 2025',
       '[data-exp="web-dev"] .timeline-title': 'معسكر تطوير الويب',
       '[data-exp="web-dev"] .timeline-org': 'أكاديمية طويق',
-      '[data-exp="web-dev"] .timeline-text': '300 ساعة في Python وتطوير الويب الكامل، مع التركيز على Django وتقنيات الويب الحديثة.',
+      '[data-exp="web-dev"] .timeline-text': 'خلّصت 300 ساعة مكثفة في Python وتطوير الويب المتكامل، مع التركيز على Django وتقنيات الويب الحديثة.',
       '[data-exp="ai-bootcamp"] .timeline-date': 'سبتمبر 2024 - أكتوبر 2024',
       '[data-exp="ai-bootcamp"] .timeline-title': 'معسكر الذكاء الاصطناعي',
       '[data-exp="ai-bootcamp"] .timeline-org': 'أكاديمية طويق',
-      '[data-exp="ai-bootcamp"] .timeline-text': '200 ساعة في الذكاء الاصطناعي والتعلم الآلي والتعلم العميق، مع تطبيق عملي مباشر.',
+      '[data-exp="ai-bootcamp"] .timeline-text': 'خلّصت 200 ساعة مكثفة، واكتسبت خبرة عملية في الذكاء الاصطناعي والتعلم الآلي والتعلم العميق.',
       '[data-exp="t5"] .timeline-date': 'مارس 2024 - يونيو 2024',
       '[data-exp="t5"] .timeline-title': 'معسكر علوم البيانات والذكاء الاصطناعي T5',
       '[data-exp="t5"] .timeline-org': 'سدايا',
-      '[data-exp="t5"] .timeline-text': '360 ساعة شملت SQL وPython وتحليل البيانات والتعلم الآلي والعميق (CNN وRNN) وMLOps.',
+      '[data-exp="t5"] .timeline-text': 'خلّصت 360 ساعة مكثفة، غطّت SQL وPython وتحليل البيانات والتعلم الآلي والعميق (CNN وRNN) وMLOps.',
       '[data-exp="ds-ml"] .timeline-date': 'أكتوبر 2023 - ديسمبر 2023',
       '[data-exp="ds-ml"] .timeline-title': 'معسكر علوم البيانات وتعلم الآلة',
       '[data-exp="ds-ml"] .timeline-org': 'أكاديمية طويق',
-      '[data-exp="ds-ml"] .timeline-text': '200 ساعة، 5 مشاريع و50 تمريناً باستخدام Python وSQL وPandas وTableau وTensorFlow. تعلّمت تعلم الآلة (SVM وDecision Tree وRandom Forest) والتعلم العميق (CNNs).',
+      '[data-exp="ds-ml"] .timeline-text': '200 ساعة، 5 مشاريع و50 تمرين باستخدام Python وSQL وPandas وTableau وTensorFlow. وتعمّقت في تعلم الآلة (SVM وDecision Tree وRandom Forest) والتعلم العميق (CNNs).',
       '#experience .section-title-secondary': 'التعليم',
       '#experience ol.timeline:last-of-type .timeline-title': 'بكالوريوس علوم الحاسب',
       '#experience ol.timeline:last-of-type .timeline-org': 'جامعة الملك سعود',
-      '#experience ol.timeline:last-of-type .timeline-text': 'درست البرمجة والخوارزميات وهياكل البيانات وقواعد البيانات وأنظمة التشغيل وتطوير البرمجيات.',
+      '#experience ol.timeline:last-of-type .timeline-text': 'ركّزت على أساسيات مثل البرمجة والخوارزميات وهياكل البيانات وقواعد البيانات وأنظمة التشغيل وتطوير البرمجيات.',
       '#skills .section-eyebrow': 'أدواتي ومهاراتي',
       '#skills .section-title': 'المهارات والشهادات',
       '#skills .section-lead': 'التقنيات والشهادات اللي أستخدمها.',
@@ -321,7 +352,7 @@ const translations = {
       '#skills .skill-card:nth-child(4) .tag-list li:nth-child(4)': 'العمل الجماعي',
       '#skills .skill-card:nth-child(4) .tag-list li:nth-child(5)': 'القيادة',
       '#skills .cert-heading': 'الشهادات',
-      '#skills .cert-lead': 'شريط متحرك يعرض كل الشهادات اللي حصلت عليها. اسحبه يمين أو يسار للتصفح براحتك، ومرّر المؤشر على أي شهادة عشان تكبر، واضغط عليها لفتح الأصل.',
+      '#skills .cert-lead': 'شريط متحرك يعرض كل الشهادات اللي حصلت عليها. اسحبه يمين أو يسار عشان تتصفح براحتك، ومرّر المؤشر على أي شهادة تكبر، واضغط عليها تفتح الأصل.',
       '#skills .cert-issuers-label': 'الجهات المانحة',
       '[data-cert="nvidia-ai-infra"] .cert-name': 'شهادة NVIDIA المعتمدة — البنية التحتية للذكاء الاصطناعي وتشغيلها',
       '[data-cert="nvidia-ai-infra"] .cert-meta': 'NVIDIA · أغسطس 2026',
@@ -330,11 +361,11 @@ const translations = {
       '[data-cert="nvidia-transformers"] .cert-name': 'بناء تطبيقات معالجة اللغة الطبيعية بالمحوّلات',
       '[data-cert="nvidia-transformers"] .cert-meta': 'NVIDIA · مارس 2026',
       '[data-cert="kaust-ai"] .cert-name': 'الذكاء الاصطناعي المتقدم — الرؤية الحاسوبية',
-      '[data-cert="kaust-ai"] .cert-meta': 'أكاديمية كاوست · 80+ ساعة · فبراير 2026',
+      '[data-cert="kaust-ai"] .cert-meta': 'أكاديمية كاوست · 80 ساعة · فبراير 2026',
       '[data-cert="web-bootcamp"] .cert-name': 'معسكر تطوير الويب باستخدام بايثون',
       '[data-cert="web-bootcamp"] .cert-meta': 'أكاديمية طويق · 300 ساعة · سبتمبر 2025',
       '[data-cert="drones"] .cert-name': 'بناء ومعايرة الدرونز',
-      '[data-cert="drones"] .cert-meta': 'الاتحاد السعودي للأمن السيبراني والبرمجة · 20 ساعة · مايو 2025',
+      '[data-cert="drones"] .cert-meta': 'الاتحاد السعودي للأمن السيبراني والبرمجة والدرونز · 20 ساعة · مايو 2025',
       '[data-cert="iot"] .cert-name': 'أساسيات إنترنت الأشياء',
       '[data-cert="iot"] .cert-meta': 'أكاديمية طويق · 25 ساعة · مايو 2025',
       '[data-cert="cloud"] .cert-name': 'مهندس الحوسبة السحابية',
@@ -346,54 +377,54 @@ const translations = {
       '[data-cert="ds-bootcamp"] .cert-name': 'معسكر علم البيانات',
       '[data-cert="ds-bootcamp"] .cert-meta': 'أكاديمية طويق · 200 ساعة · ديسمبر 2023',
       '[data-cert="llm-apps"] .cert-name': 'تطوير تطبيقات النماذج اللغوية الكبيرة',
-      '[data-cert="llm-apps"] .cert-meta': 'مجمع الملك سلمان العالمي · 16 ساعة · ديسمبر 2023',
+      '[data-cert="llm-apps"] .cert-meta': 'مجمع الملك سلمان العالمي للغة العربية · 16 ساعة · ديسمبر 2023',
       '#portfolio .section-eyebrow': 'مشاريع مختارة',
       '#portfolio .section-title': 'مشاريعي',
-      '#portfolio .section-lead': 'اختر نوع المشروع للتصفية.',
+      '#portfolio .section-lead': 'اختر نوع المشروع عشان تصفّي المشاريع.',
       '.filter-btn[data-filter-btn="all"]': 'الكل',
       '.filter-btn[data-filter-btn="ai"]': 'ذكاء اصطناعي',
-      '.filter-btn[data-filter-btn="data-analytics"]': 'تحليل بيانات',
+      '.filter-btn[data-filter-btn="data-analytics"]': 'تحليل البيانات',
       '.filter-btn[data-filter-btn="apps"]': 'تطبيقات',
       '[data-category="ai"] .project-category': 'ذكاء اصطناعي',
-      '[data-category="data-analytics"] .project-category': 'تحليل بيانات',
+      '[data-category="data-analytics"] .project-category': 'تحليل البيانات',
       '[data-category="apps"] .project-category': 'تطبيقات',
       '[data-project="attendees"] .project-title': 'نظام إدارة الحضور',
-      '[data-project="attendees"] .project-description': 'نظام حضور تلقائي يستخدم التعرف على الوجوه لتسجيل الطلاب عند دخول الصف.',
-      '[data-project="attendees"] .project-link-label': 'عرض GitHub',
+      '[data-project="attendees"] .project-description': 'نظام حضور تلقائي يستخدم التعرف على الوجوه عشان يسجّل الطلاب يوم يدخلون الصف.',
+      '[data-project="attendees"] .project-link-label': 'شوف GitHub',
       '[data-project="focus"] .project-title': 'منصة تحليل تركيز الطلاب في التعليم الإلكتروني',
       '[data-project="focus"] .project-description': 'يتابع انتباه المتعلمين في التعليم الإلكتروني باستخدام تحليل الوجه ونتائج الاختبارات.',
-      '[data-project="focus"] .project-link-label': 'عرض GitHub',
+      '[data-project="focus"] .project-link-label': 'شوف GitHub',
       '[data-project="kharaf"] .project-title': 'خراف للتمور',
-      '[data-project="kharaf"] .project-description': 'مصنف جودة تمور بالـ CNN يحدد النوع والنضج والجودة ومؤشرات أمراض النخيل.',
-      '[data-project="kharaf"] .project-link-label': 'عرض التقرير',
+      '[data-project="kharaf"] .project-description': 'مصنّف جودة تمور بالـ CNN يحدّد النوع والنضج والجودة ومؤشرات أمراض النخيل.',
+      '[data-project="kharaf"] .project-link-label': 'شوف التقرير',
       '[data-project="diabetes"] .project-title': 'تحليل مرض السكري',
       '[data-project="diabetes"] .project-description': 'تقرير تحليل بيانات يستكشف عوامل خطر السكري والأنماط الصحية.',
-      '[data-project="diabetes"] .project-link-label': 'عرض التقرير',
+      '[data-project="diabetes"] .project-link-label': 'شوف التقرير',
       '[data-project="food"] .project-title': 'تحليل طلبات الطعام أونلاين',
       '[data-project="food"] .project-description': 'تحليل استكشافي يكشف سلوك العملاء واتجاهات طلبات الطعام أونلاين.',
-      '[data-project="food"] .project-link-label': 'عرض التقرير',
+      '[data-project="food"] .project-link-label': 'شوف التقرير',
       '[data-project="tuwaiq"] .project-title': 'تحليل بيانات طلاب أكاديمية طويق',
       '[data-project="tuwaiq"] .project-description': 'تحليل استكشافي لـ 6,500 طالب من أكاديمية طويق وأنماط التدريب.',
-      '[data-project="tuwaiq"] .project-link-label': 'عرض التقرير',
+      '[data-project="tuwaiq"] .project-link-label': 'شوف التقرير',
       '[data-project="powerbi"] .project-title': 'لوحة معلومات Power BI',
-      '[data-project="powerbi"] .project-description': 'لوحة Power BI تفاعلية لتنظيف البيانات ونمذجتها وعرضها بصرياً.',
-      '[data-project="powerbi"] .project-link-label': 'عرض GitHub',
-      '[data-project="halaorder"] .project-title': 'منصة هلا اوردر للمطاعم',
+      '[data-project="powerbi"] .project-description': 'لوحة Power BI تفاعلية لتنظيف البيانات ونمذجتها وعرضها بصريًا.',
+      '[data-project="powerbi"] .project-link-label': 'شوف GitHub',
+      '[data-project="halaorder"] .project-title': 'منصة هلا أوردر للمطاعم',
       '[data-project="halaorder"] .project-description': 'منصة Django متعددة المطاعم لإطلاق متجر إلكتروني وإدارة القوائم والفروع ومتابعة الطلبات لحظيًا.',
-      '[data-project="halaorder"] .project-link-label': 'عرض GitHub',
+      '[data-project="halaorder"] .project-link-label': 'شوف GitHub',
       '[data-project="portfolio-builder"] .project-title': 'منشئ الملف الشخصي',
-      '[data-project="portfolio-builder"] .project-description': 'تطبيق Django يحوّل الاسم وبعض المحطات المهنية إلى ملف شخصي زمني قابل للمشاركة بدون تسجيل.',
-      '[data-project="portfolio-builder"] .project-link-label': 'عرض GitHub',
+      '[data-project="portfolio-builder"] .project-description': 'تطبيق Django يحوّل الاسم وبعض المحطات المهنية إلى ملف شخصي زمني تقدر تشاركه بدون تسجيل.',
+      '[data-project="portfolio-builder"] .project-link-label': 'شوف GitHub',
       '[data-project="guess"] .project-title': 'لعبة تخمين الرقم',
-      '[data-project="guess"] .project-description': 'لعبة Python بسيطة لتخمين الرقم تركز على التحكم بالتدفق وإدخال المستخدم.',
-      '[data-project="guess"] .project-link-label': 'عرض GitHub',
-      '#contact .section-eyebrow': 'تواصل معي',
-      '#contact .section-title': 'تواصل معي',
-      '#contact .section-lead': 'راسلني على الإيميل أو الجوال.',
-      '#contact .contact-card:nth-child(1) .contact-label': 'الإيميل',
-      '#contact .contact-card:nth-child(2) .contact-label': 'الجوال',
-      '#contact .contact-card:nth-child(3) .contact-label': 'الموقع',
-      '#contact .contact-card:nth-child(3) .contact-value': 'الرياض، السعودية',
+      '[data-project="guess"] .project-description': 'لعبة Python بسيطة لتخمين الرقم تركّز على تدفق التحكم وإدخال المستخدم.',
+      '[data-project="guess"] .project-link-label': 'شوف GitHub',
+      '#contact .section-eyebrow': 'كلّمني',
+      '#contact .section-title': 'خلّنا نبني مع بعض ذكاء اصطناعي مفيد',
+      '#contact .section-lead': 'تواصل معي بخصوص فرص الذكاء الاصطناعي وعلوم البيانات وتقنيات التعليم.',
+      '#contact .contact-primary span': 'راسلني على الإيميل',
+      '#contact .contact-actions a:first-child span': 'لينكدإن',
+      '#contact .contact-actions a:last-child span': 'حمّل السيرة الذاتية',
+      '#contact .contact-location': 'الرياض، السعودية',
       '.footer p': '© 2026 هشام السعدان. جميع الحقوق محفوظة.',
       '.bottom-nav-link[href="#home"] span': 'الرئيسية',
       '.bottom-nav-link[href="#about"] span': 'عني',
@@ -412,10 +443,10 @@ const translations = {
       '.about-facts li:nth-child(2)': '<i class="fa-solid fa-phone accent"></i> <span dir="ltr">966-507-050-338</span>',
       '.about-facts li:nth-child(3)': '<i class="fa-solid fa-envelope accent"></i> <span dir="ltr">HeshamAlsadan@gmail.com</span>',
       '.about-facts li:nth-child(4)': '<i class="fa-solid fa-language accent"></i> العربية والإنجليزية',
-      '[data-exp="gpu"] .timeline-capstone': '<strong>ورقة بحثية — رفع دقة النماذج بعد التصغير:</strong> قرأت أبحاث من سبقوني في ضغط النماذج وأكملت من بعدهم، وقدّمت ورقة بحثية عن رفع دقة نماذج الذكاء الاصطناعي بعد تصغيرها من FP16 إلى NVFP4. <em>الأدوات: PyTorch, CUDA, NVIDIA TensorRT Model Optimizer.</em>',
-      '[data-exp="ai-bootcamp"] .timeline-capstone': '<strong>مشروع التخرج — محلل التركيز للتعليم الإلكتروني:</strong> بنيت منصة تستخدم التعرف على الوجوه ونتائج الاختبارات لقياس تركيز الطلاب أثناء التعلم عن بُعد. <em>الأدوات: MediaPipe, OpenAI GPT-3.5, Whisper, Streamlit.</em>',
-      '[data-exp="t5"] .timeline-capstone': '<strong>مشروع التخرج — حاضر:</strong> نظام حضور ذكي يتعرّف على وجوه الطلاب ويسجّل حضورهم تلقائياً عند دخولهم الصف. <em>الأدوات: YOLO, Keras, Roboflow.</em>',
-      '[data-exp="ds-ml"] .timeline-capstone': '<strong>مشروع التخرج — خراف:</strong> مشروع تصنيف صور بالـ CNN يحدد نوع التمر ومستوى النضج والأمراض. <em>الأدوات: Python, TensorFlow, Plotly Dash.</em>',
+      '[data-exp="gpu"] .timeline-capstone': '<strong>ورقة بحثية — رفع دقة النماذج بعد التكميم:</strong> قرأت أبحاث من سبقوني في ضغط النماذج وكملت على شغلهم، وقدّمت ورقة بحثية عن رفع دقة نماذج الذكاء الاصطناعي بعد تكميمها من FP16 إلى NVFP4. <em>الأدوات: PyTorch, CUDA, NVIDIA TensorRT Model Optimizer.</em>',
+      '[data-exp="ai-bootcamp"] .timeline-capstone': '<strong>مشروع التخرج — محلل التركيز للتعليم الإلكتروني:</strong> بنيت منصة تستخدم التعرّف على الوجوه ونتائج الاختبارات عشان أقيس تركيز الطلاب وهم يتعلمون عن بُعد. <em>الأدوات: MediaPipe, OpenAI GPT-3.5, Whisper, Streamlit.</em>',
+      '[data-exp="t5"] .timeline-capstone': '<strong>مشروع التخرج — حاضر:</strong> نظام حضور ذكي يتعرّف على وجوه الطلاب ويسجّل حضورهم تلقائيًا أول ما يدخلون الصف. <em>الأدوات: YOLO, Keras, Roboflow.</em>',
+      '[data-exp="ds-ml"] .timeline-capstone': '<strong>مشروع التخرج — خراف:</strong> مشروع تصنيف صور بالـ CNN يحدد نوع التمر ومستوى النضج والجودة وأمراض النخيل. <em>الأدوات: Python, TensorFlow, Plotly Dash.</em>',
       '#skills .skill-card:nth-child(1) h3': '<i class="fa-solid fa-code accent"></i> لغات البرمجة',
       '#skills .skill-card:nth-child(2) h3': '<i class="fa-solid fa-network-wired accent"></i> أطر التعلم الآلي والعميق',
       '#skills .skill-card:nth-child(3) h3': '<i class="fa-solid fa-toolbox accent"></i> الأدوات والتقنيات',
@@ -424,6 +455,7 @@ const translations = {
     attrs: {
       '[data-nav-menu]': { 'aria-label': 'القائمة الرئيسية' },
       '.hero-quick-nav': { 'aria-label': 'روابط سريعة' },
+      '.hero-focus': { 'aria-label': 'مجالات اهتمامي' },
       '.filter-list': { 'aria-label': 'أنواع المشاريع' },
       '[data-cert-stream]': { 'aria-label': 'الشهادات' },
       '[data-edu="ksu"] .timeline-logo': { alt: 'جامعة الملك سعود' },
@@ -444,7 +476,7 @@ const translations = {
       '[data-project="food"] > a': { 'aria-label': 'عرض تحليل طلبات الطعام أونلاين' },
       '[data-project="tuwaiq"] > a': { 'aria-label': 'عرض تحليل بيانات طلاب أكاديمية طويق' },
       '[data-project="powerbi"] > a': { 'aria-label': 'عرض مشروع لوحة Power BI على GitHub' },
-      '[data-project="halaorder"] > a': { 'aria-label': 'عرض مشروع منصة هلا اوردر على GitHub' },
+      '[data-project="halaorder"] > a': { 'aria-label': 'عرض مشروع منصة هلا أوردر على GitHub' },
       '[data-project="portfolio-builder"] > a': { 'aria-label': 'عرض مشروع منشئ الملف الشخصي على GitHub' },
       '[data-project="guess"] > a': { 'aria-label': 'عرض مشروع لعبة تخمين الرقم على GitHub' },
       'video[poster$="attendees_poster.jpg"]': { 'aria-label': 'عرض نظام إدارة الحضور بالذكاء الاصطناعي' },
@@ -465,6 +497,30 @@ const translations = {
 let currentLang = 'en';
 
 const t = (key) => translations[currentLang][key] || translations.en[key] || '';
+
+const syncThemeControl = () => {
+  const isDark = document.documentElement.dataset.theme === 'dark';
+  if (!themeToggle) return;
+  const label = t(isDark ? 'themeLight' : 'themeDark');
+  themeToggle.setAttribute('aria-label', label);
+  themeToggle.setAttribute('title', label);
+  themeToggle.setAttribute('aria-pressed', String(isDark));
+};
+
+const setTheme = (theme) => {
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = theme;
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  if (themeColor) themeColor.content = theme === 'dark' ? '#15130f' : '#f3eee4';
+  try { localStorage.setItem('portfolio-theme', theme); } catch (_) { /* Theme still works without storage. */ }
+  syncThemeControl();
+};
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
+}
 
 const setLanguage = (lang) => {
   currentLang = lang === 'ar' ? 'ar' : 'en';
@@ -509,6 +565,7 @@ const setLanguage = (lang) => {
     navToggle.setAttribute('aria-label', t(navMenu.classList.contains('open') ? 'menuClose' : 'menuOpen'));
   }
 
+  syncThemeControl();
   applyCertRailOffset(railOffset);
 };
 
@@ -532,14 +589,25 @@ function applyCertRailOffset(offset) {
   certTrack.style.animationDelay = `${-progress * duration}s`;
 }
 
-const setMenuOpen = (open) => {
+const setMenuOpen = (open, { restoreFocus = true } = {}) => {
   if (!navMenu || !navBackdrop || !navToggle || !navIcon) return;
+  const wasOpen = navMenu.classList.contains('open');
   navMenu.classList.toggle('open', open);
   navBackdrop.hidden = !open;
   navToggle.setAttribute('aria-expanded', String(open));
   navToggle.setAttribute('aria-label', t(open ? 'menuClose' : 'menuOpen'));
   navIcon.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
   document.body.classList.toggle('menu-open', open);
+  menuBackground.forEach(element => {
+    if (open) element.setAttribute('inert', '');
+    else element.removeAttribute('inert');
+  });
+
+  if (open && !wasOpen) {
+    requestAnimationFrame(() => navMenu.querySelector('a[href]')?.focus());
+  } else if (!open && wasOpen && restoreFocus) {
+    navToggle.focus();
+  }
 };
 
 setLanguage('en');
@@ -568,11 +636,38 @@ if (langToggle) {
 }
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') setMenuOpen(false);
+  if (event.key === 'Escape' && navMenu?.classList.contains('open')) {
+    setMenuOpen(false);
+    return;
+  }
+
+  if (event.key !== 'Tab' || !navMenu?.classList.contains('open')) return;
+  const focusable = [...navMenu.querySelectorAll('a[href], button:not([disabled])'), navToggle];
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
 });
 
 navLinks.forEach(link => {
-  link.addEventListener('click', () => setMenuOpen(false));
+  link.addEventListener('click', () => {
+    const menuWasOpen = navMenu?.classList.contains('open');
+    const target = document.querySelector(link.getAttribute('href'));
+    setMenuOpen(false, { restoreFocus: !menuWasOpen });
+    if (menuWasOpen && target) {
+      window.setTimeout(() => {
+        const destinationHeading = target.querySelector('h1, h2') || target;
+        destinationHeading.setAttribute('tabindex', '-1');
+        destinationHeading.focus({ preventScroll: true });
+        destinationHeading.addEventListener('blur', () => destinationHeading.removeAttribute('tabindex'), { once: true });
+      }, 350);
+    }
+  });
 });
 
 if (navMenu) {
@@ -581,9 +676,14 @@ if (navMenu) {
   });
 }
 
+menuMedia.addEventListener('change', event => {
+  if (!event.matches) setMenuOpen(false, { restoreFocus: false });
+});
+
 if (backToTop) {
   backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
 }
 
@@ -594,14 +694,22 @@ const getBottomNavTarget = (sectionId) => {
 
 const setActiveNav = (id) => {
   navLinks.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+    const isActive = link.getAttribute('href') === `#${id}`;
+    link.classList.toggle('active', isActive);
+    if (isActive) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
   });
 
   const bottomTarget = getBottomNavTarget(id);
   bottomNavLinks.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === `#${bottomTarget}`);
+    const isActive = link.getAttribute('href') === `#${bottomTarget}`;
+    link.classList.toggle('active', isActive);
+    if (isActive) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
   });
 };
+
+setActiveNav('home');
 
 if ('IntersectionObserver' in window) {
   const sectionObserver = new IntersectionObserver(entries => {
