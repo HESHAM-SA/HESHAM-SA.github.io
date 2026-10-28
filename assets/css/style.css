@@ -1205,12 +1205,6 @@ html[lang="ar"] .section-lead {
   color: var(--ink);
 }
 
-.cert-lead {
-  max-width: 60ch;
-  margin-top: 0.75rem;
-  color: var(--ink-2);
-}
-
 /* Full-bleed rail: escapes the container so cards can stream edge to edge. */
 .cert-stream {
   --cert-card-w: 16.5rem;
