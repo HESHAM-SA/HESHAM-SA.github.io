@@ -1474,6 +1474,7 @@ html[lang="ar"] .cert-name {
 }
 
 .project-card {
+  --project-radius: 1rem;
   display: none;
 }
 
@@ -1491,6 +1492,7 @@ html[lang="ar"] .cert-name {
   display: flex;
   flex-direction: column;
   height: 100%;
+  border-radius: var(--project-radius);
 }
 
 .project-card a:focus-visible {
@@ -1501,15 +1503,17 @@ html[lang="ar"] .cert-name {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border: 1px solid var(--rule);
-  border-radius: 2px;
+  border-radius: var(--project-radius);
   background: var(--paper);
 }
 
+/* Rounded on the media too: Safari does not clip a playing video to its parent's radius. */
 .project-media img,
 .project-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: calc(var(--project-radius) - 1px);
 }
 
 .project-info {
