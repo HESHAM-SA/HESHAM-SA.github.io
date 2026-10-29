@@ -75,6 +75,25 @@ and `.jpg`, then add the card to `index.html` with `data-cert="<id>"`, plus
 `data-i18n="cert.<id>.name"` and `data-i18n="cert.<id>.meta"` on its name and meta, and add the Arabic for both keys to
 `translations.ar.text`.
 
+A plain click on a card opens it in the certificate viewer, a native `<dialog>`, instead of
+leaving the page. Ctrl-, Cmd- and middle-clicks still open the PDF. The viewer reads a
+readable render of every page from `assets/certificates/full/`, derived from the PDF's name:
+`<name>.webp` for the first page, then `<name>-p2.webp` and so on. Add
+`data-cert-pages="2"` (or more) on a card whose PDF has several pages. Render them at about
+2000px on the long side, then convert to WebP:
+
+```bash
+pdftoppm -png -scale-to 2000 assets/certificates/<name>.pdf /tmp/<name>
+```
+
+## WhatsApp
+
+Every WhatsApp link opens `https://wa.me/966507050338` with a greeting typed in the page's
+language. There are five: the About and footer icon rows, the Contact tile, the floating
+button, and the phone bottom-nav tab. They share the `whatsapp.href` and `whatsapp.aria`
+keys, so the English link lives in `index.html` and the Arabic one in
+`translations.ar.attrs`.
+
 ## Local checks
 
 ```bash

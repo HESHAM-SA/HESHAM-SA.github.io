@@ -73,6 +73,7 @@
   --contact-ink-2: #c9ccf2;
   --contact-action-bg: #c5e9ff;
   --contact-action-fg: #201561;
+  --contact-icon: #c5e9ff;
   --shadow: 0 24px 60px -32px rgba(32, 21, 97, 0.35);
   --shadow-sm: 0 12px 28px -18px rgba(32, 21, 97, 0.4);
   --backdrop: rgba(14, 10, 46, 0.45);
@@ -608,16 +609,34 @@ html[dir="rtl"] .hero::before {
 }
 
 .hero-role {
-  margin-top: 1rem;
-  font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.375rem);
-  font-weight: 500;
+  margin-top: 1.1rem;
+  font-size: clamp(1.1875rem, 1rem + 0.7vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--display);
+}
+
+.hero-tagline {
+  max-width: 36ch;
+  text-wrap: balance;
+  margin-top: 0.35rem;
+  font-size: clamp(1rem, 0.94rem + 0.3vw, 1.1875rem);
   color: var(--ink-2);
 }
 
+html[lang="ar"] .name-tag {
+  max-width: min(100%, 42rem);
+}
+
 html[lang="ar"] .hero-title {
+  font-size: clamp(2.25rem, 1.1rem + 3.4vw, 4rem);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: 0;
+}
+
+html[lang="ar"] .hero-title span {
+  display: inline;
 }
 
 /* The skyline is drawn in the sky's own ink; it sits on the end side and mirrors with the reading direction. */
@@ -1282,6 +1301,7 @@ html[dir="rtl"] .cert-stream.is-ready .cert-track {
 }
 
 .cert-stream.is-paused .cert-track,
+.cert-stream.is-viewing .cert-track,
 .cert-stream.is-offscreen .cert-track {
   animation-play-state: paused;
 }
@@ -1558,70 +1578,142 @@ html[dir="rtl"] .cert-card {
 }
 
 #contact .section-title {
-  max-width: 16ch;
+  max-width: none;
   color: var(--contact-ink);
 }
 
-#contact .section-lead {
-  color: var(--contact-ink-2);
+#contact > .container {
+  position: relative;
+  padding-bottom: calc(var(--panel-pad) + 4rem);
+  overflow: hidden;
 }
 
-.contact-panel {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.25rem;
+#contact .section-title,
+.contact-tiles,
+.contact-location {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.875rem;
+  max-width: 46rem;
   margin-top: 2rem;
 }
 
-.contact-primary {
-  min-height: 3.25rem;
-  padding-inline: 1.75rem;
-  background: var(--contact-action-bg);
-  color: var(--contact-action-fg);
-  font-size: 1rem;
+.contact-tile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--contact-ink);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.contact-primary:hover {
+.contact-tile:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.contact-tile-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 1.125rem;
+  color: var(--contact-icon);
+}
+
+/* The value scales with its own tile, so the email never breaks mid-address at any width. */
+.contact-tile-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  container-type: inline-size;
+}
+
+.contact-tile-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--contact-ink-2);
+}
+
+.contact-tile-value {
+  display: block;
+  font-size: clamp(0.8125rem, 6.8cqi, 1rem);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* WhatsApp is the one-tap channel, so its tile takes the sky. */
+.contact-tile-primary {
+  border-color: transparent;
+  background: var(--contact-action-bg);
+  color: var(--contact-action-fg);
+}
+
+.contact-tile-primary:hover {
+  border-color: transparent;
   background: #ffffff;
 }
 
-.contact-actions {
+.contact-tile-primary .contact-tile-icon {
+  background: var(--contact-action-fg);
+  color: var(--contact-action-bg);
+}
+
+.contact-tile-primary .contact-tile-label {
+  color: #3a3480;
+}
+
+.contact-location {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.contact-secondary {
-  border-color: var(--contact-ink-2);
-  color: var(--contact-ink);
-}
-
-.contact-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.contact-details {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 2rem;
-  margin-top: 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
   font-size: 0.9375rem;
   color: var(--contact-ink-2);
 }
 
-.contact-detail {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
+.contact-location .icon {
+  color: var(--contact-icon);
 }
 
-.contact-detail .icon {
-  color: var(--sky-top);
+/* The hero's skyline again, after dark: the panel's floor becomes the horizon. */
+.contact-skyline {
+  --sky-ink: #c5e9ff;
+  --sky-building: #2c247a;
+  --wash-a: #2a2470;
+  --wash-b: #2c247a;
+  --wash-c: #3a2a78;
+  --window: #ffd27a;
+  --cloud: #2f2878;
+  --sun: #f2e7c9;
+
+  position: absolute;
+  inset-inline: 0;
+  bottom: -2px;
+  display: block;
+  width: 100%;
+  height: clamp(10rem, 21vw, 16rem);
+  pointer-events: none;
 }
 
-a.contact-detail:hover {
-  color: var(--contact-ink);
+html[dir="rtl"] .contact-skyline {
+  transform: scaleX(-1);
+}
+
+.contact-skyline .sky-window {
+  stroke-width: 3;
 }
 
 /* ===== Footer ===== */
@@ -1680,10 +1772,46 @@ html[lang="ar"] .bottom-nav-link {
   color: var(--display);
 }
 
-.back-to-top {
+.whatsapp-float {
   position: fixed;
   inset-inline-end: 1.25rem;
   bottom: 1.25rem;
+  z-index: 94;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  background: var(--action-bg);
+  font-size: 1.5rem;
+  color: var(--action-fg);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s var(--ease-out), background-color 0.2s ease, opacity 0.2s ease, visibility 0s;
+}
+
+/* While the Contact close is on screen its own WhatsApp tile leads, so the floating copy steps aside. */
+.whatsapp-float.is-tucked {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: transform 0.2s var(--ease-out), opacity 0.2s ease, visibility 0s 0.2s;
+}
+
+@media (min-width: 769px) {
+  .whatsapp-float.is-tucked ~ .back-to-top {
+    bottom: 1.25rem;
+  }
+}
+
+.whatsapp-float:hover {
+  background: var(--action-hover);
+  transform: translateY(-2px);
+}
+
+.back-to-top {
+  position: fixed;
+  inset-inline-end: 1.45rem;
+  bottom: 5.25rem;
   z-index: 94;
   display: grid;
   place-items: center;
@@ -1698,6 +1826,160 @@ html[lang="ar"] .bottom-nav-link {
 
 .back-to-top[hidden] {
   display: none;
+}
+
+/* ===== Certificate viewer ===== */
+
+body.dialog-open {
+  overflow: hidden;
+}
+
+.cert-dialog {
+  width: min(64rem, calc(100vw - 2rem));
+  max-width: none;
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-panel);
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.cert-dialog::backdrop {
+  background: rgba(14, 10, 46, 0.62);
+}
+
+.cert-dialog-inner {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 2rem);
+}
+
+.cert-dialog-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 0.75rem 0.75rem 0;
+}
+
+.cert-dialog-btn {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--chip);
+  font-size: 1rem;
+  color: var(--display);
+  transition: background-color 0.2s ease;
+}
+
+.cert-dialog-btn:hover {
+  background: var(--line);
+}
+
+.cert-dialog-close {
+  margin-inline-start: 0.5rem;
+  background: var(--action-bg);
+  color: var(--action-fg);
+}
+
+.cert-dialog-close:hover {
+  background: var(--action-hover);
+}
+
+html[dir="rtl"] [data-cert-prev] .icon,
+html[dir="rtl"] [data-cert-next] .icon {
+  transform: scaleX(-1);
+}
+
+.cert-dialog-figure {
+  display: grid;
+  flex: 1 1 auto;
+  justify-items: center;
+  gap: 1rem;
+  min-height: 0;
+  padding: 0.75rem 1.25rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  cursor: zoom-in;
+}
+
+.cert-dialog-figure img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: calc(100dvh - 13rem);
+  border-radius: 0.75rem;
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.cert-dialog-figure.is-zoomed {
+  justify-items: start;
+  cursor: zoom-out;
+}
+
+.cert-dialog-figure.is-zoomed img {
+  width: min(2000px, 220%);
+  max-width: none;
+  max-height: none;
+}
+
+.cert-dialog-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding: 1rem 1.5rem 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.cert-dialog-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--display);
+}
+
+.cert-dialog-meta {
+  margin-top: 0.15rem;
+  font-size: 0.875rem;
+  color: var(--ink-3);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cert-dialog[open] {
+    animation: cert-open 0.28s var(--ease-out);
+  }
+
+  .cert-dialog[open]::backdrop {
+    animation: cert-backdrop 0.28s ease-out;
+  }
+}
+
+@keyframes cert-open {
+  from { opacity: 0; transform: scale(0.96); }
+}
+
+@keyframes cert-backdrop {
+  from { opacity: 0; }
+}
+
+/* Below the panel's full width the towers would meet the tiles, so the skyline drops beneath them. */
+@media (max-width: 1199px) {
+  #contact > .container {
+    padding-bottom: calc(var(--panel-pad) + clamp(9rem, 17vw, 12rem));
+  }
+
+  .contact-skyline {
+    height: clamp(9rem, 17vw, 12rem);
+  }
 }
 
 /* ===== Medium screens ===== */
@@ -1782,7 +2064,39 @@ html[lang="ar"] .bottom-nav-link {
   }
 
   .back-to-top {
+    inset-inline-end: 1.25rem;
     bottom: calc(5.75rem + env(safe-area-inset-bottom));
+  }
+
+  .whatsapp-float {
+    display: none;
+  }
+
+  .contact-tiles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-tile {
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+  }
+
+  .contact-tile-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .cert-dialog {
+    width: calc(100vw - 1rem);
+    max-height: calc(100dvh - 1rem);
+  }
+
+  .cert-dialog-inner {
+    max-height: calc(100dvh - 1rem);
+  }
+
+  .cert-dialog-figure {
+    padding-inline: 0.75rem;
   }
 
   .footer {

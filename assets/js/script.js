@@ -23,6 +23,7 @@ const menuBackground = [
   document.querySelector('footer'),
   document.querySelector('[data-bottom-nav]'),
   backToTop,
+  document.querySelector('[data-whatsapp-float]'),
   navbar && navbar.querySelector('.nav-logo'),
   langToggle,
   themeToggle,
@@ -60,7 +61,8 @@ const translations = {
       'nav.cv': 'السيرة',
       'hero.first': 'هشام',
       'hero.last': 'السعدان',
-      'hero.role': 'ذكاء اصطناعي وبيانات للتعليم',
+      'hero.role': 'عالم بيانات وذكاء اصطناعي',
+      'hero.tagline': 'أحوّل بيانات الفصل إلى تعلّم أفضل.',
       'about.title': 'من أنا',
       'about.intro': 'أدرّس علوم الحاسب لأكثر من <span class="scribble">170</span> طالب، وأبني أدوات الذكاء الاصطناعي والبيانات اللي يشتغل عليها فصلي.',
       'about.p1': 'أنا مهندس ذكاء اصطناعي وعالم بيانات، أركّز على بناء أنظمة ذكية وحلول مبنية على البيانات — وأدوّر على العمل في EdTech.',
@@ -204,17 +206,20 @@ const translations = {
       'project.guess.title': 'لعبة تخمين الرقم',
       'project.guess.description': 'لعبة Python بسيطة لتخمين الرقم تركّز على تدفق التحكم وإدخال المستخدم.',
       'project.guess.link': 'شوف GitHub',
-      'contact.title': 'خلّنا نبني مع بعض ذكاء اصطناعي مفيد',
-      'contact.lead': 'تواصل معي بخصوص فرص الذكاء الاصطناعي وعلوم البيانات وتقنيات التعليم.',
+      'contact.title': 'تدوّر أحد للتعليم والذكاء الاصطناعي؟<br>خلّنا نسولف.',
       'contact.email': 'راسلني على الإيميل',
+      'contact.whatsapp': 'واتساب',
+      'contact.emailLabel': 'الإيميل',
       'contact.linkedin': 'لينكدإن',
+      'contact.cvLabel': 'السيرة الذاتية',
       'contact.cv': 'حمّل السيرة الذاتية',
       'contact.location': 'الرياض، السعودية',
       'footer.copyright': '© 2026 هشام السعدان. جميع الحقوق محفوظة.',
       'bottomNav.home': 'الرئيسية',
       'bottomNav.about': 'عني',
       'bottomNav.projects': 'مشاريعي',
-      'bottomNav.contact': 'تواصل'
+      'bottomNav.whatsapp': 'واتساب',
+      'certDialog.open': 'افتح ملف PDF الأصلي',
     },
     // data-i18n-attr keys
     attrs: {
@@ -252,6 +257,11 @@ const translations = {
       'project.guess.aria': 'عرض مشروع لعبة تخمين الرقم على GitHub',
       'project.guess.media': 'لعبة تخمين الرقم',
       'bottomNav.aria': 'قائمة التنقل',
+      'whatsapp.href': 'https://wa.me/966507050338?text=%D9%87%D9%84%D8%A7%20%D9%87%D8%B4%D8%A7%D9%85%D8%8C%20%D8%B4%D9%81%D8%AA%20%D9%85%D9%88%D9%82%D8%B9%D9%83%20%D9%88%D8%AD%D8%A7%D8%A8%20%D8%A3%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%D9%83.',
+      'whatsapp.aria': 'راسلني على واتساب',
+      'certDialog.prev': 'الشهادة السابقة',
+      'certDialog.next': 'الشهادة التالية',
+      'certDialog.close': 'إغلاق',
       'backToTop.aria': 'ارجع للأعلى'
     }
   }
@@ -722,6 +732,113 @@ if (certStream && certTrack && certSet) {
 
     certVisibility.observe(certStream);
   }
+}
+
+/* ===== Certificate viewer ===== */
+// A plain click opens the certificate in place; modified clicks and no-JS visits still open the PDF.
+const certDialog = document.querySelector('[data-cert-dialog]');
+
+if (certStream && certSet && certDialog && typeof certDialog.showModal === 'function') {
+  const certCards = [...certSet.querySelectorAll('.cert-card')];
+  const certFigure = certDialog.querySelector('[data-cert-figure]');
+  const certTitle = certDialog.querySelector('[data-cert-title]');
+  const certMeta = certDialog.querySelector('[data-cert-meta]');
+  const certPdf = certDialog.querySelector('[data-cert-pdf]');
+  let certIndex = 0;
+  let certOpener = null;
+
+  // certificates/<name>.pdf is rendered page by page to certificates/full/<name>.webp, then <name>-p2.webp, ...
+  const certPages = (card) => {
+    const base = card.getAttribute('href').replace(/certificates\/([^/]+)\.pdf$/, 'certificates/full/$1');
+    const count = Number(card.dataset.certPages) || 1;
+    return Array.from({ length: count }, (_, i) => `${base}${i ? `-p${i + 1}` : ''}.webp`);
+  };
+
+  const showCert = (index) => {
+    certIndex = (index + certCards.length) % certCards.length;
+    const card = certCards[certIndex];
+    const name = card.querySelector('.cert-name')?.textContent || '';
+    certTitle.textContent = name;
+    certMeta.textContent = card.querySelector('.cert-meta')?.textContent || '';
+    certPdf.href = card.getAttribute('href');
+    certFigure.classList.remove('is-zoomed');
+    certFigure.replaceChildren(...certPages(card).map((src, i) => {
+      const img = new Image();
+      img.src = src;
+      img.alt = i ? `${name} (${i + 1})` : name;
+      img.decoding = 'async';
+      return img;
+    }));
+    certFigure.scrollTo(0, 0);
+  };
+
+  // Bubbles after the rail's capture-phase guard, which already swallows the click that ends a drag.
+  certStream.addEventListener('click', (event) => {
+    const card = event.target.closest('.cert-card');
+    if (!card || event.defaultPrevented || event.button !== 0) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    const index = Math.max(0, certCards.findIndex(c => c.dataset.cert === card.dataset.cert));
+    // The cloned set is aria-hidden, so focus comes back to its visible twin.
+    certOpener = card.closest('[aria-hidden="true"]') ? certCards[index] : card;
+    showCert(index);
+    certStream.classList.add('is-viewing');
+    document.body.classList.add('dialog-open');
+    certDialog.showModal();
+  });
+
+  certDialog.querySelector('[data-cert-close]')?.addEventListener('click', () => certDialog.close());
+  certDialog.querySelector('[data-cert-prev]')?.addEventListener('click', () => showCert(certIndex - 1));
+  certDialog.querySelector('[data-cert-next]')?.addEventListener('click', () => showCert(certIndex + 1));
+
+  certDialog.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    const forward = event.key === (document.documentElement.dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight');
+    showCert(certIndex + (forward ? 1 : -1));
+  });
+
+  // The dialog box itself has no padding, so a click that lands on the dialog element is the backdrop.
+  certDialog.addEventListener('click', (event) => {
+    if (event.target === certDialog) certDialog.close();
+  });
+
+  // Small print on a phone: a tap swaps between fitting the screen and full size.
+  certFigure.addEventListener('click', () => certFigure.classList.toggle('is-zoomed'));
+
+  certDialog.addEventListener('close', () => {
+    certStream.classList.remove('is-viewing');
+    document.body.classList.remove('dialog-open');
+    certOpener?.focus({ preventScroll: true });
+  });
+}
+
+/* ===== Contact skyline ===== */
+// The page closes on the hero's own drawing, at night; it is decoration, so it simply stays absent without JS.
+const contactSky = document.querySelector('[data-contact-sky]');
+const heroDrawing = document.querySelector('.skyline .sky-drawing');
+
+if (contactSky && heroDrawing) {
+  const nightDrawing = heroDrawing.cloneNode(true);
+  nightDrawing.setAttribute('filter', 'url(#sky-hand-night)');
+  // No birds after dark; at the panel's scale they would also crowd the tiles.
+  nightDrawing.querySelector('[data-sky-birds]')?.remove();
+  // The drawing hugs the panel's end; the ground runs on past its left edge so the whole floor reads as horizon.
+  const ground = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  ground.setAttribute('class', 'sky-line sky-bold');
+  ground.setAttribute('d', 'M-4000 500 Q-2000 503 0 500');
+  nightDrawing.prepend(ground);
+  contactSky.appendChild(nightDrawing);
+}
+
+/* ===== Floating WhatsApp ===== */
+const whatsappFloat = document.querySelector('[data-whatsapp-float]');
+const contactSection = document.querySelector('#contact');
+
+if (whatsappFloat && contactSection && 'IntersectionObserver' in window) {
+  new IntersectionObserver(([entry]) => {
+    whatsappFloat.classList.toggle('is-tucked', entry.isIntersecting);
+  }, { threshold: 0.25 }).observe(contactSection);
 }
 
 /* ===== Lazy project videos ===== */
