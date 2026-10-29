@@ -8,15 +8,21 @@
   <meta name="description" content="Portfolio of Hesham Alsadan — AI Engineer and Data Scientist in Riyadh, looking for opportunities in EdTech. 1,500+ hours of training across KAUST, SDAIA, Tuwaiq, and SDA.">
   <meta name="theme-color" content="#f3eee4">
   <script>
-    // Resolve the explicit preference before the stylesheet paints. Light is the default.
+    // Resolve the explicit preferences before the stylesheet paints. Light and English are the defaults.
+    // Language: ?lang= first, then the saved choice. script.js swaps the text; dir has to be right from first paint.
     (() => {
       let theme = 'light';
+      let lang = new URLSearchParams(location.search).get('lang');
       try {
         const saved = localStorage.getItem('portfolio-theme');
         if (saved === 'light' || saved === 'dark') theme = saved;
+        if (lang !== 'ar' && lang !== 'en') lang = localStorage.getItem('portfolio-lang');
       } catch (_) { /* Storage can be unavailable in private or embedded contexts. */ }
+      if (lang !== 'ar') lang = 'en';
       document.documentElement.dataset.theme = theme;
       document.documentElement.style.colorScheme = theme;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#15130f' : '#f3eee4';
     })();
   </script>
@@ -72,15 +78,15 @@
   <header class="navbar" data-navbar>
     <a href="#home" class="nav-logo" dir="ltr">H<span>.</span>Alsadan</a>
 
-    <nav class="nav-links" id="nav-menu" data-nav-menu aria-label="Main navigation">
-      <a href="#home" class="nav-link active" data-nav-link>Home</a>
-      <a href="#about" class="nav-link" data-nav-link>About</a>
-      <a href="#experience" class="nav-link" data-nav-link>Experience</a>
-      <a href="#skills" class="nav-link" data-nav-link>Skills</a>
-      <a href="#portfolio" class="nav-link" data-nav-link>Portfolio</a>
-      <a href="#contact" class="nav-link" data-nav-link>Contact</a>
+    <nav class="nav-links" id="nav-menu" data-nav-menu aria-label="Main navigation" data-i18n-attr="aria-label:nav.aria">
+      <a href="#home" class="nav-link active" data-nav-link data-i18n="nav.home">Home</a>
+      <a href="#about" class="nav-link" data-nav-link data-i18n="nav.about">About</a>
+      <a href="#experience" class="nav-link" data-nav-link data-i18n="nav.experience">Experience</a>
+      <a href="#skills" class="nav-link" data-nav-link data-i18n="nav.skills">Skills</a>
+      <a href="#portfolio" class="nav-link" data-nav-link data-i18n="nav.portfolio">Portfolio</a>
+      <a href="#contact" class="nav-link" data-nav-link data-i18n="nav.contact">Contact</a>
       <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" rel="noopener" download class="btn btn-sm nav-cv-btn nav-cv-mobile">
-        <i class="fa-solid fa-download"></i> Download CV
+        <i class="fa-solid fa-download"></i> <span data-i18n="nav.cvMobile">Download CV</span>
       </a>
     </nav>
 
@@ -94,7 +100,7 @@
         <span class="lang-option lang-option-ar" lang="ar">عربي</span>
       </button>
       <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" rel="noopener" download class="btn btn-sm nav-cv-btn nav-cv-desktop">
-        <i class="fa-solid fa-download"></i> CV
+        <i class="fa-solid fa-download"></i> <span data-i18n="nav.cv">CV</span>
       </a>
       <button class="nav-toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
         <i class="fa-solid fa-bars" data-nav-icon></i>
@@ -110,25 +116,25 @@
     <section class="hero" id="home">
       <div class="hero-content reveal">
         <div class="hero-copy">
-          <p class="hero-eyebrow">Hello, I'm</p>
-          <h1 class="hero-title">Hesham Alsadan</h1>
-          <p class="hero-subtitle">AI Engineer <span class="accent">|</span> Data Science</p>
+          <p class="hero-eyebrow" data-i18n="hero.eyebrow">Hello, I'm</p>
+          <h1 class="hero-title" data-i18n="hero.title">Hesham Alsadan</h1>
+          <p class="hero-subtitle" data-i18n-html="hero.subtitle">AI Engineer <span class="accent">|</span> Data Science</p>
 
-          <p class="hero-text">
+          <p class="hero-text" data-i18n="hero.text">
             AI Engineer and Data Scientist based in Riyadh, building practical AI and data solutions —
             looking for opportunities in EdTech.
           </p>
 
           <div class="hero-actions">
-            <a href="#portfolio" class="btn btn-primary">View Projects</a>
-            <a href="#contact" class="btn btn-outline">Contact Me</a>
+            <a href="#portfolio" class="btn btn-primary" data-i18n="hero.projects">View Projects</a>
+            <a href="#contact" class="btn btn-outline" data-i18n="hero.contact">Contact Me</a>
           </div>
 
-          <nav class="hero-quick-nav" aria-label="Quick section links">
-            <a href="#about" class="quick-link"><i class="fa-solid fa-user"></i> About</a>
-            <a href="#experience" class="quick-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
-            <a href="#skills" class="quick-link"><i class="fa-solid fa-star"></i> Skills</a>
-            <a href="#portfolio" class="quick-link"><i class="fa-solid fa-folder-open"></i> Projects</a>
+          <nav class="hero-quick-nav" aria-label="Quick section links" data-i18n-attr="aria-label:quick.aria">
+            <a href="#about" class="quick-link"><i class="fa-solid fa-user"></i> <span data-i18n="quick.about">About</span></a>
+            <a href="#experience" class="quick-link"><i class="fa-solid fa-briefcase"></i> <span data-i18n="quick.experience">Experience</span></a>
+            <a href="#skills" class="quick-link"><i class="fa-solid fa-star"></i> <span data-i18n="quick.skills">Skills</span></a>
+            <a href="#portfolio" class="quick-link"><i class="fa-solid fa-folder-open"></i> <span data-i18n="quick.projects">Projects</span></a>
           </nav>
 
           <ul class="hero-socials">
@@ -155,21 +161,21 @@
           </ul>
         </div>
 
-        <aside class="hero-focus" aria-label="My focus">
+        <aside class="hero-focus" aria-label="My focus" data-i18n-attr="aria-label:focus.aria">
           <div class="hero-focus-top">
             <figure class="hero-avatar">
-              <img src="./assets/images/profile_picture.jpg" alt="Hesham Alsadan" width="160" height="160" fetchpriority="high" decoding="async">
+              <img src="./assets/images/profile_picture.jpg" alt="Hesham Alsadan" data-i18n-attr="alt:hero.avatar" width="160" height="160" fetchpriority="high" decoding="async">
             </figure>
-            <span class="hero-location">Based in Riyadh, KSA</span>
+            <span class="hero-location" data-i18n="hero.location">Based in Riyadh, KSA</span>
           </div>
-          <p class="focus-eyebrow">Ideas into impact</p>
-          <h2 class="focus-title">Intelligent systems.<br>Practical possibilities.</h2>
+          <p class="focus-eyebrow" data-i18n="focus.eyebrow">Ideas into impact</p>
+          <h2 class="focus-title" data-i18n-html="focus.title">Intelligent systems.<br>Practical possibilities.</h2>
           <ul class="focus-list">
-            <li><span class="focus-label">Artificial intelligence</span></li>
-            <li><span class="focus-label">Data &amp; insights</span></li>
-            <li><span class="focus-label">Learning &amp; EdTech</span></li>
+            <li><span class="focus-label" data-i18n="focus.ai">Artificial intelligence</span></li>
+            <li><span class="focus-label" data-i18n="focus.data">Data &amp; insights</span></li>
+            <li><span class="focus-label" data-i18n="focus.learning">Learning &amp; EdTech</span></li>
           </ul>
-          <div class="hero-proof"><strong dir="ltr">1,500<span>+</span></strong><span class="hero-proof-label">hours of hands-on<br>technical training</span></div>
+          <div class="hero-proof"><strong dir="ltr">1,500<span>+</span></strong><span class="hero-proof-label" data-i18n-html="hero.proof">hours of hands-on<br>technical training</span></div>
         </aside>
       </div>
     </section>
@@ -177,46 +183,46 @@
     <!-- ===== ABOUT ===== -->
     <section class="section" id="about">
       <div class="container">
-        <p class="section-eyebrow reveal">Get to know me</p>
-        <h2 class="section-title reveal">About Me</h2>
-        <p class="section-lead reveal">Who I am, what I focus on, and the kind of work I'm looking for.</p>
+        <p class="section-eyebrow reveal" data-i18n="about.eyebrow">Get to know me</p>
+        <h2 class="section-title reveal" data-i18n="about.title">About Me</h2>
+        <p class="section-lead reveal" data-i18n="about.lead">Who I am, what I focus on, and the kind of work I'm looking for.</p>
 
         <div class="about-grid">
           <div class="about-text reveal">
-            <p>
+            <p data-i18n="about.p1">
               I'm an AI Engineer and Data Scientist focused on building intelligent systems
               and data-driven solutions — and I'm looking to work in EdTech.
             </p>
-            <p>
+            <p data-i18n="about.p2">
               Through 6 bootcamps and 5 programs at KAUST, SDAIA, Tuwaiq Academy, and SDA, I've
               completed 1,500+ hours of training in Python, AI, data science, full-stack development,
               IoT, cloud, and GPU infrastructure.
             </p>
 
             <ul class="about-facts">
-              <li><i class="fa-solid fa-location-dot accent"></i> Riyadh, KSA</li>
+              <li><i class="fa-solid fa-location-dot accent"></i> <span data-i18n="about.location">Riyadh, KSA</span></li>
               <li><i class="fa-solid fa-phone accent"></i> <span dir="ltr">966-507-050-338</span></li>
               <li><i class="fa-solid fa-envelope accent"></i> <span dir="ltr">HeshamAlsadan@gmail.com</span></li>
-              <li><i class="fa-solid fa-language accent"></i> Arabic &amp; English</li>
+              <li><i class="fa-solid fa-language accent"></i> <span data-i18n="about.languages">Arabic &amp; English</span></li>
             </ul>
           </div>
 
           <ul class="service-list">
             <li class="service-card reveal">
-              <h3>Data Science</h3>
-              <p>Advanced analytical techniques for extracting insights from data.</p>
+              <h3 data-i18n="service.data.title">Data Science</h3>
+              <p data-i18n="service.data.text">Advanced analytical techniques for extracting insights from data.</p>
             </li>
             <li class="service-card reveal">
-              <h3>Artificial Intelligence</h3>
-              <p>Development of intelligent systems, computer vision, and deep learning models.</p>
+              <h3 data-i18n="service.ai.title">Artificial Intelligence</h3>
+              <p data-i18n="service.ai.text">Development of intelligent systems, computer vision, and deep learning models.</p>
             </li>
             <li class="service-card reveal">
-              <h3>Visualization</h3>
-              <p>Producing dashboards for data visualization and storytelling.</p>
+              <h3 data-i18n="service.viz.title">Visualization</h3>
+              <p data-i18n="service.viz.text">Producing dashboards for data visualization and storytelling.</p>
             </li>
             <li class="service-card reveal">
-              <h3>Web Development</h3>
-              <p>Building full-stack web apps with Python and Django, focused on user experience.</p>
+              <h3 data-i18n="service.web.title">Web Development</h3>
+              <p data-i18n="service.web.text">Building full-stack web apps with Python and Django, focused on user experience.</p>
             </li>
           </ul>
         </div>
@@ -226,19 +232,19 @@
     <!-- ===== EXPERIENCE ===== -->
     <section class="section section-alt" id="experience">
       <div class="container">
-        <p class="section-eyebrow reveal">My journey</p>
-        <h2 class="section-title reveal">Experience</h2>
-        <p class="section-lead reveal">Training and professional growth.</p>
+        <p class="section-eyebrow reveal" data-i18n="experience.eyebrow">My journey</p>
+        <h2 class="section-title reveal" data-i18n="experience.title">Experience</h2>
+        <p class="section-lead reveal" data-i18n="experience.lead">Training and professional growth.</p>
 
         <ol class="timeline">
           <li class="timeline-item reveal" data-exp="cs-instructor">
             <div class="timeline-marker"></div>
-            <span class="timeline-date">Aug 2025 - Present</span>
+            <span class="timeline-date" data-i18n="exp.cs-instructor.date">Aug 2025 - Present</span>
             <img class="timeline-logo" src="./assets/logos/ministry-of-education.svg"
-                 alt="Ministry of Education" width="79" height="60" loading="lazy" decoding="async">
-            <h3 class="timeline-title">Computer Science Instructor</h3>
-            <p class="timeline-org">Ministry of Education</p>
-            <p class="timeline-text">
+                 alt="Ministry of Education" data-i18n-attr="alt:exp.cs-instructor.logo" width="79" height="60" loading="lazy" decoding="async">
+            <h3 class="timeline-title" data-i18n="exp.cs-instructor.title">Computer Science Instructor</h3>
+            <p class="timeline-org" data-i18n="exp.cs-instructor.org">Ministry of Education</p>
+            <p class="timeline-text" data-i18n="exp.cs-instructor.text">
               Teaching over 170 elementary and middle school students with a hands-on,
               &ldquo;learn-by-doing&rdquo; approach, powered by custom-built AI educational platforms
               that turn core computing concepts into interactive, practical projects.
@@ -247,18 +253,18 @@
 
           <li class="timeline-item reveal" data-exp="gpu">
             <div class="timeline-marker"></div>
-            <span class="timeline-date">Jun 2026 - Aug 2026</span>
+            <span class="timeline-date" data-i18n="exp.gpu.date">Jun 2026 - Aug 2026</span>
             <img class="timeline-logo" src="./assets/logos/tuwaiq-academy.svg"
-                 alt="Tuwaiq Academy" width="243" height="44" loading="lazy" decoding="async">
-            <h3 class="timeline-title">Tasar'u — GPU Engineering Bootcamp | تسارُع</h3>
-            <p class="timeline-org">Tuwaiq Academy</p>
-            <p class="timeline-text">
+                 alt="Tuwaiq Academy" data-i18n-attr="alt:exp.gpu.logo" width="243" height="44" loading="lazy" decoding="async">
+            <h3 class="timeline-title" data-i18n="exp.gpu.title">Tasar'u — GPU Engineering Bootcamp | تسارُع</h3>
+            <p class="timeline-org" data-i18n="exp.gpu.org">Tuwaiq Academy</p>
+            <p class="timeline-text" data-i18n="exp.gpu.text">
               Completed 9 intensive hands-on weeks across the full AI-infrastructure stack: LLMs and
               Transformers, agentic AI, GPU and datacenter architecture, CUDA, high-performance PyTorch,
               multi-GPU and multi-node distributed training, fine-tuning, evaluation, and production
               inference at scale. Graduated with a professional NVIDIA certification in AI Infrastructure.
             </p>
-            <p class="timeline-capstone">
+            <p class="timeline-capstone" data-i18n-html="exp.gpu.capstone">
               <strong>Research Paper — Recovering Accuracy After Low-Bit Quantization:</strong> studied
               and extended prior work on model compression, then presented a paper on improving the
               accuracy of AI models quantized from FP16 down to NVFP4.
@@ -268,12 +274,12 @@
 
           <li class="timeline-item reveal" data-exp="sda-python">
             <div class="timeline-marker"></div>
-            <span class="timeline-date">May 10, 2026 - Jun 25, 2026</span>
+            <span class="timeline-date" data-i18n="exp.sda-python.date">May 10, 2026 - Jun 25, 2026</span>
             <img class="timeline-logo" src="./assets/logos/mcit.svg"
-                 alt="Ministry of Communications and Information Technology" width="190" height="44" loading="lazy" decoding="async">
-            <h3 class="timeline-title">Software Development using Python Bootcamp Trainee</h3>
-            <p class="timeline-org">SDA — Saudi Digital Academy</p>
-            <p class="timeline-text">
+                 alt="Ministry of Communications and Information Technology" data-i18n-attr="alt:exp.sda-python.logo" width="190" height="44" loading="lazy" decoding="async">
+            <h3 class="timeline-title" data-i18n="exp.sda-python.title">Software Development using Python Bootcamp Trainee</h3>
+            <p class="timeline-org" data-i18n="exp.sda-python.org">SDA — Saudi Digital Academy</p>
+            <p class="timeline-text" data-i18n="exp.sda-python.text">
               Completed a 7-week intensive journey in software development using Python, FastAPI,
               React, and PostgreSQL, building practical programming skills and real-world application
               experience.
@@ -282,12 +288,12 @@
 
           <li class="timeline-item reveal" data-exp="kaust-ai">
             <div class="timeline-marker"></div>
-            <span class="timeline-date">Jan - Feb 2026</span>
+            <span class="timeline-date" data-i18n="exp.kaust-ai.date">Jan - Feb 2026</span>
             <img class="timeline-logo" src="./assets/logos/kaust.svg"
-                 alt="KAUST" width="206" height="44" loading="lazy" decoding="async">
-            <h3 class="timeline-title">Advanced Artificial Intelligence</h3>
-            <p class="timeline-org">KAUST — King Abdullah University of Science and Technology</p>
-            <p class="timeline-text">
+                 alt="KAUST" data-i18n-attr="alt:exp.kaust-ai.logo" width="206" height="44" loading="lazy" decoding="async">
+            <h3 class="timeline-title" data-i18n="exp.kaust-ai.title">Advanced Artificial Intelligence</h3>
+            <p class="timeline-org" data-i18n="exp.kaust-ai.org">KAUST — King Abdullah University of Science and Technology</p>
+            <p class="timeline-text" data-i18n="exp.kaust-ai.text">
               Completed 80 hours of advanced training in artificial intelligence, deepening expertise
               in modern AI techniques, models, and applications.
             </p>
@@ -295,12 +301,12 @@
 
           <li class="timeline-item reveal" data-exp="web-dev">
             <div class="timeline-marker"></div>
-            <span class="timeline-date">Jun 2025 - Aug 2025</span>
+            <span class="timeline-date" data-i18n="exp.web-dev.date">Jun 2025 - Aug 2025</span>
             <img class="timeline-logo" src="./assets/logos/tuwaiq-academy.svg"
-                 alt="Tuwaiq Academy" width="243" height="44" loading="lazy" decoding="async">
-            <h3 class="timeline-title">Web Development Bootcamp Trainee</h3>
-            <p class="timeline-org">Tuwaiq Academy</p>
-            <p class="timeline-text">
+                 alt="Tuwaiq Academy" data-i18n-attr="alt:exp.web-dev.logo" width="243" height="44" loading="lazy" decoding="async">
+            <h3 class="timeline-title" data-i18n="exp.web-dev.title">Web Development Bootcamp Trainee</h3>
+            <p class="timeline-org" data-i18n="exp.web-dev.org">Tuwaiq Academy</p>
+            <p class="timeline-text" data-i18n="exp.web-dev.text">
               Completed 300 hours of intensive training in Python and full-stack web development,
               with a focus on Django and modern web technologies.
             </p>
@@ -308,16 +314,16 @@
 
           <li class="timeline-item reveal" data-exp="ai-bootcamp">
             <div class="timeline-marker"></div>
-            <span class="timeline-date">Sep 2024 - Oct 2024</span>
+            <span class="timeline-date" data-i18n="exp.ai-bootcamp.date">Sep 2024 - Oct 2024</span>
             <img class="timeline-logo" src="./assets/logos/tuwaiq-academy.svg"
-                 alt="Tuwaiq Academy" width="243" height="44" loading="lazy" decoding="async">
-            <h3 class="timeline-title">AI Bootcamp Trainee</h3>
-            <p class="timeline-org">Tuwaiq Academy</p>
-            <p class="timeline-text">
+                 alt="Tuwaiq Academy" data-i18n-attr="alt:exp.ai-bootcamp.logo" width="243" height="44" loading="lazy" decoding="async">
+            <h3 class="timeline-title" data-i18n="exp.ai-bootcamp.title">AI Bootcamp Trainee</h3>
+            <p class="timeline-org" data-i18n="exp.ai-bootcamp.org">Tuwaiq Academy</p>
+            <p class="timeline-text" data-i18n="exp.ai-bootcamp.text">
               Completed 200 hours of intensive training, gaining hands-on experience in AI, machine
               learning, and deep learning.
             </p>
-            <p class="timeline-capstone">
+            <p class="timeline-capstone" data-i18n-html="exp.ai-bootcamp.capstone">
               <strong>Capstone — AI Focus Analyzer for E-Learning:</strong> developed an AI platform
               to analyze student focus during e-learning using facial recognition and quiz performance.
               <em>Tools: MediaPipe, OpenAI GPT-3.5, Whisper, Streamlit.</em>
@@ -326,16 +332,16 @@
 
           <li class="timeline-item reveal" data-exp="t5">
             <div class="timeline-marker"></div>
-            <span class="timeline-date">Mar 2024 - Jun 2024</span>
+            <span class="timeline-date" data-i18n="exp.t5.date">Mar 2024 - Jun 2024</span>
             <img class="timeline-logo" src="./assets/logos/sdaia.png"
-                 alt="SDAIA" width="128" height="44" loading="lazy" decoding="async">
-            <h3 class="timeline-title">Data Science and AI T5 Bootcamp Trainee</h3>
-            <p class="timeline-org">SDAIA</p>
-            <p class="timeline-text">
+                 alt="SDAIA" data-i18n-attr="alt:exp.t5.logo" width="128" height="44" loading="lazy" decoding="async">
+            <h3 class="timeline-title" data-i18n="exp.t5.title">Data Science and AI T5 Bootcamp Trainee</h3>
+            <p class="timeline-org" data-i18n="exp.t5.org">SDAIA</p>
+            <p class="timeline-text" data-i18n="exp.t5.text">
               Completed 360 hours of intensive training, covering SQL, Python, data analysis,
               machine learning, deep learning (CNN, RNN), and MLOps.
             </p>
-            <p class="timeline-capstone">
+            <p class="timeline-capstone" data-i18n-html="exp.t5.capstone">
               <strong>Capstone — Hadir, Management Attendance System:</strong> developed an automated
               student attendance system using facial recognition that classifies student images and
               records attendance as students enter the classroom.
@@ -345,17 +351,17 @@
 
           <li class="timeline-item reveal" data-exp="ds-ml">
             <div class="timeline-marker"></div>
-            <span class="timeline-date">Oct 2023 - Dec 2023</span>
+            <span class="timeline-date" data-i18n="exp.ds-ml.date">Oct 2023 - Dec 2023</span>
             <img class="timeline-logo" src="./assets/logos/tuwaiq-academy.svg"
-                 alt="Tuwaiq Academy" width="243" height="44" loading="lazy" decoding="async">
-            <h3 class="timeline-title">Data Science and Machine Learning Bootcamp Trainee</h3>
-            <p class="timeline-org">Tuwaiq Academy</p>
-            <p class="timeline-text">
+                 alt="Tuwaiq Academy" data-i18n-attr="alt:exp.ds-ml.logo" width="243" height="44" loading="lazy" decoding="async">
+            <h3 class="timeline-title" data-i18n="exp.ds-ml.title">Data Science and Machine Learning Bootcamp Trainee</h3>
+            <p class="timeline-org" data-i18n="exp.ds-ml.org">Tuwaiq Academy</p>
+            <p class="timeline-text" data-i18n="exp.ds-ml.text">
               Completed 200 hours of intensive training, building 5 projects and 50 labs using Python,
               SQL, Pandas, Tableau, and TensorFlow. Gained expertise in machine learning (SVM, Decision
               Tree, Random Forest) and deep learning (CNNs).
             </p>
-            <p class="timeline-capstone">
+            <p class="timeline-capstone" data-i18n-html="exp.ds-ml.capstone">
               <strong>Capstone — Haraf, Your Farming Companion:</strong> built from scratch, this
               CNN-based image classification project identifies date types, maturity, grades, and palm
               tree diseases. <em>Tools: Python, TensorFlow, Plotly Dash.</em>
@@ -364,15 +370,15 @@
         </ol>
 
         <!-- Education -->
-        <h2 class="section-title section-title-secondary reveal">Education</h2>
+        <h2 class="section-title section-title-secondary reveal" data-i18n="education.title">Education</h2>
         <ol class="timeline">
           <li class="timeline-item reveal" data-edu="ksu">
             <div class="timeline-marker"></div>
-            <img class="timeline-logo" src="./assets/logos/king-saud-university.svg" alt="King Saud University"
+            <img class="timeline-logo" src="./assets/logos/king-saud-university.svg" alt="King Saud University" data-i18n-attr="alt:edu.ksu.logo"
                  width="180" height="69" loading="lazy" decoding="async">
-            <h3 class="timeline-title">Bachelor's Degree in Computer Science</h3>
-            <p class="timeline-org">King Saud University</p>
-            <p class="timeline-text">
+            <h3 class="timeline-title" data-i18n="edu.ksu.title">Bachelor's Degree in Computer Science</h3>
+            <p class="timeline-org" data-i18n="edu.ksu.org">King Saud University</p>
+            <p class="timeline-text" data-i18n="edu.ksu.text">
               Focused on core areas such as programming, algorithms, data structures, databases,
               operating systems, and software development.
             </p>
@@ -384,22 +390,22 @@
     <!-- ===== SKILLS ===== -->
     <section class="section" id="skills">
       <div class="container">
-        <p class="section-eyebrow reveal">What I work with</p>
-        <h2 class="section-title reveal">Skills &amp; Certifications</h2>
-        <p class="section-lead reveal">Technologies, tools, and certified skills.</p>
+        <p class="section-eyebrow reveal" data-i18n="skills.eyebrow">What I work with</p>
+        <h2 class="section-title reveal" data-i18n="skills.title">Skills &amp; Certifications</h2>
+        <p class="section-lead reveal" data-i18n="skills.lead">Technologies, tools, and certified skills.</p>
 
         <div class="skills-grid">
           <div class="skill-card reveal">
-            <h3><i class="fa-solid fa-code accent"></i> Programming Languages</h3>
+            <h3><i class="fa-solid fa-code accent"></i> <span data-i18n="skills.languages">Programming Languages</span></h3>
             <ul class="tag-list">
               <li>Python</li>
               <li>SQL</li>
-              <li>JavaScript</li>
+              <li data-i18n="skills.tag.javascript">JavaScript</li>
             </ul>
           </div>
 
           <div class="skill-card reveal">
-            <h3><i class="fa-solid fa-network-wired accent"></i> ML / DL Frameworks</h3>
+            <h3><i class="fa-solid fa-network-wired accent"></i> <span data-i18n="skills.frameworks">ML / DL Frameworks</span></h3>
             <ul class="tag-list">
               <li>TensorFlow</li>
               <li>Keras</li>
@@ -410,31 +416,31 @@
           </div>
 
           <div class="skill-card reveal">
-            <h3><i class="fa-solid fa-toolbox accent"></i> Tools &amp; Technologies</h3>
+            <h3><i class="fa-solid fa-toolbox accent"></i> <span data-i18n="skills.tools">Tools &amp; Technologies</span></h3>
             <ul class="tag-list">
               <li>Streamlit</li>
               <li>Roboflow</li>
               <li>Kaggle</li>
-              <li>Cloud Computing</li>
+              <li data-i18n="skills.tag.cloud">Cloud Computing</li>
               <li>Power BI</li>
             </ul>
           </div>
 
           <div class="skill-card reveal">
-            <h3><i class="fa-solid fa-lightbulb accent"></i> Core Competencies</h3>
+            <h3><i class="fa-solid fa-lightbulb accent"></i> <span data-i18n="skills.competencies">Core Competencies</span></h3>
             <ul class="tag-list">
-              <li>Data Analysis</li>
-              <li>Deep Learning</li>
-              <li>Problem Solving</li>
-              <li>Teamwork</li>
-              <li>Leadership</li>
+              <li data-i18n="skills.tag.dataAnalysis">Data Analysis</li>
+              <li data-i18n="skills.tag.deepLearning">Deep Learning</li>
+              <li data-i18n="skills.tag.problemSolving">Problem Solving</li>
+              <li data-i18n="skills.tag.teamwork">Teamwork</li>
+              <li data-i18n="skills.tag.leadership">Leadership</li>
             </ul>
           </div>
         </div>
 
-        <h3 class="cert-heading reveal">Certifications</h3>
+        <h3 class="cert-heading reveal" data-i18n="certs.title">Certifications</h3>
 
-        <div class="cert-stream reveal" data-cert-stream role="region" aria-label="Certificates">
+        <div class="cert-stream reveal" data-cert-stream role="region" aria-label="Certificates" data-i18n-attr="aria-label:certs.aria">
           <div class="cert-track" data-cert-track>
             <div class="cert-set" data-cert-set>
               <a class="cert-card" data-cert="nvidia-ai-infra" href="./assets/certificates/nvidia-certified-associate-ai-infrastructure-operations-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: NVIDIA Certified Associate — AI Infrastructure & Operations">
@@ -446,8 +452,8 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/nvidia.svg" alt="NVIDIA" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">NVIDIA Certified Associate — AI Infrastructure &amp; Operations</span>
-                  <span class="cert-meta">NVIDIA · Aug 2026</span>
+                  <span class="cert-name" data-i18n="cert.nvidia-ai-infra.name">NVIDIA Certified Associate — AI Infrastructure &amp; Operations</span>
+                  <span class="cert-meta" data-i18n="cert.nvidia-ai-infra.meta">NVIDIA · Aug 2026</span>
                 </span>
               </a>
               <a class="cert-card" data-cert="sda-python" href="./assets/certificates/sda-python-software-development-bootcamp-300h-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Software Development using Python Bootcamp">
@@ -459,8 +465,8 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/mcit.svg" alt="Ministry of Communications and Information Technology" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">Software Development using Python Bootcamp</span>
-                  <span class="cert-meta">Saudi Digital Academy · 300 hrs · Jun 2026</span>
+                  <span class="cert-name" data-i18n="cert.sda-python.name">Software Development using Python Bootcamp</span>
+                  <span class="cert-meta" data-i18n="cert.sda-python.meta">Saudi Digital Academy · 300 hrs · Jun 2026</span>
                 </span>
               </a>
               <a class="cert-card" data-cert="nvidia-transformers" href="./assets/certificates/nvidia-transformer-based-nlp-applications-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Building Transformer-Based NLP Applications">
@@ -472,8 +478,8 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/nvidia.svg" alt="NVIDIA" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">Building Transformer-Based NLP Applications</span>
-                  <span class="cert-meta">NVIDIA · Mar 2026</span>
+                  <span class="cert-name" data-i18n="cert.nvidia-transformers.name">Building Transformer-Based NLP Applications</span>
+                  <span class="cert-meta" data-i18n="cert.nvidia-transformers.meta">NVIDIA · Mar 2026</span>
                 </span>
               </a>
               <a class="cert-card" data-cert="kaust-ai" href="./assets/certificates/kaust-advanced-artificial-intelligence-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Advanced Artificial Intelligence — Computer Vision">
@@ -485,8 +491,8 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/kaust.svg" alt="KAUST" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">Advanced Artificial Intelligence — Computer Vision</span>
-                  <span class="cert-meta">KAUST Academy · 80 hrs · Feb 2026</span>
+                  <span class="cert-name" data-i18n="cert.kaust-ai.name">Advanced Artificial Intelligence — Computer Vision</span>
+                  <span class="cert-meta" data-i18n="cert.kaust-ai.meta">KAUST Academy · 80 hrs · Feb 2026</span>
                 </span>
               </a>
               <a class="cert-card" data-cert="web-bootcamp" href="./assets/certificates/tuwaiq-web-development-python-bootcamp-300h-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Web Development using Python Bootcamp">
@@ -498,8 +504,8 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">Web Development using Python Bootcamp</span>
-                  <span class="cert-meta">Tuwaiq Academy · 300 hrs · Sep 2025</span>
+                  <span class="cert-name" data-i18n="cert.web-bootcamp.name">Web Development using Python Bootcamp</span>
+                  <span class="cert-meta" data-i18n="cert.web-bootcamp.meta">Tuwaiq Academy · 300 hrs · Sep 2025</span>
                 </span>
               </a>
               <a class="cert-card" data-cert="drones" href="./assets/certificates/safcsp-drone-building-calibration-20h-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Drone Building & Calibration">
@@ -511,8 +517,8 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/safcsp.svg" alt="Saudi Federation for Cybersecurity, Programming and Drones" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">Drone Building &amp; Calibration</span>
-                  <span class="cert-meta">SAFCSP · 20 hrs · May 2025</span>
+                  <span class="cert-name" data-i18n="cert.drones.name">Drone Building &amp; Calibration</span>
+                  <span class="cert-meta" data-i18n="cert.drones.meta">SAFCSP · 20 hrs · May 2025</span>
                 </span>
               </a>
               <a class="cert-card" data-cert="iot" href="./assets/certificates/tuwaiq-iot-fundamentals-25h-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: IoT Fundamentals">
@@ -524,8 +530,8 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">IoT Fundamentals</span>
-                  <span class="cert-meta">Tuwaiq Academy · 25 hrs · May 2025</span>
+                  <span class="cert-name" data-i18n="cert.iot.name">IoT Fundamentals</span>
+                  <span class="cert-meta" data-i18n="cert.iot.meta">Tuwaiq Academy · 25 hrs · May 2025</span>
                 </span>
               </a>
               <a class="cert-card" data-cert="cloud" href="./assets/certificates/tuwaiq-alibaba-cloud-computing-engineer-2025.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Cloud Computing Engineer">
@@ -537,8 +543,8 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/alibaba-cloud.png" alt="Alibaba Cloud" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">Cloud Computing Engineer</span>
-                  <span class="cert-meta">Alibaba Cloud · Mar 2025</span>
+                  <span class="cert-name" data-i18n="cert.cloud.name">Cloud Computing Engineer</span>
+                  <span class="cert-meta" data-i18n="cert.cloud.meta">Alibaba Cloud · Mar 2025</span>
                 </span>
               </a>
               <a class="cert-card" data-cert="ai-bootcamp" href="./assets/certificates/tuwaiq-ai-models-bootcamp-200h-2024.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Building & Developing AI Models Bootcamp">
@@ -550,8 +556,8 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">Building &amp; Developing AI Models Bootcamp</span>
-                  <span class="cert-meta">Tuwaiq Academy · 200 hrs · Oct 2024</span>
+                  <span class="cert-name" data-i18n="cert.ai-bootcamp.name">Building &amp; Developing AI Models Bootcamp</span>
+                  <span class="cert-meta" data-i18n="cert.ai-bootcamp.meta">Tuwaiq Academy · 200 hrs · Oct 2024</span>
                 </span>
               </a>
               <a class="cert-card" data-cert="t5" href="./assets/certificates/sdaia-t5-data-science-ai-bootcamp-360h-2024.pdf" target="_blank" rel="noopener" aria-label="Open certificate: T5 Data Science & AI Bootcamp">
@@ -563,8 +569,8 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/sdaia.png" alt="SDAIA" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">T5 Data Science &amp; AI Bootcamp</span>
-                  <span class="cert-meta">SDAIA Academy · 360 hrs · Jun 2024</span>
+                  <span class="cert-name" data-i18n="cert.t5.name">T5 Data Science &amp; AI Bootcamp</span>
+                  <span class="cert-meta" data-i18n="cert.t5.meta">SDAIA Academy · 360 hrs · Jun 2024</span>
                 </span>
               </a>
               <a class="cert-card" data-cert="ds-bootcamp" href="./assets/certificates/tuwaiq-data-science-bootcamp-200h-2023.pdf" target="_blank" rel="noopener" aria-label="Open certificate: Data Science Bootcamp">
@@ -576,8 +582,8 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">Data Science Bootcamp</span>
-                  <span class="cert-meta">Tuwaiq Academy · 200 hrs · Dec 2023</span>
+                  <span class="cert-name" data-i18n="cert.ds-bootcamp.name">Data Science Bootcamp</span>
+                  <span class="cert-meta" data-i18n="cert.ds-bootcamp.meta">Tuwaiq Academy · 200 hrs · Dec 2023</span>
                 </span>
               </a>
               <a class="cert-card" data-cert="llm-apps" href="./assets/certificates/ksaa-llm-application-development-16h-2023.pdf" target="_blank" rel="noopener" aria-label="Open certificate: LLM Application Development">
@@ -589,15 +595,15 @@
                 </span>
                 <span class="cert-info">
                   <img class="cert-logo" src="./assets/logos/ksaa.svg" alt="King Salman Global Academy for Arabic Language" width="120" height="28" loading="lazy" decoding="async">
-                  <span class="cert-name">LLM Application Development</span>
-                  <span class="cert-meta">King Salman Global Academy · 16 hrs · Dec 2023</span>
+                  <span class="cert-name" data-i18n="cert.llm-apps.name">LLM Application Development</span>
+                  <span class="cert-meta" data-i18n="cert.llm-apps.meta">King Salman Global Academy · 16 hrs · Dec 2023</span>
                 </span>
               </a>
             </div>
           </div>
         </div>
 
-        <p class="cert-issuers-label reveal">Issued by</p>
+        <p class="cert-issuers-label reveal" data-i18n="certs.issuers">Issued by</p>
         <ul class="cert-issuers reveal">
           <li><img width="130" height="44" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" loading="lazy" decoding="async"></li>
           <li><img width="130" height="44" src="./assets/logos/sdaia.png" alt="SDAIA — Saudi Data and AI Authority" loading="lazy" decoding="async"></li>
@@ -614,187 +620,187 @@
     <!-- ===== PORTFOLIO ===== -->
     <section class="section section-alt" id="portfolio">
       <div class="container">
-        <p class="section-eyebrow reveal">Selected work</p>
-        <h2 class="section-title reveal">Portfolio</h2>
-        <p class="section-lead reveal">Tap a category to filter projects.</p>
+        <p class="section-eyebrow reveal" data-i18n="portfolio.eyebrow">Selected work</p>
+        <h2 class="section-title reveal" data-i18n="portfolio.title">Portfolio</h2>
+        <p class="section-lead reveal" data-i18n="portfolio.lead">Tap a category to filter projects.</p>
 
-        <ul class="filter-list reveal" aria-label="Project categories">
-          <li><button class="filter-btn active" type="button" data-filter-btn="all" aria-pressed="true">All</button></li>
-          <li><button class="filter-btn" type="button" data-filter-btn="ai" aria-pressed="false">AI</button></li>
-          <li><button class="filter-btn" type="button" data-filter-btn="data-analytics" aria-pressed="false">Data Analytics</button></li>
-          <li><button class="filter-btn" type="button" data-filter-btn="apps" aria-pressed="false">Apps</button></li>
+        <ul class="filter-list reveal" aria-label="Project categories" data-i18n-attr="aria-label:filter.aria">
+          <li><button class="filter-btn active" type="button" data-filter-btn="all" aria-pressed="true" data-i18n="filter.all">All</button></li>
+          <li><button class="filter-btn" type="button" data-filter-btn="ai" aria-pressed="false" data-i18n="filter.ai">AI</button></li>
+          <li><button class="filter-btn" type="button" data-filter-btn="data-analytics" aria-pressed="false" data-i18n="filter.data-analytics">Data Analytics</button></li>
+          <li><button class="filter-btn" type="button" data-filter-btn="apps" aria-pressed="false" data-i18n="filter.apps">Apps</button></li>
         </ul>
 
         <ul class="project-grid">
 
           <li class="project-card active reveal" data-filter-item data-category="ai" data-project="attendees">
             <a href="https://github.com/HESHAM-SA/Capstone-Project-Majed-" target="_blank" rel="noopener"
-               aria-label="View Attendees Management System GitHub Repository">
+               aria-label="View Attendees Management System GitHub Repository" data-i18n-attr="aria-label:project.attendees.aria">
               <figure class="project-media">
                 <video class="project-video" data-project-video loop muted playsinline preload="none"
                        poster="my_projects/AI/AI_p2/attendees_poster.jpg"
-                       aria-label="AI-powered attendee management system">
+                       aria-label="AI-powered attendee management system" data-i18n-attr="aria-label:project.attendees.media">
                   <source data-src="my_projects/AI/AI_p2/Attendees_management_system_Demo.webm" type="video/webm">
                   <source data-src="my_projects/AI/AI_p2/Attendees_management_system_Demo.mp4" type="video/mp4">
                 </video>
               </figure>
               <div class="project-info">
-                <span class="project-category">AI</span>
-                <h3 class="project-title">Attendees Management System</h3>
-                <p class="project-description">Automated classroom attendance with face recognition and AI-backed verification.</p>
-                <span class="project-link-label">View GitHub</span>
+                <span class="project-category" data-i18n="category.ai">AI</span>
+                <h3 class="project-title" data-i18n="project.attendees.title">Attendees Management System</h3>
+                <p class="project-description" data-i18n="project.attendees.description">Automated classroom attendance with face recognition and AI-backed verification.</p>
+                <span class="project-link-label" data-i18n="project.attendees.link">View GitHub</span>
               </div>
             </a>
           </li>
 
           <li class="project-card active reveal" data-filter-item data-category="ai" data-project="focus">
             <a href="https://github.com/HESHAM-SA/AI-Platform-for-Focus-Analysis-in-E-Learning" target="_blank" rel="noopener"
-               aria-label="View AI Platform for Focus Analysis GitHub Repository">
+               aria-label="View AI Platform for Focus Analysis GitHub Repository" data-i18n-attr="aria-label:project.focus.aria">
               <figure class="project-media">
                 <video class="project-video" data-project-video loop muted playsinline preload="none"
                        poster="my_projects/AI/AI_p3/focus_analysis_poster.jpg"
-                       aria-label="Real-time attention tracking demo in virtual classroom">
+                       aria-label="Real-time attention tracking demo in virtual classroom" data-i18n-attr="aria-label:project.focus.media">
                   <source data-src="my_projects/AI/AI_p3/focus_analysis_demo.webm" type="video/webm">
                   <source data-src="my_projects/AI/AI_p3/focus_analysis_demo.mp4" type="video/mp4">
                 </video>
               </figure>
               <div class="project-info">
-                <span class="project-category">AI</span>
-                <h3 class="project-title">AI Platform for Focus Analysis in E-&#8288;Learning</h3>
-                <p class="project-description">Tracks learner attention in e-learning sessions using face analysis and quiz performance.</p>
-                <span class="project-link-label">View GitHub</span>
+                <span class="project-category" data-i18n="category.ai">AI</span>
+                <h3 class="project-title" data-i18n="project.focus.title">AI Platform for Focus Analysis in E-&#8288;Learning</h3>
+                <p class="project-description" data-i18n="project.focus.description">Tracks learner attention in e-learning sessions using face analysis and quiz performance.</p>
+                <span class="project-link-label" data-i18n="project.focus.link">View GitHub</span>
               </div>
             </a>
           </li>
 
           <li class="project-card active reveal" data-filter-item data-category="ai" data-project="kharaf">
             <a href="https://github.com/HESHAM-SA/KharafDates" target="_blank" rel="noopener"
-               aria-label="View Kharaf Dates GitHub Repository">
+               aria-label="View Kharaf Dates GitHub Repository" data-i18n-attr="aria-label:project.kharaf.aria">
               <figure class="project-media">
-                <img src="my_projects/AI/AI_p1/KharafDates.jpg" alt="Date quality analysis visualization" loading="lazy">
+                <img src="my_projects/AI/AI_p1/KharafDates.jpg" alt="Date quality analysis visualization" data-i18n-attr="alt:project.kharaf.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category">AI</span>
-                <h3 class="project-title">Kharaf Dates</h3>
-                <p class="project-description">CNN-based date-quality classifier for type, maturity, grade, and palm disease signals.</p>
-                <span class="project-link-label">View GitHub</span>
+                <span class="project-category" data-i18n="category.ai">AI</span>
+                <h3 class="project-title" data-i18n="project.kharaf.title">Kharaf Dates</h3>
+                <p class="project-description" data-i18n="project.kharaf.description">CNN-based date-quality classifier for type, maturity, grade, and palm disease signals.</p>
+                <span class="project-link-label" data-i18n="project.kharaf.link">View GitHub</span>
               </div>
             </a>
           </li>
 
           <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="diabetes">
             <a href="./my_projects/Data%20Analytics/p1/diabetes_1.pdf" target="_blank" rel="noopener"
-               aria-label="View diabetes analysis case study">
+               aria-label="View diabetes analysis case study" data-i18n-attr="aria-label:project.diabetes.aria">
               <figure class="project-media">
-                <img src="my_projects/Data Analytics/p1/diabetes.jpg" alt="Diabetes risk factor visualization" loading="lazy">
+                <img src="my_projects/Data Analytics/p1/diabetes.jpg" alt="Diabetes risk factor visualization" data-i18n-attr="alt:project.diabetes.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category">Data Analytics</span>
-                <h3 class="project-title">Diabetes Analysis</h3>
-                <p class="project-description">Data analysis report exploring diabetes risk factors and health patterns.</p>
-                <span class="project-link-label">View report</span>
+                <span class="project-category" data-i18n="category.data-analytics">Data Analytics</span>
+                <h3 class="project-title" data-i18n="project.diabetes.title">Diabetes Analysis</h3>
+                <p class="project-description" data-i18n="project.diabetes.description">Data analysis report exploring diabetes risk factors and health patterns.</p>
+                <span class="project-link-label" data-i18n="project.diabetes.link">View report</span>
               </div>
             </a>
           </li>
 
           <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="food">
             <a href="./my_projects/Data%20Analytics/p2/Analysing%20food%20order%20online%20.pdf"
-               target="_blank" rel="noopener" aria-label="Comprehensive food order online analysis report">
+               target="_blank" rel="noopener" aria-label="Comprehensive food order online analysis report" data-i18n-attr="aria-label:project.food.aria">
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/p2/Analysing_food_order_online.jpg"
-                     alt="Detailed analysis of online food ordering trends" loading="lazy">
+                     alt="Detailed analysis of online food ordering trends" data-i18n-attr="alt:project.food.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category">Data Analytics</span>
-                <h3 class="project-title">Online Food Order Analysis</h3>
-                <p class="project-description">EDA report uncovering customer behavior and trends in online food orders.</p>
-                <span class="project-link-label">View report</span>
+                <span class="project-category" data-i18n="category.data-analytics">Data Analytics</span>
+                <h3 class="project-title" data-i18n="project.food.title">Online Food Order Analysis</h3>
+                <p class="project-description" data-i18n="project.food.description">EDA report uncovering customer behavior and trends in online food orders.</p>
+                <span class="project-link-label" data-i18n="project.food.link">View report</span>
               </div>
             </a>
           </li>
 
           <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="tuwaiq">
             <a href="https://www.kaggle.com/code/heshamsadan/eda-for-6-500-students-of-tuwaiq-academy"
-               target="_blank" rel="noopener" aria-label="View the Tuwaiq Academy student EDA notebook on Kaggle">
+               target="_blank" rel="noopener" aria-label="View the Tuwaiq Academy student EDA notebook on Kaggle" data-i18n-attr="aria-label:project.tuwaiq.aria">
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/p3/EDA for 6,500 students of Tuwaiq Academy.jpg"
-                     alt="Exploratory Data Analysis of 6,500 Tuwaiq Academy students" loading="lazy">
+                     alt="Exploratory Data Analysis of 6,500 Tuwaiq Academy students" data-i18n-attr="alt:project.tuwaiq.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category">Data Analytics</span>
-                <h3 class="project-title">Tuwaiq Academy Student EDA</h3>
-                <p class="project-description">Exploratory analysis of 6,500 Tuwaiq Academy students and training patterns.</p>
-                <span class="project-link-label">View on Kaggle</span>
+                <span class="project-category" data-i18n="category.data-analytics">Data Analytics</span>
+                <h3 class="project-title" data-i18n="project.tuwaiq.title">Tuwaiq Academy Student EDA</h3>
+                <p class="project-description" data-i18n="project.tuwaiq.description">Exploratory analysis of 6,500 Tuwaiq Academy students and training patterns.</p>
+                <span class="project-link-label" data-i18n="project.tuwaiq.link">View on Kaggle</span>
               </div>
             </a>
           </li>
 
           <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="powerbi">
             <a href="https://github.com/HESHAM-SA/PowerBI-Dashboard" target="_blank" rel="noopener"
-               aria-label="View Power BI dashboard GitHub Repository">
+               aria-label="View Power BI dashboard GitHub Repository" data-i18n-attr="aria-label:project.powerbi.aria">
               <figure class="project-media">
-                <img src="my_projects/Data Analytics/project 04 power bi/dashboard.png" alt="Power BI dashboard" loading="lazy">
+                <img src="my_projects/Data Analytics/project 04 power bi/dashboard.png" alt="Power BI dashboard" data-i18n-attr="alt:project.powerbi.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category">Data Analytics</span>
-                <h3 class="project-title">Dashboard using Power BI</h3>
-                <p class="project-description">Interactive Power BI dashboard for cleaning, modeling, and visualizing business data.</p>
-                <span class="project-link-label">View GitHub</span>
+                <span class="project-category" data-i18n="category.data-analytics">Data Analytics</span>
+                <h3 class="project-title" data-i18n="project.powerbi.title">Dashboard using Power BI</h3>
+                <p class="project-description" data-i18n="project.powerbi.description">Interactive Power BI dashboard for cleaning, modeling, and visualizing business data.</p>
+                <span class="project-link-label" data-i18n="project.powerbi.link">View GitHub</span>
               </div>
             </a>
           </li>
 
           <li class="project-card active reveal" data-filter-item data-category="apps" data-project="halaorder">
             <a href="https://github.com/Turki20/HallaOrder" target="_blank" rel="noopener"
-               aria-label="View HalaOrder Restaurant Platform GitHub Repository">
+               aria-label="View HalaOrder Restaurant Platform GitHub Repository" data-i18n-attr="aria-label:project.halaorder.aria">
               <figure class="project-media">
                 <video class="project-video" data-project-video loop muted playsinline preload="none"
                        poster="my_projects/App/App_p3/halaorder_poster.jpg"
-                       aria-label="Restaurant storefront and order management demo">
+                       aria-label="Restaurant storefront and order management demo" data-i18n-attr="aria-label:project.halaorder.media">
                   <source data-src="my_projects/App/App_p3/halaorder_demo.webm" type="video/webm">
                   <source data-src="my_projects/App/App_p3/halaorder_demo.mp4" type="video/mp4">
                 </video>
               </figure>
               <div class="project-info">
-                <span class="project-category">Apps</span>
-                <h3 class="project-title">HalaOrder Restaurant Platform</h3>
-                <p class="project-description">Multi-tenant Django platform where restaurants launch a storefront, manage menus and branches, and track orders live.</p>
-                <span class="project-link-label">View GitHub</span>
+                <span class="project-category" data-i18n="category.apps">Apps</span>
+                <h3 class="project-title" data-i18n="project.halaorder.title">HalaOrder Restaurant Platform</h3>
+                <p class="project-description" data-i18n="project.halaorder.description">Multi-tenant Django platform where restaurants launch a storefront, manage menus and branches, and track orders live.</p>
+                <span class="project-link-label" data-i18n="project.halaorder.link">View GitHub</span>
               </div>
             </a>
           </li>
 
           <li class="project-card active reveal" data-filter-item data-category="apps" data-project="portfolio-builder">
             <a href="https://github.com/HESHAM-SA/PortfolioBuilder" target="_blank" rel="noopener"
-               aria-label="View Portfolio Builder GitHub Repository">
+               aria-label="View Portfolio Builder GitHub Repository" data-i18n-attr="aria-label:project.portfolio-builder.aria">
               <figure class="project-media">
                 <video class="project-video" data-project-video loop muted playsinline preload="none"
                        poster="my_projects/App/App_p2/portfolio_builder_poster.jpg"
-                       aria-label="No-signup portfolio builder demo">
+                       aria-label="No-signup portfolio builder demo" data-i18n-attr="aria-label:project.portfolio-builder.media">
                   <source data-src="my_projects/App/App_p2/portfolio_builder_demo.webm" type="video/webm">
                   <source data-src="my_projects/App/App_p2/portfolio_builder_demo.mp4" type="video/mp4">
                 </video>
               </figure>
               <div class="project-info">
-                <span class="project-category">Apps</span>
-                <h3 class="project-title">Portfolio Builder</h3>
-                <p class="project-description">Django app that turns a name and a few career events into a shareable timeline portfolio, with no signup.</p>
-                <span class="project-link-label">View GitHub</span>
+                <span class="project-category" data-i18n="category.apps">Apps</span>
+                <h3 class="project-title" data-i18n="project.portfolio-builder.title">Portfolio Builder</h3>
+                <p class="project-description" data-i18n="project.portfolio-builder.description">Django app that turns a name and a few career events into a shareable timeline portfolio, with no signup.</p>
+                <span class="project-link-label" data-i18n="project.portfolio-builder.link">View GitHub</span>
               </div>
             </a>
           </li>
 
           <li class="project-card active reveal" data-filter-item data-category="apps" data-project="guess">
             <a href="https://github.com/HESHAM-SA/Bootcamp-Project-1-Python" target="_blank" rel="noopener"
-               aria-label="View Guess Number Game GitHub Repository">
+               aria-label="View Guess Number Game GitHub Repository" data-i18n-attr="aria-label:project.guess.aria">
               <figure class="project-media">
-                <img src="my_projects/App/Guess.jpg" alt="Guess Number Game" loading="lazy">
+                <img src="my_projects/App/Guess.jpg" alt="Guess Number Game" data-i18n-attr="alt:project.guess.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category">Apps</span>
-                <h3 class="project-title">Guess Number Game</h3>
-                <p class="project-description">Simple Python number guessing game focused on control flow and user input.</p>
-                <span class="project-link-label">View GitHub</span>
+                <span class="project-category" data-i18n="category.apps">Apps</span>
+                <h3 class="project-title" data-i18n="project.guess.title">Guess Number Game</h3>
+                <p class="project-description" data-i18n="project.guess.description">Simple Python number guessing game focused on control flow and user input.</p>
+                <span class="project-link-label" data-i18n="project.guess.link">View GitHub</span>
               </div>
             </a>
           </li>
@@ -806,23 +812,23 @@
     <!-- ===== CONTACT ===== -->
     <section class="section" id="contact">
       <div class="container contact-container">
-        <p class="section-eyebrow reveal">Get in touch</p>
-        <h2 class="section-title reveal">Let’s build useful AI together</h2>
-        <p class="section-lead reveal">Get in touch about AI, data science, or EdTech opportunities.</p>
+        <p class="section-eyebrow reveal" data-i18n="contact.eyebrow">Get in touch</p>
+        <h2 class="section-title reveal" data-i18n="contact.title">Let’s build useful AI together</h2>
+        <p class="section-lead reveal" data-i18n="contact.lead">Get in touch about AI, data science, or EdTech opportunities.</p>
 
         <div class="contact-panel reveal">
           <a href="mailto:HeshamAlsadan@gmail.com" class="btn btn-primary contact-primary">
             <i class="fa-solid fa-envelope"></i>
-            <span>Email me</span>
+            <span data-i18n="contact.email">Email me</span>
           </a>
           <div class="contact-actions">
             <a href="https://www.linkedin.com/in/hesham-alsadan/" target="_blank" rel="noopener" class="btn btn-outline contact-secondary">
               <i class="fa-brands fa-linkedin-in"></i>
-              <span>LinkedIn</span>
+              <span data-i18n="contact.linkedin">LinkedIn</span>
             </a>
             <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" rel="noopener" download class="btn btn-outline contact-secondary">
               <i class="fa-solid fa-download"></i>
-              <span>Download CV</span>
+              <span data-i18n="contact.cv">Download CV</span>
             </a>
           </div>
           <div class="contact-details">
@@ -836,7 +842,7 @@
             </a>
             <div class="contact-detail">
               <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-              <span class="contact-location">Riyadh, KSA</span>
+              <span class="contact-location" data-i18n="contact.location">Riyadh, KSA</span>
             </div>
           </div>
         </div>
@@ -852,30 +858,30 @@
       <li><a href="https://github.com/HESHAM-SA" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a></li>
       <li><a href="https://www.kaggle.com/heshamsadan" target="_blank" rel="noopener" aria-label="Kaggle"><i class="fa-brands fa-kaggle"></i></a></li>
     </ul>
-    <p>&copy; 2026 Hesham Alsadan. All rights reserved.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Hesham Alsadan. All rights reserved.</p>
   </footer>
 
   <!-- Mobile bottom navigation -->
-  <nav class="bottom-nav" data-bottom-nav aria-label="Mobile section navigation">
+  <nav class="bottom-nav" data-bottom-nav aria-label="Mobile section navigation" data-i18n-attr="aria-label:bottomNav.aria">
     <a href="#home" class="bottom-nav-link active" data-nav-link>
       <i class="fa-solid fa-house"></i>
-      <span>Home</span>
+      <span data-i18n="bottomNav.home">Home</span>
     </a>
     <a href="#about" class="bottom-nav-link" data-nav-link>
       <i class="fa-solid fa-user"></i>
-      <span>About</span>
+      <span data-i18n="bottomNav.about">About</span>
     </a>
     <a href="#portfolio" class="bottom-nav-link" data-nav-link>
       <i class="fa-solid fa-folder-open"></i>
-      <span>Projects</span>
+      <span data-i18n="bottomNav.projects">Projects</span>
     </a>
     <a href="#contact" class="bottom-nav-link" data-nav-link>
       <i class="fa-solid fa-envelope"></i>
-      <span>Contact</span>
+      <span data-i18n="bottomNav.contact">Contact</span>
     </a>
   </nav>
 
-  <button class="back-to-top" data-back-to-top type="button" aria-label="Back to top" hidden>
+  <button class="back-to-top" data-back-to-top type="button" aria-label="Back to top" data-i18n-attr="aria-label:backToTop.aria" hidden>
     <i class="fa-solid fa-arrow-up"></i>
   </button>
 

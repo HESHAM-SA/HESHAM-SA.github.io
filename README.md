@@ -14,13 +14,31 @@ Static GitHub Pages portfolio for AI, data science, and web projects.
 
 ## Edit content
 
-`assets/js/script.js` rewrites the page text on load, so every visible string lives in two places: the markup in `index.html` and the `translations` object in the script. Update both, or the script will overwrite the markup.
+Each language keeps its strings in exactly one place:
 
-Repeated blocks are keyed by a `data-` attribute so items can be added or reordered without shifting the other translations:
+- **English** lives only in `index.html`. The script reads it from the markup on load and
+  restores it when the visitor switches back, so edit English in the HTML and nowhere else.
+- **Arabic** lives in `translations.ar` in `assets/js/script.js`, keyed by the same names the
+  markup uses: `text` for `data-i18n` and `data-i18n-html` keys, `attrs` for `data-i18n-attr` keys.
 
-- project cards — `data-project`
-- experience entries — `data-exp`
-- certifications — `data-cert`
+Keys are named by meaning, not position (`nav.home`, `about.p2`, `exp.gpu.text`,
+`cert.t5.meta`, `project.kharaf.link`), so blocks can be added or reordered freely. One key may
+sit on several elements, like `category.ai` on every AI card.
+
+To make an element translatable, give it a key and add the Arabic under that key:
+
+- `data-i18n="key"` swaps the text. Use it on elements that hold plain text only.
+- `data-i18n-html="key"` swaps the inner HTML, for text that carries inline markup
+  (`<strong>`, `<em>`, `<br>`, the accent `<span>`).
+- `data-i18n-attr="aria-label:key; alt:key"` swaps attribute values, one `attribute:key` pair per
+  attribute.
+
+When an element mixes a Font Awesome icon with text, wrap only the text in a `<span>` with the key,
+so the icon is never re-rendered.
+
+The page opens in English. `?lang=ar` (or `?lang=en`) picks the language from the URL; otherwise
+the visitor's last choice, saved in `localStorage` as `portfolio-lang`, is used. A `lang` in the
+URL is saved too, and toggling the switch keeps an existing `?lang=` in step.
 
 ## Certificate stream
 
@@ -47,7 +65,9 @@ pdftoppm -png -r 200 -f 1 -l 1 assets/certificates/<name>.pdf /tmp/<name>
 ```
 
 trim it to the artwork and centre it on a 900x600 white canvas as `thumbs/<name>.webp`
-and `.jpg`, then add the card to `index.html` and both `translations` blocks.
+and `.jpg`, then add the card to `index.html` with `data-cert="<id>"`, plus
+`data-i18n="cert.<id>.name"` and `data-i18n="cert.<id>.meta"` on its name and meta, and add the Arabic for both keys to
+`translations.ar.text`.
 
 ## Local checks
 
