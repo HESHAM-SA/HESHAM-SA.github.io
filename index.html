@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hesham Alsadan — AI Engineer & Data Science</title>
   <meta name="description" content="Portfolio of Hesham Alsadan — AI Engineer and Data Scientist in Riyadh, looking for opportunities in EdTech. 1,500+ hours of training across KAUST, SDAIA, Tuwaiq, and SDA.">
-  <meta name="theme-color" content="#f3eee4">
+  <meta name="theme-color" content="#c5e9ff">
   <script>
     // Resolve the explicit preferences before the stylesheet paints. Light and English are the defaults.
     // Language: ?lang= first, then the saved choice. script.js swaps the text; dir has to be right from first paint.
@@ -23,7 +23,7 @@
       document.documentElement.style.colorScheme = theme;
       document.documentElement.lang = lang;
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-      document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#15130f' : '#f3eee4';
+      document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#1b1656' : '#c5e9ff';
     })();
   </script>
   <link rel="canonical" href="https://hesham-sa.github.io/">
@@ -58,21 +58,36 @@
   </script>
 
   <link rel="shortcut icon" href="./assets/images/star-icon.png" type="image/x-icon">
+  <link rel="preload" href="./assets/fonts/lexend-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Reem+Kufi:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <noscript>
-    <style>
-      .reveal { opacity: 1; transform: none; }
-      .project-card { display: block; }
-    </style>
-  </noscript>
 </head>
 
 <body>
+
+  <!-- Icons: Font Awesome Free 6.4.0 (https://fontawesome.com), CC BY 4.0 -->
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow-right" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></symbol>
+    <symbol id="i-bars" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></symbol>
+    <symbol id="i-code" viewBox="0 0 640 512"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 512 512"><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></symbol>
+    <symbol id="i-envelope" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></symbol>
+    <symbol id="i-folder-open" viewBox="0 0 576 512"><path d="M88.7 223.8L0 375.8V96C0 60.7 28.7 32 64 32H181.5c17 0 33.3 6.7 45.3 18.7l26.5 26.5c12 12 28.3 18.7 45.3 18.7H416c35.3 0 64 28.7 64 64v32H144c-22.8 0-43.8 12.1-55.3 31.8zm27.6 16.1C122.1 230 132.6 224 144 224H544c11.5 0 22 6.1 27.7 16.1s5.7 22.2-.1 32.1l-112 192C453.9 474 443.4 480 432 480H32c-11.5 0-22-6.1-27.7-16.1s-5.7-22.2 .1-32.1l112-192z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></symbol>
+    <symbol id="i-house" viewBox="0 0 576 512"><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></symbol>
+    <symbol id="i-kaggle" viewBox="0 0 320 512"><path d="M304.2 501.5L158.4 320.3 298.2 185c2.6-2.7 1.7-10.5-5.3-10.5h-69.2c-3.5 0-7 1.8-10.5 5.3L80.9 313.5V7.5q0-7.5-7.5-7.5H21.5Q14 0 14 7.5v497q0 7.5 7.5 7.5h51.9q7.5 0 7.5-7.5v-109l30.8-29.3 110.5 140.6c3 3.5 6.5 5.3 10.5 5.3h66.9q5.25 0 6-3z"/></symbol>
+    <symbol id="i-language" viewBox="0 0 640 512"><path d="M0 128C0 92.7 28.7 64 64 64H256h48 16H576c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H320 304 256 64c-35.3 0-64-28.7-64-64V128zm320 0V384H576V128H320zM178.3 175.9c-3.2-7.2-10.4-11.9-18.3-11.9s-15.1 4.7-18.3 11.9l-64 144c-4.5 10.1 .1 21.9 10.2 26.4s21.9-.1 26.4-10.2l8.9-20.1h73.6l8.9 20.1c4.5 10.1 16.3 14.6 26.4 10.2s14.6-16.3 10.2-26.4l-64-144zM160 233.2L179 276H141l19-42.8zM448 164c11 0 20 9 20 20v4h44 16c11 0 20 9 20 20s-9 20-20 20h-2l-1.6 4.5c-8.9 24.4-22.4 46.6-39.6 65.4c.9 .6 1.8 1.1 2.7 1.6l18.9 11.3c9.5 5.7 12.5 18 6.9 27.4s-18 12.5-27.4 6.9l-18.9-11.3c-4.5-2.7-8.8-5.5-13.1-8.5c-10.6 7.5-21.9 14-34 19.4l-3.6 1.6c-10.1 4.5-21.9-.1-26.4-10.2s.1-21.9 10.2-26.4l3.6-1.6c6.4-2.9 12.6-6.1 18.5-9.8l-12.2-12.2c-7.8-7.8-7.8-20.5 0-28.3s20.5-7.8 28.3 0l14.6 14.6 .5 .5c12.4-13.1 22.5-28.3 29.8-45H448 376c-11 0-20-9-20-20s9-20 20-20h52v-4c0-11 9-20 20-20z"/></symbol>
+    <symbol id="i-lightbulb" viewBox="0 0 384 512"><path d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"/></symbol>
+    <symbol id="i-linkedin-in" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></symbol>
+    <symbol id="i-location-dot" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></symbol>
+    <symbol id="i-network-wired" viewBox="0 0 640 512"><path d="M256 64H384v64H256V64zM240 0c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48h48v32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96v32H80c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48H240c26.5 0 48-21.5 48-48V368c0-26.5-21.5-48-48-48H192V288H448v32H400c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48H560c26.5 0 48-21.5 48-48V368c0-26.5-21.5-48-48-48H512V288h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H352V192h48c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48H240zM96 448V384H224v64H96zm320-64H544v64H416V384z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 384 512"><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></symbol>
+    <symbol id="i-toolbox" viewBox="0 0 512 512"><path d="M176 88v40H336V88c0-4.4-3.6-8-8-8H184c-4.4 0-8 3.6-8 8zm-48 40V88c0-30.9 25.1-56 56-56H328c30.9 0 56 25.1 56 56v40h28.1c12.7 0 24.9 5.1 33.9 14.1l51.9 51.9c9 9 14.1 21.2 14.1 33.9V304H384V288c0-17.7-14.3-32-32-32s-32 14.3-32 32v16H192V288c0-17.7-14.3-32-32-32s-32 14.3-32 32v16H0V227.9c0-12.7 5.1-24.9 14.1-33.9l51.9-51.9c9-9 21.2-14.1 33.9-14.1H128zM0 416V336H128v16c0 17.7 14.3 32 32 32s32-14.3 32-32V336H320v16c0 17.7 14.3 32 32 32s32-14.3 32-32V336H512v80c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></symbol>
+    <symbol id="i-xmark" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></symbol>
+  </svg>
 
   <!-- ===== NAVBAR ===== -->
   <header class="navbar" data-navbar>
@@ -86,7 +101,7 @@
       <a href="#portfolio" class="nav-link" data-nav-link data-i18n="nav.portfolio">Portfolio</a>
       <a href="#contact" class="nav-link" data-nav-link data-i18n="nav.contact">Contact</a>
       <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" rel="noopener" download class="btn btn-sm nav-cv-btn nav-cv-mobile">
-        <i class="fa-solid fa-download"></i> <span data-i18n="nav.cvMobile">Download CV</span>
+        <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> <span data-i18n="nav.cvMobile">Download CV</span>
       </a>
     </nav>
 
@@ -100,10 +115,10 @@
         <span class="lang-option lang-option-ar" lang="ar">عربي</span>
       </button>
       <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" rel="noopener" download class="btn btn-sm nav-cv-btn nav-cv-desktop">
-        <i class="fa-solid fa-download"></i> <span data-i18n="nav.cv">CV</span>
+        <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> <span data-i18n="nav.cv">CV</span>
       </a>
       <button class="nav-toggle" data-nav-toggle type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
-        <i class="fa-solid fa-bars" data-nav-icon></i>
+        <svg class="icon" data-nav-icon aria-hidden="true"><use href="#i-bars"/></svg>
       </button>
     </div>
   </header>
@@ -114,117 +129,150 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero" id="home">
-      <div class="hero-content reveal">
-        <div class="hero-copy">
-          <p class="hero-eyebrow" data-i18n="hero.eyebrow">Hello, I'm</p>
-          <h1 class="hero-title" data-i18n="hero.title">Hesham Alsadan</h1>
-          <p class="hero-subtitle" data-i18n-html="hero.subtitle">AI Engineer <span class="accent">|</span> Data Science</p>
-
-          <p class="hero-text" data-i18n="hero.text">
-            AI Engineer and Data Scientist based in Riyadh, building practical AI and data solutions —
-            looking for opportunities in EdTech.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#portfolio" class="btn btn-primary" data-i18n="hero.projects">View Projects</a>
-            <a href="#contact" class="btn btn-outline" data-i18n="hero.contact">Contact Me</a>
-          </div>
-
-          <nav class="hero-quick-nav" aria-label="Quick section links" data-i18n-attr="aria-label:quick.aria">
-            <a href="#about" class="quick-link"><i class="fa-solid fa-user"></i> <span data-i18n="quick.about">About</span></a>
-            <a href="#experience" class="quick-link"><i class="fa-solid fa-briefcase"></i> <span data-i18n="quick.experience">Experience</span></a>
-            <a href="#skills" class="quick-link"><i class="fa-solid fa-star"></i> <span data-i18n="quick.skills">Skills</span></a>
-            <a href="#portfolio" class="quick-link"><i class="fa-solid fa-folder-open"></i> <span data-i18n="quick.projects">Projects</span></a>
-          </nav>
-
-          <ul class="hero-socials">
-            <li>
-              <a href="https://www.linkedin.com/in/hesham-alsadan/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/HESHAM-SA" target="_blank" rel="noopener" aria-label="GitHub">
-                <i class="fa-brands fa-github"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.kaggle.com/heshamsadan" target="_blank" rel="noopener" aria-label="Kaggle">
-                <i class="fa-brands fa-kaggle"></i>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:HeshamAlsadan@gmail.com" aria-label="Email">
-                <i class="fa-solid fa-envelope"></i>
-              </a>
-            </li>
-          </ul>
+      <div class="hero-inner">
+        <div class="name-tag">
+          <h1 class="hero-title">
+            <span class="hero-first" data-i18n="hero.first">Hesham</span>
+            <span class="hero-last" data-i18n="hero.last">Alsadan</span>
+          </h1>
+          <p class="hero-role" data-i18n="hero.role">AI and data for learning</p>
         </div>
-
-        <aside class="hero-focus" aria-label="My focus" data-i18n-attr="aria-label:focus.aria">
-          <div class="hero-focus-top">
-            <figure class="hero-avatar">
-              <img src="./assets/images/profile_picture.jpg" alt="Hesham Alsadan" data-i18n-attr="alt:hero.avatar" width="160" height="160" fetchpriority="high" decoding="async">
-            </figure>
-            <span class="hero-location" data-i18n="hero.location">Based in Riyadh, KSA</span>
-          </div>
-          <p class="focus-eyebrow" data-i18n="focus.eyebrow">Ideas into impact</p>
-          <h2 class="focus-title" data-i18n-html="focus.title">Intelligent systems.<br>Practical possibilities.</h2>
-          <ul class="focus-list">
-            <li><span class="focus-label" data-i18n="focus.ai">Artificial intelligence</span></li>
-            <li><span class="focus-label" data-i18n="focus.data">Data &amp; insights</span></li>
-            <li><span class="focus-label" data-i18n="focus.learning">Learning &amp; EdTech</span></li>
-          </ul>
-          <div class="hero-proof"><strong dir="ltr">1,500<span>+</span></strong><span class="hero-proof-label" data-i18n-html="hero.proof">hours of hands-on<br>technical training</span></div>
-        </aside>
       </div>
+
+      <!-- Riyadh skyline, drawn by hand: Kingdom Centre, Al Faisaliah, a minaret and palms. -->
+      <svg class="skyline" viewBox="0 0 1200 520" preserveAspectRatio="xMaxYMax meet" aria-hidden="true" focusable="false">
+        <defs>
+          <!-- A light displacement gives every stroke a pen's wobble instead of a ruler's. -->
+          <filter id="sky-hand" x="-4%" y="-4%" width="108%" height="108%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="11" result="grain"/>
+            <feDisplacementMap in="SourceGraphic" in2="grain" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+          <filter id="sky-hand-night" x="-4%" y="-4%" width="108%" height="108%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="11" result="grain"/>
+            <feDisplacementMap in="SourceGraphic" in2="grain" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+          </filter>
+        </defs>
+        <g class="sky-drawing" filter="url(#sky-hand)">
+          <circle class="sky-sun" cx="1142" cy="70" r="38"/>
+          <path class="sky-line sky-faint" style="--d:.1s" pathLength="1" d="M300 512 Q520 497 760 511 T1180 509"/>
+          <path class="sky-line sky-bold" style="--d:.05s" pathLength="1" d="M0 500 Q300 502 600 499 T1200 501"/>
+
+          <path class="sky-solid wash-b" style="--d:.15s" pathLength="1" d="M601 500 V396 Q634 389 667 395 L668 500"/>
+          <path class="sky-line sky-window sky-thin" style="--d:.3s" pathLength="1" d="M614 418 H627 M642 419 H652 M615 444 H624 M641 443 H655 M613 470 H626 M643 471 H651"/>
+
+          <path class="sky-solid wash-a" style="--d:.2s" pathLength="1" d="M692 500 L693 303 H716 L715 500 M685 303 Q704 299 723 302 M697 302 V253 H711 V302 M696 254 L704 220 L712 253"/>
+
+          <path class="sky-solid wash-c" style="--d:.25s" pathLength="1" d="M736 500 V413 Q763 405 790 412 L789 500"/>
+
+          <path class="sky-solid sky-bold wash-a" style="--d:.35s" pathLength="1" d="M772 500 Q786 330 791 180 L799 61 L806 63 Q820 302 834 61 L841 62 L848 182 Q854 332 869 500 Z"/>
+          <path class="sky-line sky-thin" style="--d:.6s" pathLength="1" d="M808 121 Q820 123 832 120 M807 131 H834 M789 240 Q820 238 851 241 M786 300 H854 M782 361 Q820 358 858 360 M778 420 H862"/>
+
+          <path class="sky-solid wash-b" style="--d:.3s" pathLength="1" d="M880 500 V383 Q910 376 941 382 L940 500"/>
+          <path class="sky-line sky-window sky-thin" style="--d:.55s" pathLength="1" d="M894 404 H906 M917 405 H925 M893 430 H903 M916 429 H928 M895 456 H904 M915 457 H926"/>
+
+          <path class="sky-line sky-bold" style="--d:.4s" pathLength="1" d="M975 500 L1003 150 M1045 500 L1017 150"/>
+          <path class="sky-line sky-thin" style="--d:.5s" pathLength="1" d="M990 500 L1006 168 M1030 500 L1014 168 M983 392 Q1010 390 1037 393 M991 290 H1029 M997 214 Q1010 212 1023 215"/>
+          <circle class="sky-orb" cx="1010" cy="136" r="18"/>
+          <path class="sky-line" style="--d:.7s" pathLength="1" d="M1010 118 Q1029 119 1028 137 Q1027 155 1009 154 Q992 153 992 135 Q993 118 1010 118 M1010 118 L1011 40"/>
+
+          <path class="sky-solid wash-c" style="--d:.45s" pathLength="1" d="M1056 500 V421 Q1088 414 1120 420 L1121 500"/>
+          <path class="sky-solid wash-b" style="--d:.5s" pathLength="1" d="M1128 500 V453 Q1156 446 1186 452 L1185 500"/>
+
+          <path class="sky-line" style="--d:.65s" pathLength="1" d="M560 500 Q568 452 559 404 M559 404 Q529 390 507 408 M559 404 Q537 378 515 380 M559 404 Q563 374 547 358 M559 404 Q583 380 605 386 M559 404 Q589 398 605 422"/>
+          <path class="sky-line" style="--d:.75s" pathLength="1" d="M960 500 Q954 462 963 422 M963 422 Q937 410 919 426 M963 422 Q945 398 925 400 M963 422 Q987 400 1005 406 M963 422 Q989 418 1001 440"/>
+
+          <path class="sky-cloud" style="--d:.85s" pathLength="1" d="M520 92 Q519 74 537 73 Q543 54 566 58 Q577 42 599 54 Q617 51 620 70 Q635 75 627 92 Z"/>
+          <path class="sky-cloud" style="--d:.95s" pathLength="1" d="M868 108 Q866 92 882 91 Q889 74 909 79 Q920 66 938 77 Q954 76 955 92 Q968 97 960 109 Z"/>
+          <path class="sky-line sky-thin" style="--d:1s" pathLength="1" d="M468 126 Q476 118 482 126 Q488 118 496 126 M700 118 Q707 111 712 118 Q717 111 724 118 M1060 150 Q1066 144 1071 150 Q1076 144 1082 150"/>
+        </g>
+      </svg>
     </section>
 
     <!-- ===== ABOUT ===== -->
-    <section class="section" id="about">
-      <div class="container">
-        <p class="section-eyebrow reveal" data-i18n="about.eyebrow">Get to know me</p>
-        <h2 class="section-title reveal" data-i18n="about.title">About Me</h2>
-        <p class="section-lead reveal" data-i18n="about.lead">Who I am, what I focus on, and the kind of work I'm looking for.</p>
-
+    <section class="about" id="about">
+      <div class="panel about-panel">
         <div class="about-grid">
-          <div class="about-text reveal">
-            <p data-i18n="about.p1">
+          <div class="about-main">
+            <div class="about-head">
+              <h2 class="section-title" data-i18n="about.title">About Me</h2>
+              <svg class="doodle-arrow" viewBox="0 0 120 64" aria-hidden="true" focusable="false"><path d="M8 50 C34 14 74 8 108 30 M95 16 L108 30 L90 38"/></svg>
+            </div>
+            <p class="about-intro" data-i18n-html="about.intro">I teach <span class="scribble">170+</span> students computer science, and build the AI and data tools my classroom runs on.</p>
+            <div class="about-actions">
+              <a href="mailto:HeshamAlsadan@gmail.com" class="btn btn-primary">
+                <svg class="icon" aria-hidden="true"><use href="#i-envelope"/></svg> <span data-i18n="contact.email">Email me</span>
+              </a>
+              <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" rel="noopener" download class="btn btn-outline">
+                <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> <span data-i18n="contact.cv">Download CV</span>
+              </a>
+            </div>
+            <p class="about-text" data-i18n="about.p1">
               I'm an AI Engineer and Data Scientist focused on building intelligent systems
               and data-driven solutions — and I'm looking to work in EdTech.
             </p>
-            <p data-i18n="about.p2">
+            <p class="about-text" data-i18n="about.p2">
               Through 6 bootcamps and 5 programs at KAUST, SDAIA, Tuwaiq Academy, and SDA, I've
               completed 1,500+ hours of training in Python, AI, data science, full-stack development,
               IoT, cloud, and GPU infrastructure.
             </p>
+          </div>
 
+          <div class="about-side">
+            <figure class="about-portrait">
+              <img src="./assets/images/profile_picture.jpg" alt="Hesham Alsadan" data-i18n-attr="alt:hero.avatar" width="389" height="389" fetchpriority="high" decoding="async">
+            </figure>
             <ul class="about-facts">
-              <li><i class="fa-solid fa-location-dot accent"></i> <span data-i18n="about.location">Riyadh, KSA</span></li>
-              <li><i class="fa-solid fa-phone accent"></i> <span dir="ltr">966-507-050-338</span></li>
-              <li><i class="fa-solid fa-envelope accent"></i> <span dir="ltr">HeshamAlsadan@gmail.com</span></li>
-              <li><i class="fa-solid fa-language accent"></i> <span data-i18n="about.languages">Arabic &amp; English</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-location-dot"/></svg> <span data-i18n="about.location">Riyadh, KSA</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> <span dir="ltr">966-507-050-338</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-envelope"/></svg> <span dir="ltr">HeshamAlsadan@gmail.com</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-language"/></svg> <span data-i18n="about.languages">Arabic &amp; English</span></li>
+            </ul>
+            <ul class="socials">
+              <li><a href="https://www.linkedin.com/in/hesham-alsadan/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin-in"/></svg></a></li>
+              <li><a href="https://github.com/HESHAM-SA" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+              <li><a href="https://www.kaggle.com/heshamsadan" target="_blank" rel="noopener" aria-label="Kaggle"><svg class="icon" aria-hidden="true"><use href="#i-kaggle"/></svg></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="about-lower">
+          <div class="work-on">
+            <h3 class="sub-title" data-i18n="about.workOn">What I work on</h3>
+            <ul class="work-list">
+              <li>
+                <h4 data-i18n="service.data.title">Data Science</h4>
+                <p data-i18n="service.data.text">EDA of 6,500 Tuwaiq Academy students, plus diabetes and online food-order analyses.</p>
+              </li>
+              <li>
+                <h4 data-i18n="service.ai.title">Artificial Intelligence</h4>
+                <p data-i18n="service.ai.text">Face-recognition attendance (Hadir), learner focus analysis, and a CNN date classifier.</p>
+              </li>
+              <li>
+                <h4 data-i18n="service.viz.title">Visualization</h4>
+                <p data-i18n="service.viz.text">A Power BI dashboard and Plotly Dash apps that make the analysis readable.</p>
+              </li>
+              <li>
+                <h4 data-i18n="service.web.title">Web Development</h4>
+                <p data-i18n="service.web.text">Django platforms like HalaOrder and Portfolio Builder, and FastAPI with React at SDA.</p>
+              </li>
             </ul>
           </div>
 
-          <ul class="service-list">
-            <li class="service-card reveal">
-              <h3 data-i18n="service.data.title">Data Science</h3>
-              <p data-i18n="service.data.text">Advanced analytical techniques for extracting insights from data.</p>
-            </li>
-            <li class="service-card reveal">
-              <h3 data-i18n="service.ai.title">Artificial Intelligence</h3>
-              <p data-i18n="service.ai.text">Development of intelligent systems, computer vision, and deep learning models.</p>
-            </li>
-            <li class="service-card reveal">
-              <h3 data-i18n="service.viz.title">Visualization</h3>
-              <p data-i18n="service.viz.text">Producing dashboards for data visualization and storytelling.</p>
-            </li>
-            <li class="service-card reveal">
-              <h3 data-i18n="service.web.title">Web Development</h3>
-              <p data-i18n="service.web.text">Building full-stack web apps with Python and Django, focused on user experience.</p>
-            </li>
-          </ul>
+          <div class="hours">
+            <h3 class="sub-title" data-i18n="hours.title">Training hours</h3>
+            <ol class="hours-chart">
+              <li style="--h:360"><span class="hours-label" data-i18n="hours.t5">SDAIA T5 bootcamp</span><span class="hours-track"><span class="hours-bar"></span></span><span class="hours-value">360</span></li>
+              <li style="--h:300"><span class="hours-label" data-i18n="hours.web">Web development, Tuwaiq</span><span class="hours-track"><span class="hours-bar"></span></span><span class="hours-value">300</span></li>
+              <li style="--h:300"><span class="hours-label" data-i18n="hours.sda">Software development, SDA</span><span class="hours-track"><span class="hours-bar"></span></span><span class="hours-value">300</span></li>
+              <li style="--h:200"><span class="hours-label" data-i18n="hours.ai">AI bootcamp, Tuwaiq</span><span class="hours-track"><span class="hours-bar"></span></span><span class="hours-value">200</span></li>
+              <li style="--h:200"><span class="hours-label" data-i18n="hours.ds">Data science, Tuwaiq</span><span class="hours-track"><span class="hours-bar"></span></span><span class="hours-value">200</span></li>
+              <li style="--h:80"><span class="hours-label" data-i18n="hours.kaust">Advanced AI, KAUST</span><span class="hours-track"><span class="hours-bar"></span></span><span class="hours-value">80</span></li>
+              <li style="--h:25"><span class="hours-label" data-i18n="hours.iot">IoT, Tuwaiq</span><span class="hours-track"><span class="hours-bar"></span></span><span class="hours-value">25</span></li>
+              <li style="--h:20"><span class="hours-label" data-i18n="hours.drones">Drones, SAFCSP</span><span class="hours-track"><span class="hours-bar"></span></span><span class="hours-value">20</span></li>
+              <li style="--h:16"><span class="hours-label" data-i18n="hours.llm">LLM apps, KSAA</span><span class="hours-track"><span class="hours-bar"></span></span><span class="hours-value">16</span></li>
+            </ol>
+            <p class="hours-total" data-i18n="hours.total">1,501 hours in total</p>
+          </div>
         </div>
       </div>
     </section>
@@ -232,12 +280,11 @@
     <!-- ===== EXPERIENCE ===== -->
     <section class="section section-alt" id="experience">
       <div class="container">
-        <p class="section-eyebrow reveal" data-i18n="experience.eyebrow">My journey</p>
-        <h2 class="section-title reveal" data-i18n="experience.title">Experience</h2>
-        <p class="section-lead reveal" data-i18n="experience.lead">Training and professional growth.</p>
+        <h2 class="section-title" data-i18n="experience.title">Experience</h2>
+        <p class="section-lead" data-i18n="experience.lead">Training and professional growth.</p>
 
         <ol class="timeline">
-          <li class="timeline-item reveal" data-exp="cs-instructor">
+          <li class="timeline-item" data-exp="cs-instructor">
             <div class="timeline-marker"></div>
             <span class="timeline-date" data-i18n="exp.cs-instructor.date">Aug 2025 - Present</span>
             <img class="timeline-logo" src="./assets/logos/ministry-of-education.svg"
@@ -251,7 +298,7 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal" data-exp="gpu">
+          <li class="timeline-item" data-exp="gpu">
             <div class="timeline-marker"></div>
             <span class="timeline-date" data-i18n="exp.gpu.date">Jun 2026 - Aug 2026</span>
             <img class="timeline-logo" src="./assets/logos/tuwaiq-academy.svg"
@@ -272,9 +319,9 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal" data-exp="sda-python">
+          <li class="timeline-item" data-exp="sda-python">
             <div class="timeline-marker"></div>
-            <span class="timeline-date" data-i18n="exp.sda-python.date">May 10, 2026 - Jun 25, 2026</span>
+            <span class="timeline-date" data-i18n="exp.sda-python.date">May 2026 - Jun 2026</span>
             <img class="timeline-logo" src="./assets/logos/mcit.svg"
                  alt="Ministry of Communications and Information Technology" data-i18n-attr="alt:exp.sda-python.logo" width="190" height="44" loading="lazy" decoding="async">
             <h3 class="timeline-title" data-i18n="exp.sda-python.title">Software Development using Python Bootcamp Trainee</h3>
@@ -286,7 +333,7 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal" data-exp="kaust-ai">
+          <li class="timeline-item" data-exp="kaust-ai">
             <div class="timeline-marker"></div>
             <span class="timeline-date" data-i18n="exp.kaust-ai.date">Jan - Feb 2026</span>
             <img class="timeline-logo" src="./assets/logos/kaust.svg"
@@ -299,7 +346,7 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal" data-exp="web-dev">
+          <li class="timeline-item" data-exp="web-dev">
             <div class="timeline-marker"></div>
             <span class="timeline-date" data-i18n="exp.web-dev.date">Jun 2025 - Aug 2025</span>
             <img class="timeline-logo" src="./assets/logos/tuwaiq-academy.svg"
@@ -312,7 +359,7 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal" data-exp="ai-bootcamp">
+          <li class="timeline-item" data-exp="ai-bootcamp">
             <div class="timeline-marker"></div>
             <span class="timeline-date" data-i18n="exp.ai-bootcamp.date">Sep 2024 - Oct 2024</span>
             <img class="timeline-logo" src="./assets/logos/tuwaiq-academy.svg"
@@ -330,7 +377,7 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal" data-exp="t5">
+          <li class="timeline-item" data-exp="t5">
             <div class="timeline-marker"></div>
             <span class="timeline-date" data-i18n="exp.t5.date">Mar 2024 - Jun 2024</span>
             <img class="timeline-logo" src="./assets/logos/sdaia.png"
@@ -349,7 +396,7 @@
             </p>
           </li>
 
-          <li class="timeline-item reveal" data-exp="ds-ml">
+          <li class="timeline-item" data-exp="ds-ml">
             <div class="timeline-marker"></div>
             <span class="timeline-date" data-i18n="exp.ds-ml.date">Oct 2023 - Dec 2023</span>
             <img class="timeline-logo" src="./assets/logos/tuwaiq-academy.svg"
@@ -370,9 +417,9 @@
         </ol>
 
         <!-- Education -->
-        <h2 class="section-title section-title-secondary reveal" data-i18n="education.title">Education</h2>
+        <h2 class="section-title section-title-secondary" data-i18n="education.title">Education</h2>
         <ol class="timeline">
-          <li class="timeline-item reveal" data-edu="ksu">
+          <li class="timeline-item" data-edu="ksu">
             <div class="timeline-marker"></div>
             <img class="timeline-logo" src="./assets/logos/king-saud-university.svg" alt="King Saud University" data-i18n-attr="alt:edu.ksu.logo"
                  width="180" height="69" loading="lazy" decoding="async">
@@ -390,13 +437,12 @@
     <!-- ===== SKILLS ===== -->
     <section class="section" id="skills">
       <div class="container">
-        <p class="section-eyebrow reveal" data-i18n="skills.eyebrow">What I work with</p>
-        <h2 class="section-title reveal" data-i18n="skills.title">Skills &amp; Certifications</h2>
-        <p class="section-lead reveal" data-i18n="skills.lead">Technologies, tools, and certified skills.</p>
+        <h2 class="section-title" data-i18n="skills.title">Skills &amp; Certifications</h2>
+        <p class="section-lead" data-i18n="skills.lead">Technologies, tools, and certified skills.</p>
 
         <div class="skills-grid">
-          <div class="skill-card reveal">
-            <h3><i class="fa-solid fa-code accent"></i> <span data-i18n="skills.languages">Programming Languages</span></h3>
+          <div class="skill-card">
+            <h3><span data-i18n="skills.languages">Programming Languages</span></h3>
             <ul class="tag-list">
               <li>Python</li>
               <li>SQL</li>
@@ -404,8 +450,8 @@
             </ul>
           </div>
 
-          <div class="skill-card reveal">
-            <h3><i class="fa-solid fa-network-wired accent"></i> <span data-i18n="skills.frameworks">ML / DL Frameworks</span></h3>
+          <div class="skill-card">
+            <h3><span data-i18n="skills.frameworks">ML / DL Frameworks</span></h3>
             <ul class="tag-list">
               <li>TensorFlow</li>
               <li>Keras</li>
@@ -415,8 +461,8 @@
             </ul>
           </div>
 
-          <div class="skill-card reveal">
-            <h3><i class="fa-solid fa-toolbox accent"></i> <span data-i18n="skills.tools">Tools &amp; Technologies</span></h3>
+          <div class="skill-card">
+            <h3><span data-i18n="skills.tools">Tools &amp; Technologies</span></h3>
             <ul class="tag-list">
               <li>Streamlit</li>
               <li>Roboflow</li>
@@ -426,8 +472,8 @@
             </ul>
           </div>
 
-          <div class="skill-card reveal">
-            <h3><i class="fa-solid fa-lightbulb accent"></i> <span data-i18n="skills.competencies">Core Competencies</span></h3>
+          <div class="skill-card">
+            <h3><span data-i18n="skills.competencies">Core Competencies</span></h3>
             <ul class="tag-list">
               <li data-i18n="skills.tag.dataAnalysis">Data Analysis</li>
               <li data-i18n="skills.tag.deepLearning">Deep Learning</li>
@@ -438,9 +484,9 @@
           </div>
         </div>
 
-        <h3 class="cert-heading reveal" data-i18n="certs.title">Certifications</h3>
+        <h3 class="cert-heading" data-i18n="certs.title">Certifications</h3>
 
-        <div class="cert-stream reveal" data-cert-stream role="region" aria-label="Certificates" data-i18n-attr="aria-label:certs.aria">
+        <div class="cert-stream" data-cert-stream role="region" aria-label="Certificates" data-i18n-attr="aria-label:certs.aria">
           <div class="cert-track" data-cert-track>
             <div class="cert-set" data-cert-set>
               <a class="cert-card" data-cert="nvidia-ai-infra" href="./assets/certificates/nvidia-certified-associate-ai-infrastructure-operations-2026.pdf" target="_blank" rel="noopener" aria-label="Open certificate: NVIDIA Certified Associate — AI Infrastructure & Operations">
@@ -603,8 +649,8 @@
           </div>
         </div>
 
-        <p class="cert-issuers-label reveal" data-i18n="certs.issuers">Issued by</p>
-        <ul class="cert-issuers reveal">
+        <p class="cert-issuers-label" data-i18n="certs.issuers">Issued by</p>
+        <ul class="cert-issuers">
           <li><img width="130" height="44" src="./assets/logos/tuwaiq-academy.svg" alt="Tuwaiq Academy" loading="lazy" decoding="async"></li>
           <li><img width="130" height="44" src="./assets/logos/sdaia.png" alt="SDAIA — Saudi Data and AI Authority" loading="lazy" decoding="async"></li>
           <li><img width="130" height="44" src="./assets/logos/kaust.svg" alt="KAUST — King Abdullah University of Science and Technology" loading="lazy" decoding="async"></li>
@@ -620,11 +666,10 @@
     <!-- ===== PORTFOLIO ===== -->
     <section class="section section-alt" id="portfolio">
       <div class="container">
-        <p class="section-eyebrow reveal" data-i18n="portfolio.eyebrow">Selected work</p>
-        <h2 class="section-title reveal" data-i18n="portfolio.title">Portfolio</h2>
-        <p class="section-lead reveal" data-i18n="portfolio.lead">Tap a category to filter projects.</p>
+        <h2 class="section-title" data-i18n="portfolio.title">Portfolio</h2>
+        <p class="section-lead" data-i18n="portfolio.lead">Tap a category to filter projects.</p>
 
-        <ul class="filter-list reveal" aria-label="Project categories" data-i18n-attr="aria-label:filter.aria">
+        <ul class="filter-list" aria-label="Project categories" data-i18n-attr="aria-label:filter.aria">
           <li><button class="filter-btn active" type="button" data-filter-btn="all" aria-pressed="true" data-i18n="filter.all">All</button></li>
           <li><button class="filter-btn" type="button" data-filter-btn="ai" aria-pressed="false" data-i18n="filter.ai">AI</button></li>
           <li><button class="filter-btn" type="button" data-filter-btn="data-analytics" aria-pressed="false" data-i18n="filter.data-analytics">Data Analytics</button></li>
@@ -633,7 +678,7 @@
 
         <ul class="project-grid">
 
-          <li class="project-card active reveal" data-filter-item data-category="ai" data-project="attendees">
+          <li class="project-card active" data-filter-item data-category="ai" data-project="attendees">
             <a href="https://github.com/HESHAM-SA/Capstone-Project-Majed-" target="_blank" rel="noopener"
                aria-label="View Attendees Management System GitHub Repository" data-i18n-attr="aria-label:project.attendees.aria">
               <figure class="project-media">
@@ -645,7 +690,6 @@
                 </video>
               </figure>
               <div class="project-info">
-                <span class="project-category" data-i18n="category.ai">AI</span>
                 <h3 class="project-title" data-i18n="project.attendees.title">Attendees Management System</h3>
                 <p class="project-description" data-i18n="project.attendees.description">Automated classroom attendance with face recognition and AI-backed verification.</p>
                 <span class="project-link-label" data-i18n="project.attendees.link">View GitHub</span>
@@ -653,7 +697,7 @@
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="ai" data-project="focus">
+          <li class="project-card active" data-filter-item data-category="ai" data-project="focus">
             <a href="https://github.com/HESHAM-SA/AI-Platform-for-Focus-Analysis-in-E-Learning" target="_blank" rel="noopener"
                aria-label="View AI Platform for Focus Analysis GitHub Repository" data-i18n-attr="aria-label:project.focus.aria">
               <figure class="project-media">
@@ -665,7 +709,6 @@
                 </video>
               </figure>
               <div class="project-info">
-                <span class="project-category" data-i18n="category.ai">AI</span>
                 <h3 class="project-title" data-i18n="project.focus.title">AI Platform for Focus Analysis in E-&#8288;Learning</h3>
                 <p class="project-description" data-i18n="project.focus.description">Tracks learner attention in e-learning sessions using face analysis and quiz performance.</p>
                 <span class="project-link-label" data-i18n="project.focus.link">View GitHub</span>
@@ -673,14 +716,13 @@
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="ai" data-project="kharaf">
+          <li class="project-card active" data-filter-item data-category="ai" data-project="kharaf">
             <a href="https://github.com/HESHAM-SA/KharafDates" target="_blank" rel="noopener"
                aria-label="View Kharaf Dates GitHub Repository" data-i18n-attr="aria-label:project.kharaf.aria">
               <figure class="project-media">
                 <img src="my_projects/AI/AI_p1/KharafDates.jpg" alt="Date quality analysis visualization" data-i18n-attr="alt:project.kharaf.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category" data-i18n="category.ai">AI</span>
                 <h3 class="project-title" data-i18n="project.kharaf.title">Kharaf Dates</h3>
                 <p class="project-description" data-i18n="project.kharaf.description">CNN-based date-quality classifier for type, maturity, grade, and palm disease signals.</p>
                 <span class="project-link-label" data-i18n="project.kharaf.link">View GitHub</span>
@@ -688,14 +730,13 @@
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="diabetes">
+          <li class="project-card active" data-filter-item data-category="data-analytics" data-project="diabetes">
             <a href="./my_projects/Data%20Analytics/p1/diabetes_1.pdf" target="_blank" rel="noopener"
                aria-label="View diabetes analysis case study" data-i18n-attr="aria-label:project.diabetes.aria">
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/p1/diabetes.jpg" alt="Diabetes risk factor visualization" data-i18n-attr="alt:project.diabetes.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category" data-i18n="category.data-analytics">Data Analytics</span>
                 <h3 class="project-title" data-i18n="project.diabetes.title">Diabetes Analysis</h3>
                 <p class="project-description" data-i18n="project.diabetes.description">Data analysis report exploring diabetes risk factors and health patterns.</p>
                 <span class="project-link-label" data-i18n="project.diabetes.link">View report</span>
@@ -703,7 +744,7 @@
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="food">
+          <li class="project-card active" data-filter-item data-category="data-analytics" data-project="food">
             <a href="./my_projects/Data%20Analytics/p2/Analysing%20food%20order%20online%20.pdf"
                target="_blank" rel="noopener" aria-label="Comprehensive food order online analysis report" data-i18n-attr="aria-label:project.food.aria">
               <figure class="project-media">
@@ -711,7 +752,6 @@
                      alt="Detailed analysis of online food ordering trends" data-i18n-attr="alt:project.food.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category" data-i18n="category.data-analytics">Data Analytics</span>
                 <h3 class="project-title" data-i18n="project.food.title">Online Food Order Analysis</h3>
                 <p class="project-description" data-i18n="project.food.description">EDA report uncovering customer behavior and trends in online food orders.</p>
                 <span class="project-link-label" data-i18n="project.food.link">View report</span>
@@ -719,7 +759,7 @@
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="tuwaiq">
+          <li class="project-card active" data-filter-item data-category="data-analytics" data-project="tuwaiq">
             <a href="https://www.kaggle.com/code/heshamsadan/eda-for-6-500-students-of-tuwaiq-academy"
                target="_blank" rel="noopener" aria-label="View the Tuwaiq Academy student EDA notebook on Kaggle" data-i18n-attr="aria-label:project.tuwaiq.aria">
               <figure class="project-media">
@@ -727,7 +767,6 @@
                      alt="Exploratory Data Analysis of 6,500 Tuwaiq Academy students" data-i18n-attr="alt:project.tuwaiq.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category" data-i18n="category.data-analytics">Data Analytics</span>
                 <h3 class="project-title" data-i18n="project.tuwaiq.title">Tuwaiq Academy Student EDA</h3>
                 <p class="project-description" data-i18n="project.tuwaiq.description">Exploratory analysis of 6,500 Tuwaiq Academy students and training patterns.</p>
                 <span class="project-link-label" data-i18n="project.tuwaiq.link">View on Kaggle</span>
@@ -735,14 +774,13 @@
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="data-analytics" data-project="powerbi">
+          <li class="project-card active" data-filter-item data-category="data-analytics" data-project="powerbi">
             <a href="https://github.com/HESHAM-SA/PowerBI-Dashboard" target="_blank" rel="noopener"
                aria-label="View Power BI dashboard GitHub Repository" data-i18n-attr="aria-label:project.powerbi.aria">
               <figure class="project-media">
                 <img src="my_projects/Data Analytics/project 04 power bi/dashboard.png" alt="Power BI dashboard" data-i18n-attr="alt:project.powerbi.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category" data-i18n="category.data-analytics">Data Analytics</span>
                 <h3 class="project-title" data-i18n="project.powerbi.title">Dashboard using Power BI</h3>
                 <p class="project-description" data-i18n="project.powerbi.description">Interactive Power BI dashboard for cleaning, modeling, and visualizing business data.</p>
                 <span class="project-link-label" data-i18n="project.powerbi.link">View GitHub</span>
@@ -750,7 +788,7 @@
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="apps" data-project="halaorder">
+          <li class="project-card active" data-filter-item data-category="apps" data-project="halaorder">
             <a href="https://github.com/Turki20/HallaOrder" target="_blank" rel="noopener"
                aria-label="View HalaOrder Restaurant Platform GitHub Repository" data-i18n-attr="aria-label:project.halaorder.aria">
               <figure class="project-media">
@@ -762,7 +800,6 @@
                 </video>
               </figure>
               <div class="project-info">
-                <span class="project-category" data-i18n="category.apps">Apps</span>
                 <h3 class="project-title" data-i18n="project.halaorder.title">HalaOrder Restaurant Platform</h3>
                 <p class="project-description" data-i18n="project.halaorder.description">Multi-tenant Django platform where restaurants launch a storefront, manage menus and branches, and track orders live.</p>
                 <span class="project-link-label" data-i18n="project.halaorder.link">View GitHub</span>
@@ -770,7 +807,7 @@
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="apps" data-project="portfolio-builder">
+          <li class="project-card active" data-filter-item data-category="apps" data-project="portfolio-builder">
             <a href="https://github.com/HESHAM-SA/PortfolioBuilder" target="_blank" rel="noopener"
                aria-label="View Portfolio Builder GitHub Repository" data-i18n-attr="aria-label:project.portfolio-builder.aria">
               <figure class="project-media">
@@ -782,7 +819,6 @@
                 </video>
               </figure>
               <div class="project-info">
-                <span class="project-category" data-i18n="category.apps">Apps</span>
                 <h3 class="project-title" data-i18n="project.portfolio-builder.title">Portfolio Builder</h3>
                 <p class="project-description" data-i18n="project.portfolio-builder.description">Django app that turns a name and a few career events into a shareable timeline portfolio, with no signup.</p>
                 <span class="project-link-label" data-i18n="project.portfolio-builder.link">View GitHub</span>
@@ -790,14 +826,13 @@
             </a>
           </li>
 
-          <li class="project-card active reveal" data-filter-item data-category="apps" data-project="guess">
+          <li class="project-card active" data-filter-item data-category="apps" data-project="guess">
             <a href="https://github.com/HESHAM-SA/Bootcamp-Project-1-Python" target="_blank" rel="noopener"
                aria-label="View Guess Number Game GitHub Repository" data-i18n-attr="aria-label:project.guess.aria">
               <figure class="project-media">
                 <img src="my_projects/App/Guess.jpg" alt="Guess Number Game" data-i18n-attr="alt:project.guess.media" loading="lazy">
               </figure>
               <div class="project-info">
-                <span class="project-category" data-i18n="category.apps">Apps</span>
                 <h3 class="project-title" data-i18n="project.guess.title">Guess Number Game</h3>
                 <p class="project-description" data-i18n="project.guess.description">Simple Python number guessing game focused on control flow and user input.</p>
                 <span class="project-link-label" data-i18n="project.guess.link">View GitHub</span>
@@ -812,36 +847,35 @@
     <!-- ===== CONTACT ===== -->
     <section class="section" id="contact">
       <div class="container contact-container">
-        <p class="section-eyebrow reveal" data-i18n="contact.eyebrow">Get in touch</p>
-        <h2 class="section-title reveal" data-i18n="contact.title">Let’s build useful AI together</h2>
-        <p class="section-lead reveal" data-i18n="contact.lead">Get in touch about AI, data science, or EdTech opportunities.</p>
+        <h2 class="section-title" data-i18n="contact.title">Let’s build useful AI together</h2>
+        <p class="section-lead" data-i18n="contact.lead">Get in touch about AI, data science, or EdTech opportunities.</p>
 
-        <div class="contact-panel reveal">
+        <div class="contact-panel">
           <a href="mailto:HeshamAlsadan@gmail.com" class="btn btn-primary contact-primary">
-            <i class="fa-solid fa-envelope"></i>
+            <svg class="icon" aria-hidden="true"><use href="#i-envelope"/></svg>
             <span data-i18n="contact.email">Email me</span>
           </a>
           <div class="contact-actions">
             <a href="https://www.linkedin.com/in/hesham-alsadan/" target="_blank" rel="noopener" class="btn btn-outline contact-secondary">
-              <i class="fa-brands fa-linkedin-in"></i>
+              <svg class="icon" aria-hidden="true"><use href="#i-linkedin-in"/></svg>
               <span data-i18n="contact.linkedin">LinkedIn</span>
             </a>
             <a href="./assets/pdf/CV_Hesham_Alsadan.pdf" target="_blank" rel="noopener" download class="btn btn-outline contact-secondary">
-              <i class="fa-solid fa-download"></i>
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
               <span data-i18n="contact.cv">Download CV</span>
             </a>
           </div>
           <div class="contact-details">
             <a href="mailto:HeshamAlsadan@gmail.com" class="contact-detail contact-email">
-              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#i-envelope"/></svg>
               <span dir="ltr">HeshamAlsadan@gmail.com</span>
             </a>
             <a href="tel:+966507050338" class="contact-detail">
-              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
               <span dir="ltr">966-507-050-338</span>
             </a>
             <div class="contact-detail">
-              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#i-location-dot"/></svg>
               <span class="contact-location" data-i18n="contact.location">Riyadh, KSA</span>
             </div>
           </div>
@@ -854,9 +888,9 @@
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <ul class="footer-socials">
-      <li><a href="https://www.linkedin.com/in/hesham-alsadan/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
-      <li><a href="https://github.com/HESHAM-SA" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a></li>
-      <li><a href="https://www.kaggle.com/heshamsadan" target="_blank" rel="noopener" aria-label="Kaggle"><i class="fa-brands fa-kaggle"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/hesham-alsadan/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin-in"/></svg></a></li>
+      <li><a href="https://github.com/HESHAM-SA" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+      <li><a href="https://www.kaggle.com/heshamsadan" target="_blank" rel="noopener" aria-label="Kaggle"><svg class="icon" aria-hidden="true"><use href="#i-kaggle"/></svg></a></li>
     </ul>
     <p data-i18n="footer.copyright">&copy; 2026 Hesham Alsadan. All rights reserved.</p>
   </footer>
@@ -864,25 +898,25 @@
   <!-- Mobile bottom navigation -->
   <nav class="bottom-nav" data-bottom-nav aria-label="Mobile section navigation" data-i18n-attr="aria-label:bottomNav.aria">
     <a href="#home" class="bottom-nav-link active" data-nav-link>
-      <i class="fa-solid fa-house"></i>
+      <svg class="icon" aria-hidden="true"><use href="#i-house"/></svg>
       <span data-i18n="bottomNav.home">Home</span>
     </a>
     <a href="#about" class="bottom-nav-link" data-nav-link>
-      <i class="fa-solid fa-user"></i>
+      <svg class="icon" aria-hidden="true"><use href="#i-user"/></svg>
       <span data-i18n="bottomNav.about">About</span>
     </a>
     <a href="#portfolio" class="bottom-nav-link" data-nav-link>
-      <i class="fa-solid fa-folder-open"></i>
+      <svg class="icon" aria-hidden="true"><use href="#i-folder-open"/></svg>
       <span data-i18n="bottomNav.projects">Projects</span>
     </a>
     <a href="#contact" class="bottom-nav-link" data-nav-link>
-      <i class="fa-solid fa-envelope"></i>
+      <svg class="icon" aria-hidden="true"><use href="#i-envelope"/></svg>
       <span data-i18n="bottomNav.contact">Contact</span>
     </a>
   </nav>
 
   <button class="back-to-top" data-back-to-top type="button" aria-label="Back to top" data-i18n-attr="aria-label:backToTop.aria" hidden>
-    <i class="fa-solid fa-arrow-up"></i>
+    <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
   </button>
 
   <script src="./assets/js/script.js"></script>

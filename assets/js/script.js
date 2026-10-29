@@ -58,39 +58,35 @@ const translations = {
       'nav.contact': 'تواصل معي',
       'nav.cvMobile': 'حمّل السيرة الذاتية',
       'nav.cv': 'السيرة',
-      'hero.eyebrow': 'هلا، أنا',
-      'hero.title': 'هشام السعدان',
-      'hero.subtitle': 'مهندس ذكاء اصطناعي <span class="accent">|</span> علوم بيانات',
-      'hero.text': 'مهندس ذكاء اصطناعي وعالم بيانات في الرياض، أبني حلول عملية في الذكاء الاصطناعي وتحليل البيانات — أدوّر على فرص في EdTech.',
-      'hero.projects': 'شوف مشاريعي',
-      'hero.contact': 'تواصل معي',
-      'quick.about': 'عني',
-      'quick.experience': 'خبراتي',
-      'quick.skills': 'مهاراتي',
-      'quick.projects': 'مشاريعي',
-      'hero.location': 'مقرّي الرياض، السعودية',
-      'focus.eyebrow': 'من الفكرة للأثر',
-      'focus.title': 'أنظمة ذكية. إمكانات عملية.',
-      'focus.ai': 'الذكاء الاصطناعي',
-      'focus.data': 'البيانات والرؤى',
-      'focus.learning': 'التعلّم وتقنيات التعليم',
-      'hero.proof': 'ساعة تدريب تقني عملي',
-      'about.eyebrow': 'تعرّف عليّ',
+      'hero.first': 'هشام',
+      'hero.last': 'السعدان',
+      'hero.role': 'ذكاء اصطناعي وبيانات للتعليم',
       'about.title': 'من أنا',
-      'about.lead': 'نبذة عني، مجالات اهتمامي، ونوع الشغل اللي أدوّر عليه.',
+      'about.intro': 'أدرّس علوم الحاسب لأكثر من <span class="scribble">170</span> طالب، وأبني أدوات الذكاء الاصطناعي والبيانات اللي يشتغل عليها فصلي.',
       'about.p1': 'أنا مهندس ذكاء اصطناعي وعالم بيانات، أركّز على بناء أنظمة ذكية وحلول مبنية على البيانات — وأدوّر على العمل في EdTech.',
       'about.p2': 'خلّصت 6 معسكرات و5 برامج مع كاوست وسدايا وأكاديمية طويق وSDA — أكثر من 1,500 ساعة تدريب في Python والذكاء الاصطناعي وعلوم البيانات والتطوير المتكامل وإنترنت الأشياء والحوسبة السحابية والبنية التحتية لـ GPU.',
       'about.location': 'الرياض، السعودية',
       'about.languages': 'العربية والإنجليزية',
       'service.data.title': 'علوم البيانات',
-      'service.data.text': 'أستخدم تقنيات تحليلية متقدمة عشان أستخرج رؤى من البيانات.',
+      'service.data.text': 'تحليل استكشافي لـ 6,500 طالب في أكاديمية طويق، وتحليلات للسكري وطلبات الطعام أونلاين.',
       'service.ai.title': 'الذكاء الاصطناعي',
-      'service.ai.text': 'أبني أنظمة ذكية ونماذج رؤية حاسوبية وتعلّم عميق.',
+      'service.ai.text': 'نظام حضور بالتعرّف على الوجوه (حاضر)، وتحليل تركيز المتعلمين، ومصنّف تمور بالـ CNN.',
       'service.viz.title': 'عرض البيانات',
-      'service.viz.text': 'أصمم لوحات معلومات تخلي فهم البيانات ومتابعتها أسهل.',
+      'service.viz.text': 'لوحة Power BI وتطبيقات Plotly Dash تخلي التحليل واضح وسهل القراءة.',
       'service.web.title': 'تطوير الويب',
-      'service.web.text': 'أطوّر تطبيقات ويب متكاملة بـ Python وDjango مع تركيز على تجربة المستخدم.',
-      'experience.eyebrow': 'مسيرتي',
+      'service.web.text': 'منصات Django مثل هلا أوردر ومنشئ الملف الشخصي، وFastAPI مع React في الأكاديمية الرقمية.',
+      'about.workOn': 'وش أشتغل عليه',
+      'hours.title': 'ساعات التدريب',
+      'hours.t5': 'معسكر T5، سدايا',
+      'hours.web': 'تطوير الويب، طويق',
+      'hours.sda': 'تطوير البرمجيات، SDA',
+      'hours.ai': 'معسكر الذكاء الاصطناعي، طويق',
+      'hours.ds': 'علم البيانات، طويق',
+      'hours.kaust': 'الذكاء الاصطناعي المتقدم، كاوست',
+      'hours.iot': 'إنترنت الأشياء، طويق',
+      'hours.drones': 'الدرونز، الاتحاد السعودي',
+      'hours.llm': 'تطبيقات LLM، مجمع الملك سلمان',
+      'hours.total': '1,501 ساعة بالمجموع',
       'experience.title': 'خبراتي',
       'experience.lead': 'تدريب ونمو مهني.',
       'exp.cs-instructor.date': 'أغسطس 2025 - حتى الآن',
@@ -102,7 +98,7 @@ const translations = {
       'exp.gpu.org': 'أكاديمية طويق',
       'exp.gpu.text': 'خلّصت 9 أسابيع مكثفة عملية في كامل البنية التحتية للذكاء الاصطناعي: نماذج LLM والمحولات، الذكاء الاصطناعي الوكيلي، بنية GPU ومراكز البيانات، CUDA، PyTorch عالي الأداء، التدريب الموزع على عدة معالجات وعدة أجهزة، الضبط الدقيق، والتقييم والاستدلال الإنتاجي على نطاق واسع. وتخرّجت بشهادة احترافية من NVIDIA في البنية التحتية للذكاء الاصطناعي.',
       'exp.gpu.capstone': '<strong>ورقة بحثية — رفع دقة النماذج بعد التكميم:</strong> قرأت أبحاث من سبقوني في ضغط النماذج وكملت على شغلهم، وقدّمت ورقة بحثية عن رفع دقة نماذج الذكاء الاصطناعي بعد تكميمها من FP16 إلى NVFP4. <em>الأدوات: PyTorch, CUDA, NVIDIA TensorRT Model Optimizer.</em>',
-      'exp.sda-python.date': '10 مايو 2026 - 25 يونيو 2026',
+      'exp.sda-python.date': 'مايو 2026 - يونيو 2026',
       'exp.sda-python.title': 'معسكر تطوير البرمجيات بـ Python',
       'exp.sda-python.org': 'الأكاديمية السعودية الرقمية — SDA',
       'exp.sda-python.text': 'خلّصت 7 أسابيع مكثفة في تطوير البرمجيات بـ Python وFastAPI وReact وPostgreSQL، وبنيت مهارات برمجية عملية وخبرة تطبيقية حقيقية.',
@@ -133,7 +129,6 @@ const translations = {
       'edu.ksu.title': 'بكالوريوس علوم الحاسب',
       'edu.ksu.org': 'جامعة الملك سعود',
       'edu.ksu.text': 'ركّزت على أساسيات مثل البرمجة والخوارزميات وهياكل البيانات وقواعد البيانات وأنظمة التشغيل وتطوير البرمجيات.',
-      'skills.eyebrow': 'أدواتي ومهاراتي',
       'skills.title': 'المهارات والشهادات',
       'skills.lead': 'التقنيات والشهادات اللي أستخدمها.',
       'skills.languages': 'لغات البرمجة',
@@ -173,14 +168,12 @@ const translations = {
       'cert.llm-apps.name': 'تطوير تطبيقات النماذج اللغوية الكبيرة',
       'cert.llm-apps.meta': 'مجمع الملك سلمان العالمي للغة العربية · 16 ساعة · ديسمبر 2023',
       'certs.issuers': 'الجهات المانحة',
-      'portfolio.eyebrow': 'مشاريع مختارة',
       'portfolio.title': 'مشاريعي',
       'portfolio.lead': 'اختر نوع المشروع عشان تصفّي المشاريع.',
       'filter.all': 'الكل',
       'filter.ai': 'ذكاء اصطناعي',
       'filter.data-analytics': 'تحليل البيانات',
       'filter.apps': 'تطبيقات',
-      'category.ai': 'ذكاء اصطناعي',
       'project.attendees.title': 'نظام إدارة الحضور',
       'project.attendees.description': 'نظام حضور تلقائي يستخدم التعرف على الوجوه عشان يسجّل الطلاب يوم يدخلون الصف.',
       'project.attendees.link': 'شوف GitHub',
@@ -190,7 +183,6 @@ const translations = {
       'project.kharaf.title': 'خراف للتمور',
       'project.kharaf.description': 'مصنّف جودة تمور بالـ CNN يحدّد النوع والنضج والجودة ومؤشرات أمراض النخيل.',
       'project.kharaf.link': 'شوف GitHub',
-      'category.data-analytics': 'تحليل البيانات',
       'project.diabetes.title': 'تحليل مرض السكري',
       'project.diabetes.description': 'تقرير تحليل بيانات يستكشف عوامل خطر السكري والأنماط الصحية.',
       'project.diabetes.link': 'شوف التقرير',
@@ -203,7 +195,6 @@ const translations = {
       'project.powerbi.title': 'لوحة معلومات Power BI',
       'project.powerbi.description': 'لوحة Power BI تفاعلية لتنظيف البيانات ونمذجتها وعرضها بصريًا.',
       'project.powerbi.link': 'شوف GitHub',
-      'category.apps': 'تطبيقات',
       'project.halaorder.title': 'منصة هلا أوردر للمطاعم',
       'project.halaorder.description': 'منصة Django متعددة المطاعم لإطلاق متجر إلكتروني وإدارة القوائم والفروع ومتابعة الطلبات لحظيًا.',
       'project.halaorder.link': 'شوف GitHub',
@@ -213,7 +204,6 @@ const translations = {
       'project.guess.title': 'لعبة تخمين الرقم',
       'project.guess.description': 'لعبة Python بسيطة لتخمين الرقم تركّز على تدفق التحكم وإدخال المستخدم.',
       'project.guess.link': 'شوف GitHub',
-      'contact.eyebrow': 'كلّمني',
       'contact.title': 'خلّنا نبني مع بعض ذكاء اصطناعي مفيد',
       'contact.lead': 'تواصل معي بخصوص فرص الذكاء الاصطناعي وعلوم البيانات وتقنيات التعليم.',
       'contact.email': 'راسلني على الإيميل',
@@ -229,8 +219,6 @@ const translations = {
     // data-i18n-attr keys
     attrs: {
       'nav.aria': 'القائمة الرئيسية',
-      'quick.aria': 'روابط سريعة',
-      'focus.aria': 'مجالات اهتمامي',
       'hero.avatar': 'هشام السعدان',
       'exp.cs-instructor.logo': 'وزارة التعليم',
       'exp.gpu.logo': 'أكاديمية طويق',
@@ -352,7 +340,7 @@ const setTheme = (theme) => {
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
   const themeColor = document.querySelector('meta[name="theme-color"]');
-  if (themeColor) themeColor.content = theme === 'dark' ? '#15130f' : '#f3eee4';
+  if (themeColor) themeColor.content = theme === 'dark' ? '#1b1656' : '#c5e9ff';
   try { localStorage.setItem('portfolio-theme', theme); } catch (_) { /* Theme still works without storage. */ }
   syncThemeControl();
 };
@@ -421,7 +409,7 @@ const setMenuOpen = (open, { restoreFocus = true } = {}) => {
   navBackdrop.hidden = !open;
   navToggle.setAttribute('aria-expanded', String(open));
   navToggle.setAttribute('aria-label', t(open ? 'menuClose' : 'menuOpen'));
-  navIcon.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+  navIcon.querySelector('use')?.setAttribute('href', open ? '#i-xmark' : '#i-bars');
   document.body.classList.toggle('menu-open', open);
   menuBackground.forEach(element => {
     if (open) element.setAttribute('inert', '');
@@ -769,21 +757,4 @@ if (projectVideos.length && !prefersReducedMotion) {
   } else {
     projectVideos.forEach(playVideo);
   }
-}
-
-/* ===== Scroll reveal ===== */
-const revealElements = document.querySelectorAll('.reveal');
-
-if ('IntersectionObserver' in window) {
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.08 });
-
-  revealElements.forEach(el => revealObserver.observe(el));
-} else {
-  revealElements.forEach(el => el.classList.add('visible'));
 }

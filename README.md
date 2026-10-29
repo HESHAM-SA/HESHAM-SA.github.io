@@ -4,13 +4,19 @@ Static GitHub Pages portfolio for AI, data science, and web projects.
 
 ## Structure
 
-- `index.html` — page content and project cards
-- `assets/css/style.css` — layout, responsive styles, RTL support
-- `assets/js/script.js` — menu, language switch, filters, reveal effects, lazy videos
-- `assets/pdf/CV_Hesham_Alsadan.pdf` — downloadable CV
-- `assets/certificates/` — certificate PDFs, plus `thumbs/` previews rendered from page 1 of each
-- `assets/logos/` — issuer logos, monochromed in CSS for the dark theme
-- `my_projects/` — project images, videos, and reports
+- `index.html`: page content and project cards. It includes the hand-drawn Riyadh skyline
+  (inline SVG in the hero) and the icon sprite (Font Awesome Free SVGs, CC BY 4.0) just after
+  `<body>`. Icons are used as `<svg class="icon"><use href="#i-name"/></svg>`.
+- `assets/css/style.css`: the light and dark tokens, layout, responsive styles and RTL support.
+- `assets/js/script.js`: the menu, language and theme switches, filters, the certificate rail and
+  lazy videos.
+- `assets/fonts/`: self-hosted Lexend (Latin) and Readex Pro (Arabic) variable woff2 subsets.
+  There are no third-party font or icon requests.
+- `assets/pdf/CV_Hesham_Alsadan.pdf`: the downloadable CV.
+- `assets/certificates/`: certificate PDFs, plus `thumbs/` previews rendered from page 1 of each.
+- `assets/logos/`: issuer logos, shown in color in light mode and turned white in CSS for the
+  dark theme.
+- `my_projects/`: project images, videos and reports.
 
 ## Edit content
 
@@ -75,5 +81,9 @@ and `.jpg`, then add the card to `index.html` with `data-cert="<id>"`, plus
 node --check assets/js/script.js
 git diff --check
 ```
+
+The training-hours bars in the About panel are real data: each bar's `--h` is the program's
+hours, scaled against the largest (360). Keep them in step with the certificates, and with the
+"1,500+" in the copy, when a program is added.
 
 For GitHub Pages, push to `main`; the site deploys from this repository.
