@@ -616,12 +616,9 @@ html[dir="rtl"] .hero::before {
   color: var(--display);
 }
 
-.hero-tagline {
-  max-width: 36ch;
-  text-wrap: balance;
-  margin-top: 0.35rem;
-  font-size: clamp(1rem, 0.94rem + 0.3vw, 1.1875rem);
-  color: var(--ink-2);
+/* Each phrase breaks as a unit, so a wrap never splits "AI Engineer" or "ذكاء اصطناعي". */
+.hero-role span {
+  display: inline-block;
 }
 
 html[lang="ar"] .name-tag {
