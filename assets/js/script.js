@@ -205,7 +205,7 @@ const translations = {
       'project.guess.title': 'لعبة تخمين الرقم',
       'project.guess.description': 'لعبة Python بسيطة لتخمين الرقم تركّز على تدفق التحكم وإدخال المستخدم.',
       'project.guess.link': 'شوف GitHub',
-      'contact.title': 'تدوّر أحد للتعليم والذكاء الاصطناعي؟<br>خلّنا نسولف.',
+      'contact.title': 'مهتم <span>بالقطاع التعليمي؟</span><br>يسعدني تواصلك.',
       'contact.email': 'راسلني على الإيميل',
       'contact.whatsapp': 'واتساب',
       'contact.emailLabel': 'الإيميل',

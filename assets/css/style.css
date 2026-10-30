@@ -1579,6 +1579,11 @@ html[dir="rtl"] .cert-card {
   color: var(--contact-ink);
 }
 
+/* A phrase wrapped in a span breaks as a unit wherever it fits, like "بالقطاع التعليمي". */
+#contact .section-title span {
+  display: inline-block;
+}
+
 #contact > .container {
   position: relative;
   padding-bottom: calc(var(--panel-pad) + 4rem);
