@@ -44,6 +44,7 @@
   --ink-3: #6b6a8c;
   --display: #201561;
   --display-2: #3298e3;
+  --display-2-sky: #2580cc;
   --link: #1f6fb2;
   --magenta: #e5326e;
   --action-bg: #201561;
@@ -89,6 +90,7 @@
   --ink-3: #9ea2cc;
   --display: #f3f4ff;
   --display-2: #6cb8f2;
+  --display-2-sky: #6cb8f2;
   --link: #8cc8f5;
   --magenta: #ff6b98;
   --action-bg: #c5e9ff;
@@ -582,10 +584,6 @@ html[dir="rtl"] .hero::before {
 .name-tag {
   display: inline-block;
   max-width: min(100%, 34rem);
-  padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1.5rem, 3.5vw, 2.75rem);
-  border-radius: 1.75rem;
-  background: var(--panel);
-  box-shadow: var(--shadow);
 }
 
 .hero-title {
@@ -604,11 +602,13 @@ html[dir="rtl"] .hero::before {
   color: var(--display);
 }
 
+/* Folio Blue reads 2.6:1 on the sky, so the surname takes a deeper step of it (3.3:1 at the lightest sky). */
 .hero-last {
-  color: var(--display-2);
+  color: var(--display-2-sky);
 }
 
 .hero-role {
+  max-width: 18em;
   margin-top: 1.1rem;
   font-size: clamp(1.1875rem, 1rem + 0.7vw, 1.5rem);
   font-weight: 700;
