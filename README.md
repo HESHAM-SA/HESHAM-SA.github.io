@@ -101,8 +101,10 @@ node --check assets/js/script.js
 git diff --check
 ```
 
-The training-hours bars in the About panel are real data: each bar's `--h` is the program's
-hours, scaled against the largest (360). Keep them in step with the certificates, and with the
-"1,500+" in the copy, when a program is added.
+The training-hours bars in the About panel are real data, in two groups: the 6 bootcamps
+(1,640 hours) and the 5 short programs (166 hours). Each bar's `--h` is that course's hours,
+and both groups share one scale against the largest (360), so bars compare across groups. When a
+course is added, keep the bars, the group counts and subtotals, the total (1,806) and the
+"1,800+" in the copy and the meta description in step with the certificates.
 
 For GitHub Pages, push to `main`; the site deploys from this repository.

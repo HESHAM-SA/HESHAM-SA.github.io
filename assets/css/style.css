@@ -549,6 +549,7 @@ html[lang="ar"] .lang-option-ar {
 /* ===== Hero ===== */
 
 .hero {
+  --sky-w: min(70vw, 64rem);
   position: relative;
   padding: calc(var(--nav-h) + clamp(1.75rem, 6vh, 4rem)) var(--gutter) calc(var(--overlap) + clamp(3.5rem, 9vh, 6rem));
   background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 100%);
@@ -642,7 +643,7 @@ html[lang="ar"] .hero-title span {
   inset-inline-end: 0;
   bottom: var(--overlap);
   z-index: 0;
-  width: min(70vw, 64rem);
+  width: var(--sky-w);
   max-width: none;
   height: auto;
   overflow: visible;
@@ -650,6 +651,20 @@ html[lang="ar"] .hero-title span {
 
 html[dir="rtl"] .skyline {
   transform: scaleX(-1);
+}
+
+/* Beside the name, the hero is tall enough for the whole skyline under the menu, and the name centres on the sky. */
+@media (min-width: 769px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(var(--nav-h) + 1rem + var(--sky-w) * 520 / 1200 + var(--overlap));
+  }
+
+  .hero-inner {
+    width: 100%;
+  }
 }
 
 .sky-line {
@@ -985,10 +1000,36 @@ html[dir="rtl"] .doodle-arrow {
 }
 
 /* Real training hours, in the reference's bar colors. */
+/* Bootcamps and short programs are charted apart, on the one shared 360-hour scale so bars still compare. */
+.hours-group {
+  margin-top: 1.25rem;
+}
+
+.hours-group + .hours-group {
+  margin-top: 1.75rem;
+}
+
+.hours-group-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--display);
+}
+
+.hours-group-sum {
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+
 .hours-chart {
   display: grid;
   gap: 0.6rem;
-  margin-top: 1.25rem;
+  margin-top: 0.75rem;
 }
 
 .hours-chart li {
